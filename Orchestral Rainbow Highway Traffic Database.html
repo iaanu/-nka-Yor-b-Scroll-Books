@@ -6,6 +6,64 @@
     <title>The Orchestral Rainbow Highway Traffic</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        .menu-bar {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 14px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .menu-bar a {
+            color: #FFD700;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,215,0,0.3);
+            white-space: nowrap;
+        }
+        .menu-bar a:hover {
+            background: rgba(255,215,0,0.2);
+            border-color: #FFD700;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255,215,0,0.3);
+        }
+        footer {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 28px 20px;
+            margin: 0;
+        }
+        .footer-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .footer-content .copyright {
+            display: block;
+            color: #ffeb3b;
+            font-size: 1.1em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .footer-content .yoruba-mission {
+            display: block;
+            color: #81d4fa;
+            font-size: 1.05em;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+        .footer-content .english-mission {
+            color: #e0e0e0;
+            font-size: 0.95em;
+            margin: 0;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Poppins', sans-serif;
@@ -177,6 +235,21 @@
     </style>
 </head>
 <body>
+    <div class="menu-bar">
+        <a href="index.html">Home</a>
+        <a href="Godreign.html">Godreign</a>
+        <a href="Ònka Yorùba.html">Ònka Yorùba</a>
+        <a href="../Ònka Yorùbá Databases/Orchestral Rainbow Highway Traffic Database.html">Highway Traffic</a>
+        <a href="../Ònka Yorùbá Databases/Yoruba Index Numbers Database.html">Index Numbers</a>
+        <a href="../Ònka Yorùbá Databases/Yoruba l Multipliers Database.html">l Multiplier</a>
+        <a href="Yorùbá Calculator.html">Yorùbá Calculator</a>
+        <a href="Yorùbá Number Converter.html">Yorùbá Number Converter</a>
+        <a href="Yorùbá Age Calculator.html">Yorùbá Age Calculator</a>
+        <a href="Yorùbá Kàlẹ́ndà.html">Yorùbá Kàlẹ́ndà</a>
+        <a href="Yorùbá Talking Drum.html">Yorùbá Talking Drum</a>
+        <a href="16-String Acoustic Guitar.html">16-String Acoustic Guitar</a>
+        <a href="About Us.html">About Us</a>
+    </div>
 <div class="container">
     <!-- Header -->
     <div class="header-section">
@@ -464,5 +537,18 @@ t+=rSpecial('46th',
     'Gray','#808080');
 document.getElementById('tableBody').innerHTML=t;
 </script>
+<footer>
+  <div class="footer-content">
+    <span class="copyright">© 2026 Godreign. Ònka Yorùbá.</span>
+    
+    <span class="yoruba-mission">
+      Fún ídàgbàsókè sáyẹ́nsì àti ìmọ̀ ẹ̀rò kárí aiyé.
+    </span>
+    
+    <p class="english-mission">
+      Exploring and utilizing our digital numerical legacy to achieve global digital competency.
+    </p>
+  </div>
+</footer>
 </body>
 </html>
