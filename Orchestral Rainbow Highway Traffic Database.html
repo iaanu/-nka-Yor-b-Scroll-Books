@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Orchestral Rainbow Highway Traffic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #F0F4F8;
+            color: #1a1a2e;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+            overflow: hidden;
+        }
+        /* Header Section */
+        .header-section {
+            background: #808080;
+            padding: 30px 28px;
+            color: #fff;
+        }
+        .header-section h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            line-height: 1.35;
+        }
+        .header-section h1 em { font-weight: 400; }
+        .header-section h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+        .intro-text {
+            background: #fff;
+            color: #1a1a2e;
+            padding: 22px 28px;
+            font-size: 1.05rem;
+            line-height: 1.75;
+            border-bottom: 4px solid #808080;
+        }
+        .intro-text p { margin-bottom: 10px; }
+        .intro-text ul, .intro-text ol { margin: 8px 0 10px 28px; }
+        .intro-text li { margin-bottom: 6px; }
+        .intro-text strong { color: #1a1a2e; }
+        .intro-text em { font-style: italic; }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+        /* Header Bar Row */
+        .header-bar td {
+            padding: 14px 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            border: none;
+        }
+        .header-bar .traffic-light { width: 60px; text-align: center; }
+        .header-bar .body-label { width: 160px; font-size: 1.15rem; }
+        .header-bar .body-label .body-name { color: #002060; font-weight: 700; }
+        .header-bar .body-label .key-label { color: #fff; }
+        .header-bar .key-cell { width: 70px; }
+        .header-bar .pulse-cell { width: 356px; }
+        .header-bar .score-label { width: 80px; font-size: 0.85rem; line-height: 1.25; }
+        .header-bar .range-label { width: 110px; }
+        .header-bar .colour-label { width: 70px; }
+        .header-bar .hex-label { width: 80px; }
+        .header-bar .swatch-end { width: 60px; }
+
+        /* Data Row */
+        .data-row td {
+            padding: 18px 10px;
+            border: none;
+            border-right: 1px solid #DBDBDB;
+            vertical-align: top;
+            font-size: 1.25rem;
+        }
+        .data-row td:last-child { border-right: none; }
+        .data-row .ordinal-cell {
+            width: 60px; text-align: center;
+            color: #fff; font-weight: 700; font-size: 1.25rem;
+        }
+        .data-row .level-cell { width: 160px; }
+        .data-row .level-cell .level-name {
+            font-weight: 700; font-size: 1.3rem;
+            display: block; margin-bottom: 4px;
+        }
+        .data-row .level-cell .jump-text {
+            font-size: 1.15rem; display: block;
+        }
+        .data-row .level-cell .jump-text .jump-italic { font-style: italic; }
+        .data-row .level-cell .jump-text .jump-bold { font-weight: 700; }
+        .traffic-img {
+            display: block;
+            width: 150px; height: 150px;
+            margin: 8px 0 0 0;
+            object-fit: contain;
+        }
+        .data-row .key-data { width: 70px; }
+        .data-row .key-data .chord-main {
+            font-weight: 700; font-size: 1.1rem;
+            display: block; margin-bottom: 6px;
+        }
+        .data-row .key-data .chord-sub {
+            font-size: 0.85rem; font-weight: 600;
+            display: block; line-height: 1.6;
+            color: #555;
+        }
+        .data-row .key-data .chord-tempo {
+            font-size: 0.7rem; font-weight: 600;
+            display: block; margin-top: 5px;
+            line-height: 1.35; color: #333;
+            border-top: 1px solid #ccc;
+            padding-top: 4px;
+        }
+        .data-row .number-cell {
+            width: 356px; word-break: break-all;
+        }
+        .data-row .number-cell .arabic-num {
+            font-weight: 700; font-size: 1.25rem;
+            display: block; margin-bottom: 6px; color: #1a1a2e;
+        }
+        .data-row .number-cell .yoruba-name {
+            font-weight: 700; font-size: 1.25rem;
+            display: block; word-break: break-all; line-height: 1.4;
+        }
+        .data-row .number-cell .g-count {
+            display: block; margin-top: 8px;
+            font-size: 1.05rem; font-weight: 700;
+            color: #FF13F0; line-height: 1.4;
+        }
+        .data-row .range-cell {
+            width: 110px; font-size: 1.1rem;
+            word-break: break-all; line-height: 1.3;
+        }
+        .data-row .colour-cell { width: 70px; font-weight: 700; font-size: 1.15rem; }
+        .data-row .hex-cell { width: 80px; font-weight: 700; font-size: 1.15rem; }
+        .data-row .score-cell {
+            width: 80px; font-size: 0.85rem; font-weight: 700;
+            line-height: 1.45; text-align: center; vertical-align: top;
+        }
+        .data-row .score-cell .score-g { color: #FF13F0; }
+        .data-row .score-cell .score-z { color: #EE0000; }
+        .data-row .score-cell .score-vs { color: #808080; font-size: 0.75rem; }
+        .data-row .swatch-cell { width: 60px; }
+
+        /* Separator Row */
+        .separator-row td {
+            padding: 12px 0;
+            border: none;
+        }
+        .separator-row .sep-traffic { width: 60px; }
+
+        /* Stop text for Tredecillions Plus */
+        .stop-text {
+            color: #EE0000; font-weight: 700; font-size: 1.3rem;
+        }
+
+        /* Print */
+        @media print {
+            body { background: #fff; padding: 0; }
+            .container { box-shadow: none; border-radius: 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Header -->
+    <div class="header-section">
+        <h1>The Orchestral Rainbow Highway Traffic: <em>The Traffic Highway that bridges the sound and the science.</em> <em style="font-weight:normal;">The large Number Friendly Navigation Over Tredecillion Plus Pulses, Is A Full-Body Workout! Drink Water!</em></h1>
+        <h3>44 Jumps, And 40 Pulses</h3>
+    </div>
+
+    <!-- Intro Text -->
+    <div class="intro-text">
+        <p><strong>Why the letter &ldquo;g&rdquo; is sharing the same colour with &ldquo;l&rdquo; Multiplier</strong>: the letter &ldquo;g&rdquo; shares the same colour with &ldquo;l&rdquo; Multiplier for the purpose of counting how many times &ldquo;<strong>Ẹgbẹ̀rǔn</strong>&rdquo; appears in the pulses, it also shares the same colour, because, it is the outcome of the &ldquo;l&rdquo; Multiplier&rsquo;s function. Letter &ldquo;g&rdquo; was chosen as it points downwards for more visibility.</p>
+        <ul>
+            <li>The New System&apos;s Compound Number Arrangement: In the current numbering version, numbers are always written from largest to smallest units, or from oldest to youngest. Such as; <strong>(Tredecillions Plus + Tredecillion + Duodecillion + Undecillion + Decillion + Nonillion + Octillion + Septillion + Sextillion + Quintillions + Quadrillions + Trillions + Billions + Millions + Thousands + Hundreds + Tens + Units)</strong></li>
+        </ul>
+        <p style="margin-left:28px;">For example:&nbsp;<strong>ẸgbẹrǔnOgúnEní</strong> = 1,021 &nbsp;| &nbsp;<strong>Ọgọ́rǔnlẹ́sǎnỌgọ́rinẸ́fà</strong> = 986</p>
+        <p>&nbsp;</p>
+        <p><strong><em>1:3 Pulses Philosophy, and Why this System Counts Faster than the Arabic On Large Numbers.</em></strong></p>
+        <p><em>Between the &quot;vocal warm-up&quot; over 40-pulse scale and the mental processing of the 46-Color Highway Traffic, students are essentially &quot;math-athletes.&quot; They&apos;ll definitely need that water to keep the &quot;engine&quot; cool.</em></p>
+        <p><strong><em>Sound of the Highway</em></strong>&nbsp;<em>designed to help students understand the harmonic logic before they even hit the first pulse.</em></p>
+        <p><strong><em>The Sound of the Highway: The Harmonic Heartbeat</em></strong></p>
+        <p><em>To master the <strong>Ònkà Yorùbá</strong> system, you must do more than just look at the Colors; you must hear the magnitude. The Highway is not a silent map&mdash;it is a musical score.</em></p>
+        <p><strong><em>The Three-Chord Ascent&nbsp;</em></strong></p>
+        <p><em>As you move through the pulses, your voice follows a <strong>Tension-and-Release</strong> cycle. This isn&apos;t just for art; it&apos;s for precision.</em></p>
+        <ol>
+            <li><strong><em>The Tonic (The Home Note):</em></strong>&nbsp;<em>When you land on a <strong>Root (Teal)</strong>, your voice is at rest. It is the sound of &quot;1.&quot; It is stable, grounded, and clear.</em></li>
+            <li><strong><em>The Subdominant (The Journey Chord):</em></strong>&nbsp;<em>As you enter the <strong>Red Road</strong> of Tens and Hundreds, the musical tension begins to rise. You are climbing. This chord signals to your brain that you are in motion, gathering data.</em></li>
+            <li><strong><em>The Dominant (The Peak Tension):</em></strong>&nbsp;<em>Just before you hit a <strong>Neon Pink Multiplier</strong> (like the Million or Billion), the chord reaches its highest tension. It is the &quot;Vocal Warm-up&quot; moment&mdash;your breath is held; your focus is sharp.</em></li>
+        </ol>
+        <p><strong><em>&quot;The Jump&quot;:</em></strong>&nbsp;<em>When you finally cross into the next magnitude, the chord resolves back to the <strong>Tonic</strong>. The tension breaks. You have arrived.</em></p>
+        <p><strong><em>The Tredecillion Plus Symphony</em></strong></p>
+        <p><em>Counting to the <strong>Tredecillion Plus</strong> is a 40-pulse marathon. By following the musical scale, you avoid &quot;mental static.&quot; Instead of getting lost in a repeating loop of zeros, your ears tell you exactly where you are in the symphony of scale.</em></p>
+        <p><strong><em>Navigator&rsquo;s Tip: Hydration &amp; Resonance</em></strong></p>
+        <ul>
+            <li><strong><em>The Vocal Engine:</em></strong>&nbsp;<em>Like any powerful engine, the Navigator&rsquo;s mind and throat require &quot;coolant.&quot; Drink water. A hydrated throat allows for the resonant clarity needed to vibrate the <strong>Deep Space</strong> frequencies.</em></li>
+            <li><strong><em>The Resonance Check:</em></strong>&nbsp;<em>If your voice feels thin or shaky, you have lost the &quot;Pulse.&quot; Take a breath, find your <strong>Teal Root</strong> note, and start the climb again.</em></li>
+        </ul>
+        <p><strong><em>That should set the stage perfectly for the physical and musical demands of the numeric system!</em></strong></p>
+        <p><em>Get ready to hit the gas as soon as that <strong>Orchestral Highway Traffic Engine Ignites</strong>!</em></p>
+        <p><em>This system is essentially &quot;wiring&quot; the human brain for high-voltage data. Traditional math is often like a candle&mdash;dim and slow&mdash;but the <strong>Ònkà Yorùbá</strong> system is a power grid. It&rsquo;s the difference between walking in the dark and turning on the stadium lights.</em></p>
+        <p><em>When layered the <strong>vocal warm-ups</strong> and <strong>three-chord progressions</strong> onto those <strong>Traffic Lights</strong>, a &quot;Bio-Electric is being created&quot; resonance. The student becomes a conductor of the infinite!</em></p>
+        <ul>
+            <li><em>How the <strong>chords</strong> resolve at the &quot;Ready Jump&quot; (Red) points.</em></li>
+            <li><em>The <strong>vocal tension</strong> required for those 14-pulse stretches.</em></li>
+            <li><em>The specific <strong>musical keys</strong> or frequencies that align with the Deep Space magnitudes.</em></li>
+        </ul>
+        <p><strong><em>Standing by for the upload&mdash;let&apos;s make this legendary!</em></strong></p>
+    </div>
+
+    <!-- Table -->
+    <table id="mainTable">
+        <tbody id="tableBody"></tbody>
+    </table>
+</div>
+
+<script>
+/* ═══ DATA ═══ */
+const PINK = '#FF13F0';
+const TRAFFIC = { head:'#EE0000', arm:'#FFC000', leg:'#00B050' };
+const JUMP_C  = { head:'#EE0000', arm:'#FFC000', leg:'#00B050' };
+
+const E = [
+    ['1st',  'ZERO',                      'Cerulean',        '#0891B2'],
+    ['2nd',  'UNITS',                     'Vibrant Green',   '#16A34A'],
+    ['3rd',  'TENS',                      'Royal Blue',      '#2563EB'],
+    ['4th',  'HUNDREDS',                  'Purple',          '#9333EA'],
+    ['5th',  'THOUSANDS',                 'Red',             '#DC2626'],
+    ['6th',  'TENS OF THOUSANDS',         'Dark Goldenrod',  '#B59410'],
+    ['7th',  'Hundreds of Thousands',     'Sky Blue',        '#6FBDFA'],
+    ['8th',  'MILLIONS',                  'Saddle Brown',    '#8B4513'],
+    ['9th',  'Tens of Millions',          'Golden Yellow',   '#D5B60A'],
+    ['10th', 'Hundreds of Millions',      'Dark Orange',     '#EF6000'],
+    ['11th', 'BILLIONS',                  'Navy Blue',       '#000080'],
+    ['12th', 'Tens of Billions',          'Hot Pink',        '#FC5D8D'],
+    ['13th', 'Hundreds of Billions',      'Olive',           '#808000'],
+    ['14th', 'TRILLIONS',                 'Dark Magenta',    '#8B008B'],
+    ['15th', 'Tens of Trillions',         'Slate Blue',      '#6A5ACD'],
+    ['16th', 'Hundreds of Trillions',     'Tomato',          '#FF6347'],
+    ['17th', 'QUADRILLIONS',              'Steel Blue',      '#4682B4'],
+    ['18th', 'Tens of Quadrillions',      'Amber',           '#F59E0B'],
+    ['19th', 'Hundreds of Quadrillions',  'Dark Red',        '#8B0000'],
+    ['20th', 'QUINTILLIONS',              'Emerald',         '#047857'],
+    ['21st', 'Tens of Quintillions',      'Violet',          '#7C3AED'],
+    ['22nd', 'Hundreds of Quintillions',  'Chocolate',       '#D2691E'],
+    ['23rd', 'SEXTILLIONS',               'Dodger Blue',     '#1E90FF'],
+    ['24th', 'Tens of Sextillions',       'Crimson',         '#B91C1C'],
+    ['25th', 'Hundreds of Sextillions',   'Lime Green',      '#65A30D'],
+    ['26th', 'SEPTILLIONS',               'Indigo',          '#4B0082'],
+    ['27th', 'Tens of Septillions',       'Salmon',          '#FA8072'],
+    ['28th', 'Hundreds of Septillions',   'Dark Teal',       '#008B8B'],
+    ['29th', 'OCTILLIONS',                'Goldenrod',       '#DAA520'],
+    ['30th', 'Tens of Octillions',        'Deep Violet',     '#7B2D8E'],
+    ['31st', 'Hundreds of Octillions',    'Light Sea Green', '#20B2AA'],
+    ['32nd', 'NONILLIONS',                'Firebrick',       '#B22222'],
+    ['33rd', 'Tens of Nonillions',        'Medium Purple',   '#9370DB'],
+    ['34th', 'Hundreds of Nonillions',    'Sienna',          '#A0522D'],
+    ['35th', 'DECILLIONS',                'Midnight Blue',   '#191970'],
+    ['36th', 'Tens of Decillions',        'Rose',            '#E11D48'],
+    ['37th', 'Hundreds of Decillions',    'Cadet Blue',      '#5F9EA0'],
+    ['38th', 'UNDECILLIONS',              'Bronze',          '#CD7F32'],
+    ['39th', 'Tens of Undecillions',      'Dark Orchid',     '#9932CC'],
+    ['40th', 'Hundreds of Undecillions',  'Forest Green',    '#228B22'],
+    ['41st', 'DUODECILLIONS',             'Dark Slate Blue', '#483D8B'],
+    ['42nd', 'Tens of Duodecillions',     'Maroon',          '#800000'],
+    ['43rd', 'Hundreds of Duodecillions', 'Peru',            '#CD853F'],
+    ['44th', 'TREDECILLIONS',             'Dark Olive',      '#94AA00']
+];
+
+const simpleY = ['\u00D3do', 'En\u00ED', '\u1EB8\u0301w\u01CE', '\u1ECC g\u1ECD\u0301r\u016Dn'];
+
+/* ═══ HELPERS ═══ */
+const SP = {0:'\u2070',1:'\u00B9',2:'\u00B2',3:'\u00B3',4:'\u2074',5:'\u2075',6:'\u2076',7:'\u2077',8:'\u2078',9:'\u2079'};
+function toS(n){ return String(n).split('').map(d=>SP[d]||d).join(''); }
+function addC(s){ return s.replace(/\B(?=(\d{3})+(?!\d))/g,','); }
+function bigN(e){ return e<0?'0':addC('1'+'0'.repeat(e)); }
+function bigR(e){
+    if(e<0) return '0';
+    if(e===0) return '1\u20139';
+    return addC('1'+'0'.repeat(e))+'\u2013'+addC('9'.repeat(e+1));
+}
+function bType(i){ if(i<4)return'leg'; const m=(i-4)%3; return m===0?'head':m===1?'arm':'leg'; }
+function gExp(i){ return i===0?-1:i-1; }
+function gChains(i){ return i<4?0:Math.floor((i-4)/3)+1; }
+function gEnd(i){ if(i<4)return null; const m=(i-4)%3; return m===0?null:m===1?'ewa':'ogorun'; }
+function gPulse(e){ return e<3?0:Math.floor(e/3); }
+function gKey(b,i){ if(i<4)return'D# Maj'; return b==='head'?'G# Maj':b==='arm'?'F#m':'D# Maj'; }
+function gChordFamily(b,i){
+    if(i<4) return ['G# Maj','A# Maj','Cm'];  // Leg: D# Maj family
+    if(b==='head') return ['C# Maj','D# Maj','Fm'];   // G# Maj family (I→IV→V→vi)
+    if(b==='arm')  return ['A Maj','B Maj','C# Maj'];  // F#m family (i→III→IV→V)
+    return ['G# Maj','A# Maj','Cm'];                   // D# Maj family (I→IV→V→vi)
+}
+function chordHTML(b,i){
+    const main=gKey(b,i), fam=gChordFamily(b,i);
+    let tempo,timeSig;
+    if(i<4){ tempo='♪ 120'; timeSig='6/8'; }
+    else if(b==='head'){ tempo='♪ 72'; timeSig='4/4'; }
+    else if(b==='arm'){ tempo='♪ 96'; timeSig='3/4'; }
+    else { tempo='♪ 120'; timeSig='6/8'; }
+    return `<span class="chord-main">${main}</span><span class="chord-sub">${fam[0]}<br>${fam[1]}<br>${fam[2]}</span><span class="chord-tempo">${timeSig}<br>${tempo}</span>`;
+}
+
+/* Running totals */
+let runG=0, runZ=0;
+
+const TIMG={head:'01Red.jpg',arm:'02Yellow.jpg',leg:'03Green.jpg'};
+function jHTML(b,i){
+    const c=JUMP_C[b];
+    const img=`<img class="traffic-img" src="${TIMG[b]}" alt="${b} traffic light">`;
+    if(i<4) return `<span class="jump-italic" style="color:${c}">READY TEADY</span> <span class="jump-bold" style="color:${c}">UMP JUMP JUMP</span>${img}`;
+    if(b==='head') return `<span class="jump-italic" style="color:${c}">READY</span> <span class="jump-bold" style="color:${c}">JUMP</span>${img}`;
+    if(b==='arm') return `<span class="jump-italic" style="color:${c}">STEADY</span> <span class="jump-bold" style="color:${c}">JUMP</span>${img}`;
+    return `<span class="jump-italic" style="color:${c}">READY TEADY</span> <span class="jump-bold" style="color:${c}">JUMP JUMP JUMP</span>${img}`;
+}
+
+/* Yorùbá */
+function sp(c,t){ return `<span style="color:${c}">${t}</span>`; }
+function buildY(i,h){
+    if(i<4) return sp(h,simpleY[i]);
+    const ch=gChains(i), en=gEnd(i);
+    let s='';
+    s+=sp(h,'\u1EB8')+sp(PINK,'g')+sp(h,'b\u1EB9\u0300r\u016Dn');
+    for(let j=1;j<ch;j++) s+=sp(PINK,'l')+sp(h,'\u1EB9\u0301')+sp(PINK,'g')+sp(h,'b\u1EB9\u0300r\u016Dn');
+    if(en==='ewa') s+=sp(PINK,'l')+sp(h,'\u00E9w\u01CE');
+    else if(en==='ogorun') s+=sp(PINK,'l')+sp(h,'\u1ECD\u0301g\u1ECD\u0301r\u016Dn');
+    return s;
+}
+
+/* ═══ RENDER ═══ */
+function rEntry(i){
+    const [ord,lv,cn,hx]=E[i];
+    const b=bType(i), ex=gExp(i), pu=gPulse(ex), ky=gKey(b,i);
+    const tc=TRAFFIC[b];
+    const bl=b==='head'?'Head':b==='arm'?'Arm':'Leg';
+    const kl=b==='head'?'Root Key':b==='arm'?'Minor Key':'Major Key';
+    const ps=i===0?'0\u2070 = 0 Pulse':`10${toS(ex)} = ${pu} Pulse${pu!==1?'s':''}`;
+    const ar=bigN(ex), rn=bigR(ex), yr=buildY(i,hx), jh=jHTML(b,i);
+    let h='';
+    // Header bar
+    h+=`<tr class="header-bar">`;
+    h+=`<td class="traffic-light" style="background:${tc}">&nbsp;</td>`;
+    h+=`<td class="body-label" style="background:${tc}"><span class="body-name">${bl}</span> <span class="key-label">${kl}</span></td>`;
+    h+=`<td class="key-cell" style="background:${hx}"><strong>${ky}</strong></td>`;
+    h+=`<td class="pulse-cell" style="background:${hx}"><strong>${ps}</strong></td>`;
+    h+=`<td class="score-label" style="background:${hx}"><strong>Yo vs Arab</strong></td>`;
+    h+=`<td class="range-label" style="background:${hx}"><strong>Range</strong></td>`;
+    h+=`<td class="colour-label" style="background:${hx}"><strong>Colour</strong></td>`;
+    h+=`<td class="hex-label" style="background:${hx}"><strong>Hex</strong></td>`;
+    h+=`<td class="swatch-end" style="background:${hx}">&nbsp;</td>`;
+    h+=`</tr>`;
+    // Data row — update running totals
+    const gc=gChains(i);
+    const zeros=ex<1?0:ex;
+    runG+=gc; runZ+=zeros;
+    const gcHTML=gc>0?`<span class="g-count">${gc} × <span style="color:#FF13F0">g</span> (${gc} × ẹ́gbẹ̀rŭn)</span>`:'';
+    const scoreHTML=`<span class="score-g">${runG}g</span><br><span class="score-vs">vs</span><br><span class="score-z">${runZ} zeros</span>`;
+    h+=`<tr class="data-row">`;
+    h+=`<td class="ordinal-cell" style="background:${tc}">${ord}</td>`;
+    h+=`<td class="level-cell"><span class="level-name" style="color:${hx}">${lv}</span><span class="jump-text">${jh}</span></td>`;
+    h+=`<td class="key-data">${chordHTML(b,i)}</td>`;
+    h+=`<td class="number-cell"><span class="arabic-num">${ar}</span><span class="yoruba-name">${yr}</span>${gcHTML}</td>`;
+    h+=`<td class="score-cell">${scoreHTML}</td>`;
+    h+=`<td class="range-cell">${rn}</td>`;
+    h+=`<td class="colour-cell" style="color:${hx}">${cn}</td>`;
+    h+=`<td class="hex-cell" style="color:${hx}">${hx}</td>`;
+    h+=`<td class="swatch-cell" style="background:${hx}">&nbsp;</td>`;
+    h+=`</tr>`;
+    // Separator
+    h+=`<tr class="separator-row"><td style="background:${tc}">&nbsp;</td><td style="background:${tc}">&nbsp;</td><td colspan="7" style="background:${hx}">&nbsp;</td></tr>`;
+    return h;
+}
+
+function rTredPlus(){
+    const hx='#94AA00', tc=TRAFFIC.head;
+    let h='';
+    h+=`<tr class="header-bar">`;
+    h+=`<td class="traffic-light" style="background:${tc}">&nbsp;</td>`;
+    h+=`<td class="body-label" style="background:${tc}"><span class="body-name">Head</span> <span class="key-label">Root Key</span></td>`;
+    h+=`<td class="key-cell" style="background:${hx}"><strong>G# Maj</strong></td>`;
+    h+=`<td class="pulse-cell" style="background:${hx}"><strong>10\u2074\u00B2\u207A = 14 Pulses Plus</strong></td>`;
+    h+=`<td class="score-label" style="background:${hx}"><strong>Yo vs Arab</strong></td>`;
+    h+=`<td class="range-label" style="background:${hx}"><strong>Range</strong></td>`;
+    h+=`<td class="colour-label" style="background:${hx}"><strong>Colour</strong></td>`;
+    h+=`<td class="hex-label" style="background:${hx}"><strong>Hex</strong></td>`;
+    h+=`<td class="swatch-end" style="background:${hx}">&nbsp;</td>`;
+    h+=`</tr>`;
+
+    // Arabic: 10^42 + 1
+    const ar42p1 = addC('1'+'0'.repeat(42)).replace(/,000$/,',001');
+    // Yorùbá: 14 chains + lEní
+    let yr='';
+    yr+=sp(hx,'\u1EB8')+sp(PINK,'g')+sp(hx,'b\u1EB9\u0300r\u016Dn');
+    for(let j=1;j<14;j++) yr+=sp(PINK,'l')+sp(hx,'\u1EB9\u0301')+sp(PINK,'g')+sp(hx,'b\u1EB9\u0300r\u016Dn');
+    yr+=sp(PINK,'l')+sp(hx,'En\u00ED');
+
+    // Range
+    const rng = ar42p1+'\u2013'+addC('9'.repeat(43));
+
+    // Running total for Tredecillion Plus
+    runG+=14; runZ+=42;
+    const tpScore=`<span class="score-g">${runG}g</span><br><span class="score-vs">vs</span><br><span class="score-z">${runZ} zeros</span>`;
+
+    h+=`<tr class="data-row">`;
+    h+=`<td class="ordinal-cell" style="background:${tc}">44th</td>`;
+    h+=`<td class="level-cell"><span class="level-name" style="color:${hx}">TREDECILLIONS PLUS</span><span class="stop-text">STOP</span><br><span class="stop-text">STOP</span><br><span class="stop-text">TAKE A BREAK</span><img class="traffic-img" src="01Red.jpg" alt="Red traffic light"></td>`;
+    h+=`<td class="key-data"><span class="chord-main">G# Maj</span><span class="chord-sub">C# Maj<br>D# Maj<br>Fm</span><span class="chord-tempo">4/4<br>♪ 72</span></td>`;
+    h+=`<td class="number-cell"><span class="arabic-num">${ar42p1}</span><span class="yoruba-name">${yr}</span><span class="g-count">14 × <span style="color:#FF13F0">g</span> (14 × ẹ́gbẹ̀rŭn) Plus</span></td>`;
+    h+=`<td class="score-cell">${tpScore}</td>`;
+    h+=`<td class="range-cell">${rng}</td>`;
+    h+=`<td class="colour-cell" style="color:${hx}">Dark Olive</td>`;
+    h+=`<td class="hex-cell" style="color:${hx}">${hx}</td>`;
+    h+=`<td class="swatch-cell" style="background:${hx}">&nbsp;</td>`;
+    h+=`</tr>`;
+    h+=`<tr class="separator-row"><td style="background:${tc}">&nbsp;</td><td style="background:${tc}">&nbsp;</td><td colspan="7" style="background:${hx}">&nbsp;</td></tr>`;
+    return h;
+}
+
+function rSpecial(ord,title,desc,cn,hx){
+    let h='';
+    h+=`<tr class="separator-row"><td colspan="9" style="background:${hx}">&nbsp;</td></tr>`;
+    h+=`<tr class="data-row">`;
+    h+=`<td class="ordinal-cell" style="background:${hx};border-right:none">${ord}</td>`;
+    h+=`<td class="level-cell"><strong>${title}</strong></td>`;
+    h+=`<td class="key-data">&nbsp;</td>`;
+    h+=`<td class="number-cell"><strong>${desc}</strong></td>`;
+    h+=`<td class="score-cell">&nbsp;</td>`;
+    h+=`<td class="range-cell">&nbsp;</td>`;
+    h+=`<td class="colour-cell" style="color:${hx}">${cn}</td>`;
+    h+=`<td class="hex-cell" style="color:${hx}">${hx}</td>`;
+    h+=`<td class="swatch-cell" style="background:${hx}">&nbsp;</td>`;
+    h+=`</tr>`;
+    h+=`<tr class="separator-row"><td colspan="9" style="background:${hx}">&nbsp;</td></tr>`;
+    return h;
+}
+
+/* ═══ BUILD ═══ */
+let t='';
+for(let i=0;i<E.length;i++) t+=rEntry(i);
+t+=rTredPlus();
+t+=rSpecial('45th',
+    '<span style="color:#FF13F0">\u201Cl\u201D Multiplier</span>',
+    'The Multiplication of Life Logic',
+    'Neon Pink','#FF13F0');
+t+=rSpecial('46th',
+    '<span style="color:#FF13F0">\u201Cl\u201D Multiplier\u2019s </span><span style="color:#808080">Contents <em>(<span style="color:#FF13F0">Children</span>)</em></span>',
+    'The Unassigned State of <span style="color:#FF13F0">\u201Cl\u201D Multiplier\u2019s </span><span style="color:#808080">Contents</span> <em><span style="color:#FF13F0">(</span><span style="color:#808080">Children</span><span style="color:#FF13F0">)</span></em>',
+    'Gray','#808080');
+document.getElementById('tableBody').innerHTML=t;
+</script>
+</body>
+</html>
