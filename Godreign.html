@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Godreign</title>
-      <style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
         .menu-bar {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             padding: 14px 20px;
@@ -12,6 +14,7 @@
             justify-content: center;
             gap: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            border-bottom: 4px solid #667eea;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -33,13 +36,49 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(255,215,0,0.3);
         }
+        * { box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1E8CB8 0%, #27BCED 100%);
+            color: #1a1a2e;
             margin: 0;
             padding: 0;
+            line-height: 1.6;
             min-height: 100vh;
         }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header-section {
+            background: linear-gradient(135deg, #1E8CB8 0%, #27BCED 100%);
+            padding: 30px 28px;
+            color: #fff;
+        }
+        .header-section h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            line-height: 1.35;
+        }
+        .intro-text {
+            background: #fff;
+            color: #1a1a2e;
+            padding: 22px 28px;
+            font-size: 1.05rem;
+            line-height: 1.75;
+            border-bottom: 4px solid #1E8CB8;
+        }
+        .intro-text p { margin-bottom: 10px; }
+        .intro-text ul, .intro-text ol { margin: 8px 0 10px 28px; }
+        .intro-text li { margin-bottom: 6px; }
+        .intro-text strong { color: #1a1a2e; }
+        .intro-text em { font-style: italic; }
         footer {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             padding: 28px 20px;
@@ -73,7 +112,6 @@
 </head>
 <body>
     <div class="menu-bar">
-        <a href="index.html">Home</a>
         <a href="Godreign.html">Godreign</a>
         <a href="Ònka Yorùba.html">Ònka Yorùba</a>
         <a href="Orchestral Rainbow Highway Traffic Database.html">Highway Traffic</a>
@@ -88,17 +126,15 @@
         <a href="About Us.html">About Us</a>
     </div>
     <div class="container">
-        <div class="header">
-            <div style="margin: 18px 0 0 0; padding: 18px 0; background: #f8f9fa; border-radius: 12px; box-shadow: 0 2px 8px rgba(30,60,114,0.07);">
-        
-                <table style="width:70%; margin:0 auto; border:none;">
-                    <tr>
-                        <td style="width:40%; vertical-align:top;">
-                            <img src="Godreign.jpg" alt="Godreign Government On Earth" style="max-width:100%;border-radius:12px;">
-                        </td>
-                        <td style="width:60%; vertical-align:top; padding-left:24px;">
-                            <div style="color:#000000; font-size:1.1em;">
-                                <div style="font-size:1.7em; color:#1565c0; font-weight:bold; margin-bottom:10px;">Godreign Government On Earth</div>
+        <div class="header-section">
+            <h1>Godreign Government On Earth</h1>
+        </div>
+        <div class="intro-text">
+            <div style="display:flex; flex-wrap:wrap; gap:28px; align-items:flex-start;">
+                <div style="flex:0 0 340px; max-width:400px;">
+                    <img src="Godreign.jpg" alt="Godreign Government On Earth" style="width:100%; border-radius:14px; box-shadow:0 8px 32px rgba(0,0,0,0.13);">
+                </div>
+                <div style="flex:1; min-width:280px;">
                                <p><strong><span style="font-family: Arial; font-size:1.1em;">A Long Awaited Solution From Above</span></strong></p>
 <p>After all the skyscrapers have risen, after roads have stretched across deserts and river,</p>
 <p>&nbsp;After satellites have mapped the heavens and machines have whispered the language of algorithms, what remains of a soul untouched by truth? What becomes of a nation with brilliant cities but broken spirits? What is the value of progress that leads nowhere beyond the grave? In a world obsessed with advancement, humanity has built towering economies, engineered cities of steel and glass, and crafted technologies that pierce the clouds, yet the soul remains disoriented and wandering. The glory of technological and economic growth, while dazzling, becomes hollow when severed from eternal purpose. The modern world has neglected the one crown that gives meaning to all other achievements: spiritual development. What profit is there in building the future, if the soul is unprepared for eternity? What legacy can a nation truly leave behind if its people inherit the earth, but lose their place in heaven? It is here that Godreign emerges, not as a theory, not as a rebranded ideology, but as a prophetic alignment with heaven&rsquo;s original blueprint for Earth. It is the embodiment of Christ&rsquo;s prayer in Matthew 6:10: &ldquo;Thy kingdom come, Thy will be done, on earth as it is in heaven.&rdquo;</p>
@@ -108,10 +144,7 @@
 <p>The earth is being infiltrated by antichrist systems, demonic ideologies, and even manipulated beings, unauthorized intrusions from extraterrestrial and spiritual realms, designed to distort the divine image in humanity. Through corrupted pregnancies and systemic social engineering, these agents now parade immorality under the protection of law. They promote identity confusion, glorify sexual perversion, and redefine what it means to be human. Make no mistake: these are not simply social trends. They are spiritual assaults, strategies of deception and eternal sabotage. Behind the curtain of &ldquo;freedom&rdquo; lies a sinister agenda, designed to disconnect the soul from its Creator and derail heaven&rsquo;s inheritance for God&rsquo;s children. But God is not silent. He is not threatened; He permits it to eventually transform the enemy&apos;s plans to His ultimate glory. He is positioning a remnant. A kingdom people. Those who do not merely survive, but shine. Those who carry the fragrance of heaven into the polluted streets of Babylon. Those who will not imitate Babylon but embody Zion.</p>
 <p>Godreign does not simply seek to replace a government; it seeks to restore a kingdom. It is a call for nations to stop drinking from the cup of Sodom and Gomorrah, to stop funding destruction with taxpayers&rsquo; gold, and to rise into their prophetic identity, as builders of holy culture, defenders of divine design, and guardians of generational destiny. Where democracy dissolves marriages, Godreign rebuilds family. Where governments legalize confusion, Godreign restores order and identity. Where the world trades truth for trends, Godreign holds the eternal roadmap firmly in hand. This is not a reaction to failure, but a divine restoration of order. It is a clarion call to all governments, leaders, and citizens: To return. To realign. To reign in righteousness. Rejecting Deception. Choosing Eternal Life. Just as BRICS nations are breaking free from dollar dependency, Godreign calls the nations to dump the democracy that costs souls their eternity. The democracy that silences God. That legalizes what heaven calls sin. That wins elections, but loses souls.</p>
 <p>Godreign is not merely an alternative. It is the answer. Not just for today&rsquo;s justice, but for tomorrow&rsquo;s eternity. Not just for policy, but for paradise. The world has reached the edge. This is the terminal hour of Western dominion. And only one door leads forward: The door of righteousness, and the door of divine order for the success of human souls. Let those who have ears, hear. Let those who have hearts, choose. Let the nations of the earth rise, not in rebellion, but in holy submission to the reign of God on earth. The kingdoms of this world are fading. But the kingdom of God shall stand forever.</p>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+                </div>
             </div>
         </div>
     </div>
