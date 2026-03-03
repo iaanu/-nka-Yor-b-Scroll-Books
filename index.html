@@ -128,7 +128,7 @@
 <body>
     <div class="menu-bar">
         <a href="Godreign.html">Godreign</a>
-        <a href="Ònka Yorùba.html">Ònka Yorùbá</a>
+        <a href="index.html">Ònka Yorùbá</a>
         <a href="Orchestral Rainbow Highway Traffic Database.html">Highway Traffic</a>
         <a href="Yoruba Index Numbers Database.html">Index Numbers</a>
         <a href="Yoruba l Multipliers Database.html">l Multiplier</a>
@@ -174,6 +174,12 @@
             </div>
         </div>
     </div>
+        <!-- Scroll Progress Bar -->
+        <div class="scroll-progress" id="scrollProgress"></div>
+        <!-- 46-Colour Bar (under header) -->
+        <div class="colour-bar-animated" style="display: flex; height: 10px; margin: 0; border-radius: 0; overflow: hidden;">
+            <!-- ...copy all colour bar divs from Index Numbers page here... -->
+        </div>
 </div>
 <footer>
   <div class="footer-content">
@@ -186,5 +192,44 @@
     </p>
   </div>
 </footer>
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" title="Back to Top" aria-label="Scroll to top">&#9650;</button>
+    <!-- ═══════════════════ FUTURISTIC JS ═══════════════════ -->
+    <script>
+      // --- Scroll Progress Bar ---
+      const progressBar = document.getElementById('scrollProgress');
+      window.addEventListener('scroll', () => {
+        const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+        progressBar.style.width = scrolled + '%';
+      }, { passive: true });
+      // --- Section Fade-In (Intersection Observer) ---
+      const fadeTargets = document.querySelectorAll(
+        '.section-title, .num-card, .color-box, .rule-box, ' +
+        '.intro-section, .protocol-section, .analysis-section, ' +
+        '.rules-section, .database-start'
+      );
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-visible');
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      fadeTargets.forEach(el => fadeObserver.observe(el));
+      // --- Back-to-Top Button ---
+      const topBtn = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 600) {
+          topBtn.classList.add('visible');
+        } else {
+          topBtn.classList.remove('visible');
+        }
+      }, { passive: true });
+      topBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
 </body>
 </html>
