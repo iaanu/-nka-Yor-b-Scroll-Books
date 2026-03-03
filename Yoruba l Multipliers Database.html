@@ -226,9 +226,9 @@
     .cards-brown .mult-card { border-left: 4px solid #8B4513; border-right: 4px solid #8B4513; }
     .cards-navy .mult-card { border-left: 4px solid #000080; border-right: 4px solid #000080; }
     .cards-magenta .mult-card { border-left: 4px solid #8B008B; border-right: 4px solid #8B008B; }
-    .cards-sky .mult-card { border-left: 4px solid #039FBE; border-right: 4px solid #039FBE; }
-    .cards-golden .mult-card { border-left: 4px solid #D4AF37; border-right: 4px solid #D4AF37; }
-    .cards-coral .mult-card { border-left: 4px solid #E8724A; border-right: 4px solid #E8724A; }
+    .cards-sky .mult-card { border-left: 4px solid #B59410; border-right: 4px solid #B59410; }
+    .cards-golden .mult-card { border-left: 4px solid #6FBDFA; border-right: 4px solid #6FBDFA; }
+    .cards-coral .mult-card { border-left: 4px solid #D5B60A; border-right: 4px solid #D5B60A; }
     .cards-orange .mult-card { border-left: 4px solid #EF6000; border-right: 4px solid #EF6000; }
     .cards-pink .mult-card { border-left: 4px solid #FC5D8D; border-right: 4px solid #FC5D8D; }
     .cards-olive .mult-card { border-left: 4px solid #808000; border-right: 4px solid #808000; }
@@ -266,9 +266,9 @@
     .cards-brown .sub-header { background: #8B4513; }
     .cards-navy .sub-header { background: #000080; }
     .cards-magenta .sub-header { background: #8B008B; }
-    .cards-sky .sub-header { background: #039FBE; }
-    .cards-golden .sub-header { background: #D4AF37; }
-    .cards-coral .sub-header { background: #E8724A; }
+    .cards-sky .sub-header { background: #B59410; }
+    .cards-golden .sub-header { background: #6FBDFA; }
+    .cards-coral .sub-header { background: #D5B60A; }
     .cards-orange .sub-header { background: #EF6000; }
     .cards-pink .sub-header { background: #FC5D8D; }
     .cards-olive .sub-header { background: #808000; }
@@ -352,10 +352,185 @@
       .container { box-shadow: none; border-radius: 0; }
       .section-title { break-after: avoid; }
       table { break-inside: avoid; }
+      .scroll-progress, .back-to-top { display: none !important; }
+      .section-title,
+      .mult-card,
+      .color-box,
+      .protocol-box,
+      .highlight-box,
+      .power-box {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* FUTURISTIC ENHANCEMENTS                                        */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    /* --- Scroll Progress Bar --- */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 0%;
+      z-index: 2000;
+      background: linear-gradient(90deg,
+        #0891B2, #16A34A, #2563EB, #9333EA, #DC2626,
+        #B59410, #6FBDFA, #8B4513, #D5B60A, #EF6000,
+        #000080, #FC5D8D, #808000, #8B008B, #6A5ACD,
+        #FF6347, #4682B4, #F59E0B, #8B0000, #047857,
+        #7C3AED, #D2691E, #1E90FF, #B91C1C, #65A30D,
+        #4B0082, #FA8072, #008B8B, #DAA520, #7B2D8E,
+        #20B2AA, #B22222, #9370DB, #A0522D, #191970,
+        #E11D48, #5F9EA0, #CD7F32, #9932CC, #228B22,
+        #483D8B, #800000, #CD853F, #94AA00, #FF13F0, #808080
+      );
+      transition: width 0.1s linear;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* --- Card Hover Glow --- */
+    .mult-card {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: default;
+    }
+    .mult-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(30, 140, 184, 0.25);
+    }
+
+    /* --- Section Fade-In Animation --- */
+    .section-title,
+    .mult-card,
+    .color-box,
+    .protocol-box,
+    .highlight-box,
+    .power-box {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in-visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+    /* Stagger cards within grids */
+    .card-grid .mult-card:nth-child(1) { transition-delay: 0s; }
+    .card-grid .mult-card:nth-child(2) { transition-delay: 0.05s; }
+    .card-grid .mult-card:nth-child(3) { transition-delay: 0.1s; }
+    .card-grid .mult-card:nth-child(4) { transition-delay: 0.15s; }
+    .card-grid .mult-card:nth-child(5) { transition-delay: 0.2s; }
+    .card-grid .mult-card:nth-child(6) { transition-delay: 0.25s; }
+    .card-grid .mult-card:nth-child(7) { transition-delay: 0.3s; }
+    .card-grid .mult-card:nth-child(8) { transition-delay: 0.35s; }
+    .card-grid .mult-card:nth-child(9) { transition-delay: 0.4s; }
+
+    /* --- 46-Colour Bar Shimmer --- */
+    .colour-bar-animated {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      height: 10px;
+      margin: 0;
+      border-radius: 0;
+    }
+    .colour-bar-animated > div {
+      flex: 1;
+      transition: transform 0.3s ease, flex 0.3s ease;
+    }
+    .colour-bar-animated:hover > div {
+      filter: brightness(1.15);
+    }
+    .colour-bar-animated > div:hover {
+      flex: 3;
+      transform: scaleY(2.5);
+      z-index: 1;
+      border-radius: 2px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.3);
+    }
+    .colour-bar-animated::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent);
+      animation: shimmerSweep 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes shimmerSweep {
+      0% { left: -50%; }
+      100% { left: 150%; }
+    }
+
+    /* --- Back-to-Top Button --- */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1E8CB8 0%, #27BCED 100%);
+      color: #fff;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(30, 140, 184, 0.4);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top:hover {
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 8px 30px rgba(30, 140, 184, 0.6);
+    }
+
+    /* --- Animated Header Gradient --- */
+    @keyframes headerGlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .header {
+      background: linear-gradient(135deg, #1E8CB8 0%, #27BCED 33%, #1E8CB8 66%, #27BCED 100%) !important;
+      background-size: 300% 300% !important;
+      animation: headerGlow 8s ease-in-out infinite;
+    }
+
+    /* --- Table Row Hover Enhancement --- */
+    tr {
+      transition: background 0.2s ease;
+    }
+
+    /* --- Colour Legend Box Hover --- */
+    .color-box {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .color-box:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     }
   </style>
 </head>
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <div class="menu-bar">
         <a href="Godreign.html">Godreign</a>
         <a href="Ònka Yorùba.html">Ònka Yorùba</a>
@@ -376,6 +551,56 @@
       <h2 style="font-size: 1.1rem;">The "l" Multipliers Complete Database — From ×2 to ×10⁴² (1 Tredecillion+)</h2>
       <p style="margin-top: 15px; font-size: 1.2rem; color: #FFD700; font-weight: 700;">🚀 OVER A TREDECILLION MULTIPLIERS TO MASTER — ABSOLUTELY FREE! 🚀</p>
       <p style="font-size: 0.95rem; opacity: 0.9; margin-top: 8px;">The World's Most Comprehensive Yorùbá Multiplication System • Unlock Infinite Numbers!</p>
+    </div>
+
+    <!-- 46-Colour Bar (under header) -->
+    <div class="colour-bar-animated">
+      <div style="background:#0891B2" title="Zero — Cerulean"></div>
+      <div style="background:#16A34A" title="Units — Vibrant Green"></div>
+      <div style="background:#2563EB" title="Tens — Royal Blue"></div>
+      <div style="background:#9333EA" title="Hundreds — Purple"></div>
+      <div style="background:#DC2626" title="Thousands — Red"></div>
+      <div style="background:#B59410" title="Tens of Thousands — Dark Goldenrod"></div>
+      <div style="background:#6FBDFA" title="Hundreds of Thousands — Sky Blue"></div>
+      <div style="background:#8B4513" title="Millions — Saddle Brown"></div>
+      <div style="background:#D5B60A" title="Tens of Millions — Golden Yellow"></div>
+      <div style="background:#EF6000" title="Hundreds of Millions — Dark Orange"></div>
+      <div style="background:#000080" title="Billions — Navy Blue"></div>
+      <div style="background:#FC5D8D" title="Tens of Billions — Hot Pink"></div>
+      <div style="background:#808000" title="Hundreds of Billions — Olive"></div>
+      <div style="background:#8B008B" title="Trillions — Dark Magenta"></div>
+      <div style="background:#6A5ACD" title="Tens of Trillions — Slate Blue"></div>
+      <div style="background:#FF6347" title="Hundreds of Trillions — Tomato"></div>
+      <div style="background:#4682B4" title="Quadrillions — Steel Blue"></div>
+      <div style="background:#F59E0B" title="Tens of Quadrillions — Amber"></div>
+      <div style="background:#8B0000" title="Hundreds of Quadrillions — Dark Red"></div>
+      <div style="background:#047857" title="Quintillions — Emerald"></div>
+      <div style="background:#7C3AED" title="Tens of Quintillions — Violet"></div>
+      <div style="background:#D2691E" title="Hundreds of Quintillions — Chocolate"></div>
+      <div style="background:#1E90FF" title="Sextillions — Dodger Blue"></div>
+      <div style="background:#B91C1C" title="Tens of Sextillions — Crimson"></div>
+      <div style="background:#65A30D" title="Hundreds of Sextillions — Lime Green"></div>
+      <div style="background:#4B0082" title="Septillions — Indigo"></div>
+      <div style="background:#FA8072" title="Tens of Septillions — Salmon"></div>
+      <div style="background:#008B8B" title="Hundreds of Septillions — Dark Teal"></div>
+      <div style="background:#DAA520" title="Octillions — Goldenrod"></div>
+      <div style="background:#7B2D8E" title="Tens of Octillions — Deep Violet"></div>
+      <div style="background:#20B2AA" title="Hundreds of Octillions — Light Sea Green"></div>
+      <div style="background:#B22222" title="Nonillions — Firebrick"></div>
+      <div style="background:#9370DB" title="Tens of Nonillions — Medium Purple"></div>
+      <div style="background:#A0522D" title="Hundreds of Nonillions — Sienna"></div>
+      <div style="background:#191970" title="Decillions — Midnight Blue"></div>
+      <div style="background:#E11D48" title="Tens of Decillions — Rose"></div>
+      <div style="background:#5F9EA0" title="Hundreds of Decillions — Cadet Blue"></div>
+      <div style="background:#CD7F32" title="Undecillions — Bronze"></div>
+      <div style="background:#9932CC" title="Tens of Undecillions — Dark Orchid"></div>
+      <div style="background:#228B22" title="Hundreds of Undecillions — Forest Green"></div>
+      <div style="background:#483D8B" title="Duodecillions — Dark Slate Blue"></div>
+      <div style="background:#800000" title="Tens of Duodecillions — Maroon"></div>
+      <div style="background:#CD853F" title="Hundreds of Duodecillions — Peru"></div>
+      <div style="background:#94AA00" title="Tredecillions — Dark Olive"></div>
+      <div style="background:#FF13F0" title='"l" Multiplier — Neon Pink'></div>
+      <div style="background:#808080" title="Unassigned — Gray"></div>
     </div>
     
     <div class="content">
@@ -675,7 +900,7 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
       </div>
 
       <!-- ×10,000 to ×90,000 -->
-      <div class="sub-header" style="background: #039FBE;">×10,000 to ×90,000 (Tens of Thousands)</div>
+      <div class="sub-header" style="background: #B59410;">×10,000 to ×90,000 (Tens of Thousands)</div>
       <div class="card-grid cards-sky">
         <div class="mult-card"><div class="num">×10,000</div><div class="word"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">éwǎ</span></div></div>
         <div class="mult-card"><div class="num">×20,000</div><div class="word"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ógún</span></div></div>
@@ -689,7 +914,7 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
       </div>
 
       <!-- ×100,000 to ×900,000 -->
-      <div class="sub-header" style="background: #D4AF37;">×100,000 to ×900,000 (Hundreds of Thousands)</div>
+      <div class="sub-header" style="background: #6FBDFA;">×100,000 to ×900,000 (Hundreds of Thousands)</div>
       <div class="card-grid cards-golden">
         <div class="mult-card"><div class="num">×100,000</div><div class="word"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ọ́gọ́rǔn</span></div></div>
         <div class="mult-card"><div class="num">×200,000</div><div class="word"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ọ́gọ́rǔn</span><span class="l-mult">l</span><span class="l-content">éjì</span></div></div>
@@ -722,7 +947,7 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
       </div>
 
       <!-- ×10,000,000 to ×90,000,000 -->
-      <div class="sub-header" style="background: #E8724A;">×10,000,000 to ×90,000,000 (Tens of Millions)</div>
+      <div class="sub-header" style="background: #D5B60A;">×10,000,000 to ×90,000,000 (Tens of Millions)</div>
       <div class="card-grid cards-coral">
         <div class="mult-card"><div class="num">×10,000,000</div><div class="word"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">éwǎ</span></div></div>
         <div class="mult-card"><div class="num">×20,000,000</div><div class="word"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ógún</span></div></div>
@@ -922,41 +1147,41 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
         </div>
       </div>
 
-      <div class="sub-header" style="background: #228B22;">🌹 ×10,000,000,000,000 to ×90,000,000,000,000 (Tens of Trillions)</div>
+      <div class="sub-header" style="background: #6A5ACD;">🌹 ×10,000,000,000,000 to ×90,000,000,000,000 (Tens of Trillions)</div>
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 15px;">
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #228B22; border-right: 4px solid #228B22;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #6A5ACD; border-right: 4px solid #6A5ACD;">
           <div class="num" style="font-size: 0.75rem;">×10,000,000,000,000</div>
           <div class="word" style="font-size: 0.95rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́wǎ</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #228B22; border-right: 4px solid #228B22;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #6A5ACD; border-right: 4px solid #6A5ACD;">
           <div class="num" style="font-size: 0.75rem;">×20,000,000,000,000</div>
           <div class="word" style="font-size: 0.95rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ogún</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #228B22; border-right: 4px solid #228B22;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #6A5ACD; border-right: 4px solid #6A5ACD;">
           <div class="num" style="font-size: 0.75rem;">×30,000,000,000,000</div>
           <div class="word" style="font-size: 0.95rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ọgbọ̀n</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #228B22; border-right: 4px solid #228B22;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #6A5ACD; border-right: 4px solid #6A5ACD;">
           <div class="num" style="font-size: 0.75rem;">×40,000,000,000,000</div>
           <div class="word" style="font-size: 0.95rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ogójì</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #228B22; border-right: 4px solid #228B22;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #6A5ACD; border-right: 4px solid #6A5ACD;">
           <div class="num" style="font-size: 0.75rem;">×50,000,000,000,000</div>
           <div class="word" style="font-size: 0.95rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">àádọ́ta</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #228B22; border-right: 4px solid #228B22;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #6A5ACD; border-right: 4px solid #6A5ACD;">
           <div class="num" style="font-size: 0.75rem;">×60,000,000,000,000</div>
           <div class="word" style="font-size: 0.95rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ọgọ́ta</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #228B22; border-right: 4px solid #228B22;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #6A5ACD; border-right: 4px solid #6A5ACD;">
           <div class="num" style="font-size: 0.75rem;">×70,000,000,000,000</div>
           <div class="word" style="font-size: 0.95rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">àádọ́rin</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #228B22; border-right: 4px solid #228B22;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #6A5ACD; border-right: 4px solid #6A5ACD;">
           <div class="num" style="font-size: 0.75rem;">×80,000,000,000,000</div>
           <div class="word" style="font-size: 0.95rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ọgọ́rin</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #228B22; border-right: 4px solid #228B22;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #6A5ACD; border-right: 4px solid #6A5ACD;">
           <div class="num" style="font-size: 0.75rem;">×90,000,000,000,000</div>
           <div class="word" style="font-size: 0.95rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">àádọ́rǔn</span></div>
         </div>
@@ -1962,41 +2187,41 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
         </div>
       </div>
 
-      <div class="sub-header" style="background: #CD853F;">🪵 ×100,000,000,000,000,000,000,000,000,000,000,000,000 to ×900,000,000,000,000,000,000,000,000,000,000,000,000 (Hundreds of Undecillions)</div>
+      <div class="sub-header" style="background: #228B22;">🪵 ×100,000,000,000,000,000,000,000,000,000,000,000,000 to ×900,000,000,000,000,000,000,000,000,000,000,000,000 (Hundreds of Undecillions)</div>
       <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 12px; margin-bottom: 15px;">
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #CD853F; border-right: 4px solid #CD853F;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #228B22; border-right: 4px solid #228B22;">
           <div class="num" style="font-size: 0.65rem;">×100,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ọgọ́rǔn</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #CD853F; border-right: 4px solid #CD853F;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #228B22; border-right: 4px solid #228B22;">
           <div class="num" style="font-size: 0.65rem;">×200,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">igba</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #CD853F; border-right: 4px solid #CD853F;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #228B22; border-right: 4px solid #228B22;">
           <div class="num" style="font-size: 0.65rem;">×300,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ọ̀ọ́dúnrún</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #CD853F; border-right: 4px solid #CD853F;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #228B22; border-right: 4px solid #228B22;">
           <div class="num" style="font-size: 0.65rem;">×400,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">irinwó</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #CD853F; border-right: 4px solid #CD853F;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #228B22; border-right: 4px solid #228B22;">
           <div class="num" style="font-size: 0.65rem;">×500,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ̀ẹ́dẹ́gbẹ̀ta</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #CD853F; border-right: 4px solid #CD853F;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #228B22; border-right: 4px solid #228B22;">
           <div class="num" style="font-size: 0.65rem;">×600,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹgbẹ̀ta</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #CD853F; border-right: 4px solid #CD853F;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #228B22; border-right: 4px solid #228B22;">
           <div class="num" style="font-size: 0.65rem;">×700,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ̀ẹ́dẹ́gbẹ̀rin</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #CD853F; border-right: 4px solid #CD853F;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #228B22; border-right: 4px solid #228B22;">
           <div class="num" style="font-size: 0.65rem;">×800,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹgbẹ̀rin</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #CD853F; border-right: 4px solid #CD853F;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #228B22; border-right: 4px solid #228B22;">
           <div class="num" style="font-size: 0.65rem;">×900,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ̀ẹ́dẹ́gbẹ̀rǔn</span></div>
         </div>
@@ -2087,41 +2312,41 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
         </div>
       </div>
 
-      <div class="sub-header" style="background: #6A5ACD;">🔹 ×100,000,000,000,000,000,000,000,000,000,000,000,000,000 to ×900,000,000,000,000,000,000,000,000,000,000,000,000,000 (Hundreds of Duodecillions)</div>
+      <div class="sub-header" style="background: #CD853F;">🔹 ×100,000,000,000,000,000,000,000,000,000,000,000,000,000 to ×900,000,000,000,000,000,000,000,000,000,000,000,000,000 (Hundreds of Duodecillions)</div>
       <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 12px; margin-bottom: 15px;">
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #6A5ACD; border-right: 4px solid #6A5ACD;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #CD853F; border-right: 4px solid #CD853F;">
           <div class="num" style="font-size: 0.65rem;">×100,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ọgọ́rǔn</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #6A5ACD; border-right: 4px solid #6A5ACD;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #CD853F; border-right: 4px solid #CD853F;">
           <div class="num" style="font-size: 0.65rem;">×200,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">igba</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #6A5ACD; border-right: 4px solid #6A5ACD;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #CD853F; border-right: 4px solid #CD853F;">
           <div class="num" style="font-size: 0.65rem;">×300,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ọ̀ọ́dúnrún</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #6A5ACD; border-right: 4px solid #6A5ACD;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #CD853F; border-right: 4px solid #CD853F;">
           <div class="num" style="font-size: 0.65rem;">×400,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">irinwó</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #6A5ACD; border-right: 4px solid #6A5ACD;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #CD853F; border-right: 4px solid #CD853F;">
           <div class="num" style="font-size: 0.65rem;">×500,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ̀ẹ́dẹ́gbẹ̀ta</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #6A5ACD; border-right: 4px solid #6A5ACD;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #CD853F; border-right: 4px solid #CD853F;">
           <div class="num" style="font-size: 0.65rem;">×600,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹgbẹ̀ta</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #6A5ACD; border-right: 4px solid #6A5ACD;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #CD853F; border-right: 4px solid #CD853F;">
           <div class="num" style="font-size: 0.65rem;">×700,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ̀ẹ́dẹ́gbẹ̀rin</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #6A5ACD; border-right: 4px solid #6A5ACD;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #CD853F; border-right: 4px solid #CD853F;">
           <div class="num" style="font-size: 0.65rem;">×800,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹgbẹ̀rin</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #6A5ACD; border-right: 4px solid #6A5ACD;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #CD853F; border-right: 4px solid #CD853F;">
           <div class="num" style="font-size: 0.65rem;">×900,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ̀ẹ́dẹ́gbẹ̀rǔn</span></div>
         </div>
@@ -2130,123 +2355,123 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- TREDECILLION MULTIPLIERS -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <div class="section-title" style="background: #FF1493;">💗 ALÀKÀǸPỌ̀ TRẸDẸSÍLÍỌ̀NÙ — Tredecillion Multipliers (×1,000,000,000,000,000,000,000,000,000,000,000,000,000,000+)</div>
+      <div class="section-title" style="background: #94AA00;">💗 ALÀKÀǸPỌ̀ TRẸDẸSÍLÍỌ̀NÙ — Tredecillion Multipliers (×1,000,000,000,000,000,000,000,000,000,000,000,000,000,000+)</div>
 
-      <div class="sub-header" style="background: #FF1493;">×1,000,000,000,000,000,000,000,000,000,000,000,000,000,000 to ×9,000,000,000,000,000,000,000,000,000,000,000,000,000,000 (Tredecillions)</div>
+      <div class="sub-header" style="background: #94AA00;">×1,000,000,000,000,000,000,000,000,000,000,000,000,000,000 to ×9,000,000,000,000,000,000,000,000,000,000,000,000,000,000 (Tredecillions)</div>
       <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 12px; margin-bottom: 15px;">
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×1,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×2,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">éjì</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×3,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́ta</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×4,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́rin</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×5,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">árǔn</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×6,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́fà</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×7,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">éje</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×8,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́jọ</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×9,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́sǎn</span></div>
         </div>
       </div>
 
-      <div class="sub-header" style="background: #FF1493;">💗 ×10,000,000,000,000,000,000,000,000,000,000,000,000,000,000 to ×90,000,000,000,000,000,000,000,000,000,000,000,000,000,000 (Tens of Tredecillions)</div>
+      <div class="sub-header" style="background: #94AA00;">💗 ×10,000,000,000,000,000,000,000,000,000,000,000,000,000,000 to ×90,000,000,000,000,000,000,000,000,000,000,000,000,000,000 (Tens of Tredecillions)</div>
       <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 12px; margin-bottom: 15px;">
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×10,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́wǎ</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×20,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ogún</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×30,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ọgbọ̀n</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×40,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ogójì</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×50,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">àádọ́ta</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×60,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ọgọ́ta</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×70,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">àádọ́rin</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×80,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ọgọ́rin</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×90,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">àádọ́rǔn</span></div>
         </div>
       </div>
 
-      <div class="sub-header" style="background: #FF1493;">💗 ×100,000,000,000,000,000,000,000,000,000,000,000,000,000,000 to ×900,000,000,000,000,000,000,000,000,000,000,000,000,000,000 (Hundreds of Tredecillions)</div>
+      <div class="sub-header" style="background: #94AA00;">💗 ×100,000,000,000,000,000,000,000,000,000,000,000,000,000,000 to ×900,000,000,000,000,000,000,000,000,000,000,000,000,000,000 (Hundreds of Tredecillions)</div>
       <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 12px; margin-bottom: 15px;">
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×100,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ọgọ́rǔn</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×200,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">igba</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×300,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ọ̀ọ́dúnrún</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×400,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">irinwó</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×500,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ̀ẹ́dẹ́gbẹ̀ta</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×600,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹgbẹ̀ta</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×700,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ̀ẹ́dẹ́gbẹ̀rin</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×800,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹgbẹ̀rin</span></div>
         </div>
-        <div class="mult-card" style="padding: 12px; border-left: 4px solid #FF1493; border-right: 4px solid #FF1493;">
+        <div class="mult-card" style="padding: 12px; border-left: 4px solid #94AA00; border-right: 4px solid #94AA00;">
           <div class="num" style="font-size: 0.65rem;">×900,000,000,000,000,000,000,000,000,000,000,000,000,000,000</div>
           <div class="word" style="font-size: 0.8rem;"><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span class="l-content">ẹ̀ẹ́dẹ́gbẹ̀rǔn</span></div>
         </div>
@@ -2268,60 +2493,62 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
         <div class="power-item" style="color:#191970; border-color:#191970; background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);">×1,000,000,000,000,000,000,000,000,000,000,000 = <span class="l-mult">l</span><span style="color:#191970;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#191970;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#191970;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#191970;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#191970;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#191970;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#191970;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#191970;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#191970;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#191970;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#191970;">ẹ́gbẹ̀rǔn</span></div>
         <div class="power-item" style="color:#CD7F32; border-color:#CD7F32; background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);">×1,000,000,000,000,000,000,000,000,000,000,000,000 = <span class="l-mult">l</span><span style="color:#CD7F32;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#CD7F32;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#CD7F32;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#CD7F32;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#CD7F32;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#CD7F32;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#CD7F32;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#CD7F32;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#CD7F32;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#CD7F32;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#CD7F32;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#CD7F32;">ẹ́gbẹ̀rǔn</span></div>
         <div class="power-item" style="color:#483D8B; border-color:#483D8B; background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);">×1,000,000,000,000,000,000,000,000,000,000,000,000,000 = <span class="l-mult">l</span><span style="color:#483D8B;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#483D8B;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#483D8B;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#483D8B;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#483D8B;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#483D8B;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#483D8B;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#483D8B;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#483D8B;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#483D8B;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#483D8B;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#483D8B;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#483D8B;">ẹ́gbẹ̀rǔn</span></div>
-        <div class="power-item" style="color:#FF1493; border-color:#FF1493; background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);">×1,000,000,000,000,000,000,000,000,000,000,000,000,000,000 = <span class="l-mult">l</span><span style="color:#FF1493;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#FF1493;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#FF1493;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#FF1493;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#FF1493;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#FF1493;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#FF1493;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#FF1493;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#FF1493;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#FF1493;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#FF1493;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#FF1493;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#FF1493;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#FF1493;">ẹ́gbẹ̀rǔn</span></div>
+        <div class="power-item" style="color:#94AA00; border-color:#94AA00; background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);">×1,000,000,000,000,000,000,000,000,000,000,000,000,000,000 = <span class="l-mult">l</span><span style="color:#94AA00;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#94AA00;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#94AA00;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#94AA00;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#94AA00;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#94AA00;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#94AA00;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#94AA00;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#94AA00;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#94AA00;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#94AA00;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#94AA00;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#94AA00;">ẹ́gbẹ̀rǔn</span><span class="l-mult">l</span><span style="color:#94AA00;">ẹ́gbẹ̀rǔn</span></div>
         <p style="margin-top:15px;font-size:1.1rem;">🚀 <em>Each "<span style="color:#FF13F0;font-weight:700;">l</span>" takes you <strong>1,000× higher</strong>!</em></p>
-        <p style="font-size:1.3rem;font-weight:700;color:#FF1493;margin-top:10px;">💗 MULTIPLY TO INFINITY! ∞</p>
+        <p style="font-size:1.3rem;font-weight:700;color:#94AA00;margin-top:10px;">💗 MULTIPLY TO INFINITY! ∞</p>
       </div>
 
     </div>
     
     
     <!-- 46-Colour Bar -->
-    <div style="display: flex; height: 10px; margin: 0; border-radius: 0; overflow: hidden;">
-      <div style="flex:1; background: #0891B2;" title="Zero"></div>
-      <div style="flex:1; background: #16A34A;" title="Units"></div>
-      <div style="flex:1; background: #2563EB;" title="Tens"></div>
-      <div style="flex:1; background: #9333EA;" title="Hundreds"></div>
-      <div style="flex:1; background: #DC2626;" title="Thousands"></div>
-      <div style="flex:1; background: #039FBE;" title="Tens of Thousands"></div>
-      <div style="flex:1; background: #D4AF37;" title="Hundreds of Thousands"></div>
-      <div style="flex:1; background: #8B4513;" title="Millions"></div>
-      <div style="flex:1; background: #E8724A;" title="Tens of Millions"></div>
-      <div style="flex:1; background: #EF6000;" title="Hundreds of Millions"></div>
-      <div style="flex:1; background: #000080;" title="Billions"></div>
-      <div style="flex:1; background: #FC5D8D;" title="Tens of Billions"></div>
-      <div style="flex:1; background: #808000;" title="Hundreds of Billions"></div>
-      <div style="flex:1; background: #8B008B;" title="Trillions"></div>
-      <div style="flex:1; background: #228B22;" title="Tens of Trillions"></div>
-      <div style="flex:1; background: #FF6347;" title="Hundreds of Trillions"></div>
-      <div style="flex:1; background: #4682B4;" title="Quadrillions"></div>
-      <div style="flex:1; background: #F59E0B;" title="Tens of Quadrillions"></div>
-      <div style="flex:1; background: #8B0000;" title="Hundreds of Quadrillions"></div>
-      <div style="flex:1; background: #047857;" title="Quintillions"></div>
-      <div style="flex:1; background: #7C3AED;" title="Tens of Quintillions"></div>
-      <div style="flex:1; background: #D2691E;" title="Hundreds of Quintillions"></div>
-      <div style="flex:1; background: #1E90FF;" title="Sextillions"></div>
-      <div style="flex:1; background: #B91C1C;" title="Tens of Sextillions"></div>
-      <div style="flex:1; background: #65A30D;" title="Hundreds of Sextillions"></div>
-      <div style="flex:1; background: #4B0082;" title="Septillions"></div>
-      <div style="flex:1; background: #FA8072;" title="Tens of Septillions"></div>
-      <div style="flex:1; background: #008B8B;" title="Hundreds of Septillions"></div>
-      <div style="flex:1; background: #DAA520;" title="Octillions"></div>
-      <div style="flex:1; background: #7B2D8E;" title="Tens of Octillions"></div>
-      <div style="flex:1; background: #20B2AA;" title="Hundreds of Octillions"></div>
-      <div style="flex:1; background: #B22222;" title="Nonillions"></div>
-      <div style="flex:1; background: #9370DB;" title="Tens of Nonillions"></div>
-      <div style="flex:1; background: #A0522D;" title="Hundreds of Nonillions"></div>
-      <div style="flex:1; background: #191970;" title="Decillions"></div>
-      <div style="flex:1; background: #E11D48;" title="Tens of Decillions"></div>
-      <div style="flex:1; background: #5F9EA0;" title="Hundreds of Decillions"></div>
-      <div style="flex:1; background: #CD7F32;" title="Undecillions"></div>
-      <div style="flex:1; background: #9932CC;" title="Tens of Undecillions"></div>
-      <div style="flex:1; background: #CD853F;" title="Hundreds of Undecillions"></div>
-      <div style="flex:1; background: #483D8B;" title="Duodecillions"></div>
-      <div style="flex:1; background: #800000;" title="Tens of Duodecillions"></div>
-      <div style="flex:1; background: #6A5ACD;" title="Hundreds of Duodecillions"></div>
-      <div style="flex:1; background: #FF1493;" title="Tredecillions"></div>
+    <div class="colour-bar-animated">
+      <div style="background:#0891B2" title="Zero — Cerulean"></div>
+      <div style="background:#16A34A" title="Units — Vibrant Green"></div>
+      <div style="background:#2563EB" title="Tens — Royal Blue"></div>
+      <div style="background:#9333EA" title="Hundreds — Purple"></div>
+      <div style="background:#DC2626" title="Thousands — Red"></div>
+      <div style="background:#B59410" title="Tens of Thousands — Dark Goldenrod"></div>
+      <div style="background:#6FBDFA" title="Hundreds of Thousands — Sky Blue"></div>
+      <div style="background:#8B4513" title="Millions — Saddle Brown"></div>
+      <div style="background:#D5B60A" title="Tens of Millions — Golden Yellow"></div>
+      <div style="background:#EF6000" title="Hundreds of Millions — Dark Orange"></div>
+      <div style="background:#000080" title="Billions — Navy Blue"></div>
+      <div style="background:#FC5D8D" title="Tens of Billions — Hot Pink"></div>
+      <div style="background:#808000" title="Hundreds of Billions — Olive"></div>
+      <div style="background:#8B008B" title="Trillions — Dark Magenta"></div>
+      <div style="background:#6A5ACD" title="Tens of Trillions — Slate Blue"></div>
+      <div style="background:#FF6347" title="Hundreds of Trillions — Tomato"></div>
+      <div style="background:#4682B4" title="Quadrillions — Steel Blue"></div>
+      <div style="background:#F59E0B" title="Tens of Quadrillions — Amber"></div>
+      <div style="background:#8B0000" title="Hundreds of Quadrillions — Dark Red"></div>
+      <div style="background:#047857" title="Quintillions — Emerald"></div>
+      <div style="background:#7C3AED" title="Tens of Quintillions — Violet"></div>
+      <div style="background:#D2691E" title="Hundreds of Quintillions — Chocolate"></div>
+      <div style="background:#1E90FF" title="Sextillions — Dodger Blue"></div>
+      <div style="background:#B91C1C" title="Tens of Sextillions — Crimson"></div>
+      <div style="background:#65A30D" title="Hundreds of Sextillions — Lime Green"></div>
+      <div style="background:#4B0082" title="Septillions — Indigo"></div>
+      <div style="background:#FA8072" title="Tens of Septillions — Salmon"></div>
+      <div style="background:#008B8B" title="Hundreds of Septillions — Dark Teal"></div>
+      <div style="background:#DAA520" title="Octillions — Goldenrod"></div>
+      <div style="background:#7B2D8E" title="Tens of Octillions — Deep Violet"></div>
+      <div style="background:#20B2AA" title="Hundreds of Octillions — Light Sea Green"></div>
+      <div style="background:#B22222" title="Nonillions — Firebrick"></div>
+      <div style="background:#9370DB" title="Tens of Nonillions — Medium Purple"></div>
+      <div style="background:#A0522D" title="Hundreds of Nonillions — Sienna"></div>
+      <div style="background:#191970" title="Decillions — Midnight Blue"></div>
+      <div style="background:#E11D48" title="Tens of Decillions — Rose"></div>
+      <div style="background:#5F9EA0" title="Hundreds of Decillions — Cadet Blue"></div>
+      <div style="background:#CD7F32" title="Undecillions — Bronze"></div>
+      <div style="background:#9932CC" title="Tens of Undecillions — Dark Orchid"></div>
+      <div style="background:#228B22" title="Hundreds of Undecillions — Forest Green"></div>
+      <div style="background:#483D8B" title="Duodecillions — Dark Slate Blue"></div>
+      <div style="background:#800000" title="Tens of Duodecillions — Maroon"></div>
+      <div style="background:#CD853F" title="Hundreds of Duodecillions — Peru"></div>
+      <div style="background:#94AA00" title="Tredecillions — Dark Olive"></div>
+      <div style="background:#FF13F0" title='"l" Multiplier — Neon Pink'></div>
+      <div style="background:#808080" title="Unassigned — Gray"></div>
     </div>
     <div class="footer">
       <div>© 2026 <span>Ònka Yorùbá Project</span> | ÀWỌN ALÀKÀǸPỌ̀ "l" — THE "l" MULTIPLIERS COMPLETE DATABASE (×2 to ×10⁴²+)</div>
@@ -2342,5 +2569,46 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
     </p>
   </div>
 </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" title="Back to Top" aria-label="Scroll to top">&#9650;</button>
+
+    <script>
+      // --- Scroll Progress Bar ---
+      const progressBar = document.getElementById('scrollProgress');
+      window.addEventListener('scroll', () => {
+        const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+        progressBar.style.width = scrolled + '%';
+      }, { passive: true });
+
+      // --- Section Fade-In (Intersection Observer) ---
+      const fadeTargets = document.querySelectorAll(
+        '.section-title, .mult-card, .color-box, ' +
+        '.protocol-box, .highlight-box, .power-box'
+      );
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-visible');
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      fadeTargets.forEach(el => fadeObserver.observe(el));
+
+      // --- Back-to-Top Button ---
+      const topBtn = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 600) {
+          topBtn.classList.add('visible');
+        } else {
+          topBtn.classList.remove('visible');
+        }
+      }, { passive: true });
+      topBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
 </body>
 </html>

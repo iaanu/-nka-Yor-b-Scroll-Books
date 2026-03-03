@@ -236,6 +236,83 @@
         @media print {
             body { background: #fff; padding: 0; }
             .container { box-shadow: none; border-radius: 0; }
+            .colour-bar-animated { animation: none !important; }
+            .colour-bar-animated::after { display: none !important; }
+        }
+
+        /* --- 46-Colour Bar Shimmer --- */
+        .colour-bar-animated {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            height: 10px;
+            margin: 0;
+            border-radius: 0;
+        }
+        .colour-bar-animated > div {
+            flex: 1;
+            transition: transform 0.3s ease, flex 0.3s ease;
+        }
+        .colour-bar-animated:hover > div {
+            filter: brightness(1.15);
+        }
+        .colour-bar-animated > div:hover {
+            flex: 3;
+            transform: scaleY(2.5);
+            z-index: 1;
+            border-radius: 2px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.3);
+        }
+        .colour-bar-animated::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent);
+            animation: shimmerSweep 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes shimmerSweep {
+            0% { left: -50%; }
+            100% { left: 150%; }
+        }
+
+        /* --- Back-to-Top Button --- */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1E8CB8 0%, #27BCED 100%);
+            color: #fff;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(30, 140, 184, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 30px rgba(30, 140, 184, 0.6);
+        }
+        @media print {
+            .back-to-top { display: none !important; }
         }
     </style>
 </head>
@@ -269,6 +346,56 @@
                 <img src="03Green.jpg" alt="Green Light" style="width:70px; height:70px; border-radius:50%; object-fit:cover; display:block; box-shadow:0 0 20px 8px rgba(0,204,0,0.6);">
             </div>
         </div>
+    </div>
+
+    <!-- 46-Colour Bar (under header) -->
+    <div class="colour-bar-animated">
+      <div style="background:#0891B2" title="Zero — Cerulean"></div>
+      <div style="background:#16A34A" title="Units — Vibrant Green"></div>
+      <div style="background:#2563EB" title="Tens — Royal Blue"></div>
+      <div style="background:#9333EA" title="Hundreds — Purple"></div>
+      <div style="background:#DC2626" title="Thousands — Red"></div>
+      <div style="background:#B59410" title="Tens of Thousands — Dark Goldenrod"></div>
+      <div style="background:#6FBDFA" title="Hundreds of Thousands — Sky Blue"></div>
+      <div style="background:#8B4513" title="Millions — Saddle Brown"></div>
+      <div style="background:#D5B60A" title="Tens of Millions — Golden Yellow"></div>
+      <div style="background:#EF6000" title="Hundreds of Millions — Dark Orange"></div>
+      <div style="background:#000080" title="Billions — Navy Blue"></div>
+      <div style="background:#FC5D8D" title="Tens of Billions — Hot Pink"></div>
+      <div style="background:#808000" title="Hundreds of Billions — Olive"></div>
+      <div style="background:#8B008B" title="Trillions — Dark Magenta"></div>
+      <div style="background:#6A5ACD" title="Tens of Trillions — Slate Blue"></div>
+      <div style="background:#FF6347" title="Hundreds of Trillions — Tomato"></div>
+      <div style="background:#4682B4" title="Quadrillions — Steel Blue"></div>
+      <div style="background:#F59E0B" title="Tens of Quadrillions — Amber"></div>
+      <div style="background:#8B0000" title="Hundreds of Quadrillions — Dark Red"></div>
+      <div style="background:#047857" title="Quintillions — Emerald"></div>
+      <div style="background:#7C3AED" title="Tens of Quintillions — Violet"></div>
+      <div style="background:#D2691E" title="Hundreds of Quintillions — Chocolate"></div>
+      <div style="background:#1E90FF" title="Sextillions — Dodger Blue"></div>
+      <div style="background:#B91C1C" title="Tens of Sextillions — Crimson"></div>
+      <div style="background:#65A30D" title="Hundreds of Sextillions — Lime Green"></div>
+      <div style="background:#4B0082" title="Septillions — Indigo"></div>
+      <div style="background:#FA8072" title="Tens of Septillions — Salmon"></div>
+      <div style="background:#008B8B" title="Hundreds of Septillions — Dark Teal"></div>
+      <div style="background:#DAA520" title="Octillions — Goldenrod"></div>
+      <div style="background:#7B2D8E" title="Tens of Octillions — Deep Violet"></div>
+      <div style="background:#20B2AA" title="Hundreds of Octillions — Light Sea Green"></div>
+      <div style="background:#B22222" title="Nonillions — Firebrick"></div>
+      <div style="background:#9370DB" title="Tens of Nonillions — Medium Purple"></div>
+      <div style="background:#A0522D" title="Hundreds of Nonillions — Sienna"></div>
+      <div style="background:#191970" title="Decillions — Midnight Blue"></div>
+      <div style="background:#E11D48" title="Tens of Decillions — Rose"></div>
+      <div style="background:#5F9EA0" title="Hundreds of Decillions — Cadet Blue"></div>
+      <div style="background:#CD7F32" title="Undecillions — Bronze"></div>
+      <div style="background:#9932CC" title="Tens of Undecillions — Dark Orchid"></div>
+      <div style="background:#228B22" title="Hundreds of Undecillions — Forest Green"></div>
+      <div style="background:#483D8B" title="Duodecillions — Dark Slate Blue"></div>
+      <div style="background:#800000" title="Tens of Duodecillions — Maroon"></div>
+      <div style="background:#CD853F" title="Hundreds of Duodecillions — Peru"></div>
+      <div style="background:#94AA00" title="Tredecillions — Dark Olive"></div>
+      <div style="background:#FF13F0" title='"l" Multiplier — Neon Pink'></div>
+      <div style="background:#808080" title="Unassigned — Gray"></div>
     </div>
 
     <!-- Intro Text -->
@@ -567,6 +694,58 @@ t+=rSpecial('46th',
     'Gray','#808080');
 document.getElementById('tableBody').innerHTML=t;
 </script>
+
+    <!-- 46-Colour Bar (bottom of table) -->
+    <div class="colour-bar-animated">
+      <div style="background:#0891B2" title="Zero — Cerulean"></div>
+      <div style="background:#16A34A" title="Units — Vibrant Green"></div>
+      <div style="background:#2563EB" title="Tens — Royal Blue"></div>
+      <div style="background:#9333EA" title="Hundreds — Purple"></div>
+      <div style="background:#DC2626" title="Thousands — Red"></div>
+      <div style="background:#B59410" title="Tens of Thousands — Dark Goldenrod"></div>
+      <div style="background:#6FBDFA" title="Hundreds of Thousands — Sky Blue"></div>
+      <div style="background:#8B4513" title="Millions — Saddle Brown"></div>
+      <div style="background:#D5B60A" title="Tens of Millions — Golden Yellow"></div>
+      <div style="background:#EF6000" title="Hundreds of Millions — Dark Orange"></div>
+      <div style="background:#000080" title="Billions — Navy Blue"></div>
+      <div style="background:#FC5D8D" title="Tens of Billions — Hot Pink"></div>
+      <div style="background:#808000" title="Hundreds of Billions — Olive"></div>
+      <div style="background:#8B008B" title="Trillions — Dark Magenta"></div>
+      <div style="background:#6A5ACD" title="Tens of Trillions — Slate Blue"></div>
+      <div style="background:#FF6347" title="Hundreds of Trillions — Tomato"></div>
+      <div style="background:#4682B4" title="Quadrillions — Steel Blue"></div>
+      <div style="background:#F59E0B" title="Tens of Quadrillions — Amber"></div>
+      <div style="background:#8B0000" title="Hundreds of Quadrillions — Dark Red"></div>
+      <div style="background:#047857" title="Quintillions — Emerald"></div>
+      <div style="background:#7C3AED" title="Tens of Quintillions — Violet"></div>
+      <div style="background:#D2691E" title="Hundreds of Quintillions — Chocolate"></div>
+      <div style="background:#1E90FF" title="Sextillions — Dodger Blue"></div>
+      <div style="background:#B91C1C" title="Tens of Sextillions — Crimson"></div>
+      <div style="background:#65A30D" title="Hundreds of Sextillions — Lime Green"></div>
+      <div style="background:#4B0082" title="Septillions — Indigo"></div>
+      <div style="background:#FA8072" title="Tens of Septillions — Salmon"></div>
+      <div style="background:#008B8B" title="Hundreds of Septillions — Dark Teal"></div>
+      <div style="background:#DAA520" title="Octillions — Goldenrod"></div>
+      <div style="background:#7B2D8E" title="Tens of Octillions — Deep Violet"></div>
+      <div style="background:#20B2AA" title="Hundreds of Octillions — Light Sea Green"></div>
+      <div style="background:#B22222" title="Nonillions — Firebrick"></div>
+      <div style="background:#9370DB" title="Tens of Nonillions — Medium Purple"></div>
+      <div style="background:#A0522D" title="Hundreds of Nonillions — Sienna"></div>
+      <div style="background:#191970" title="Decillions — Midnight Blue"></div>
+      <div style="background:#E11D48" title="Tens of Decillions — Rose"></div>
+      <div style="background:#5F9EA0" title="Hundreds of Decillions — Cadet Blue"></div>
+      <div style="background:#CD7F32" title="Undecillions — Bronze"></div>
+      <div style="background:#9932CC" title="Tens of Undecillions — Dark Orchid"></div>
+      <div style="background:#228B22" title="Hundreds of Undecillions — Forest Green"></div>
+      <div style="background:#483D8B" title="Duodecillions — Dark Slate Blue"></div>
+      <div style="background:#800000" title="Tens of Duodecillions — Maroon"></div>
+      <div style="background:#CD853F" title="Hundreds of Duodecillions — Peru"></div>
+      <div style="background:#94AA00" title="Tredecillions — Dark Olive"></div>
+      <div style="background:#FF13F0" title='"l" Multiplier — Neon Pink'></div>
+      <div style="background:#808080" title="Unassigned — Gray"></div>
+    </div>
+
+</div>
 <footer>
   <div class="footer-content">
     <span class="copyright">© 2026 Godreign. Ònka Yorùbá.</span>
@@ -580,5 +759,23 @@ document.getElementById('tableBody').innerHTML=t;
     </p>
   </div>
 </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" title="Back to Top" aria-label="Scroll to top">&#9650;</button>
+
+    <script>
+      // --- Back-to-Top Button ---
+      const topBtn = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 600) {
+          topBtn.classList.add('visible');
+        } else {
+          topBtn.classList.remove('visible');
+        }
+      }, { passive: true });
+      topBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
 </body>
 </html>
