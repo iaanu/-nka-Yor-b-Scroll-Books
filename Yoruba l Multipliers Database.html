@@ -203,7 +203,6 @@
       color: #808080; 
       font-weight: 600;
     }
-    
     /* Combined multiplier word */
     .mult-word {
       font-size: 0.95rem;
@@ -365,7 +364,7 @@
     }
 
     /* ═══════════════════════════════════════════════════════════════ */
-    /* FUTURISTIC ENHANCEMENTS                                        */
+    /* PERFORMANCE ENHANCEMENTS                                       */
     /* ═══════════════════════════════════════════════════════════════ */
 
     /* --- Scroll Progress Bar --- */
@@ -390,81 +389,17 @@
       transition: width 0.1s linear;
       border-radius: 0 2px 2px 0;
     }
-
-    /* --- Card Hover Glow --- */
-    .mult-card {
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                  box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      cursor: default;
-    }
-    .mult-card:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 8px 25px rgba(30, 140, 184, 0.25);
-    }
-
-    /* --- Section Fade-In Animation --- */
-    .section-title,
-    .mult-card,
-    .color-box,
-    .protocol-box,
-    .highlight-box,
-    .power-box {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .fade-in-visible {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
-    }
-    /* Stagger cards within grids */
-    .card-grid .mult-card:nth-child(1) { transition-delay: 0s; }
-    .card-grid .mult-card:nth-child(2) { transition-delay: 0.05s; }
-    .card-grid .mult-card:nth-child(3) { transition-delay: 0.1s; }
-    .card-grid .mult-card:nth-child(4) { transition-delay: 0.15s; }
-    .card-grid .mult-card:nth-child(5) { transition-delay: 0.2s; }
-    .card-grid .mult-card:nth-child(6) { transition-delay: 0.25s; }
-    .card-grid .mult-card:nth-child(7) { transition-delay: 0.3s; }
-    .card-grid .mult-card:nth-child(8) { transition-delay: 0.35s; }
-    .card-grid .mult-card:nth-child(9) { transition-delay: 0.4s; }
-
-    /* --- 46-Colour Bar Shimmer --- */
+/* 
+    /* --- 47-Colour Bar --- */
     .colour-bar-animated {
       position: relative;
-      overflow: hidden;
       display: flex;
       height: 10px;
       margin: 0;
       border-radius: 0;
-    }
+    } */
     .colour-bar-animated > div {
       flex: 1;
-      transition: transform 0.3s ease, flex 0.3s ease;
-    }
-    .colour-bar-animated:hover > div {
-      filter: brightness(1.15);
-    }
-    .colour-bar-animated > div:hover {
-      flex: 3;
-      transform: scaleY(2.5);
-      z-index: 1;
-      border-radius: 2px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.3);
-    }
-    .colour-bar-animated::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent);
-      animation: shimmerSweep 4s ease-in-out infinite;
-      pointer-events: none;
-    }
-    @keyframes shimmerSweep {
-      0% { left: -50%; }
-      100% { left: 150%; }
     }
 
     /* --- Back-to-Top Button --- */
@@ -483,8 +418,7 @@
       box-shadow: 0 4px 20px rgba(30, 140, 184, 0.4);
       opacity: 0;
       visibility: hidden;
-      transform: translateY(20px);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: opacity 0.3s ease, visibility 0.3s ease;
       z-index: 1500;
       display: flex;
       align-items: center;
@@ -493,38 +427,102 @@
     .back-to-top.visible {
       opacity: 1;
       visibility: visible;
-      transform: translateY(0);
     }
     .back-to-top:hover {
-      transform: translateY(-3px) scale(1.1);
       box-shadow: 0 8px 30px rgba(30, 140, 184, 0.6);
     }
 
-    /* --- Animated Header Gradient --- */
-    @keyframes headerGlow {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-    .header {
-      background: linear-gradient(135deg, #1E8CB8 0%, #27BCED 33%, #1E8CB8 66%, #27BCED 100%) !important;
-      background-size: 300% 300% !important;
-      animation: headerGlow 8s ease-in-out infinite;
-    }
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* AGBÁRA SYSTEM STYLES                                           */
+    /* ═══════════════════════════════════════════════════════════════ */
 
-    /* --- Table Row Hover Enhancement --- */
-    tr {
-      transition: background 0.2s ease;
+    .agbara-section {
+      background: #1E8CB8;
+      border-radius: 15px;
+      padding: 25px;
+      margin: 25px 0;
     }
-
-    /* --- Colour Legend Box Hover --- */
-    .color-box {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: default;
+    .agbara-section h2 {
+      color: #fff;
+      font-size: 1.3rem;
+      text-align: center;
+      margin: 0 0 14px 0;
     }
-    .color-box:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    .agbara-section .agbara-subtitle {
+      color: #fff;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
     }
+    .agbara-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .agbara-table th {
+      background: linear-gradient(135deg, #1E8CB8 0%, #27BCED 100%);
+      color: #fff;
+      padding: 9px 10px;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-bottom: 2px solid #1E8CB8;
+    }
+    .agbara-table td {
+      padding: 8px 10px;
+      text-align: center;
+      border-bottom: 1px solid #e0e0e0;
+      background: #fff;
+      color: #808080;
+      font-size: 0.82rem;
+      vertical-align: middle;
+    }
+    .agbara-table tr:nth-child(even) td {
+      background: #f8f9fa;
+    }
+    .agbara-table .chain-col {
+      color: #808080;
+      font-weight: 700;
+    }
+    .agbara-table .expressive-col {
+      color: #808080;
+      font-weight: 600;
+      font-size: 0.78rem;
+      word-break: break-all;
+    }
+    .agbara-table .agbara-form {
+      color: #808080;
+      font-weight: 700;
+    }
+    .agbara-table .power-col {
+      color: #808080;
+      font-weight: 700;
+    }
+    .agbara-badge {
+      display: inline-block;
+      position: relative;
+      background: #fff;
+      color: #808080;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 16px 28px;
+      border-radius: 5px;
+      margin-left: auto;
+      vertical-align: middle;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .agbara-badge::before,
+    .agbara-badge::after {
+      content: '';
+      position: absolute;
+      top: 1%;
+      height: 98%;
+      width: 3px;
+      border-radius: 2px;
+      background: var(--rc, #808080);
+    }
+    .agbara-badge::before { left: 3px; }
+    .agbara-badge::after  { right: 3px; }
   </style>
 </head>
 <body>
@@ -553,7 +551,7 @@
       <p style="font-size: 0.95rem; opacity: 0.9; margin-top: 8px;">The World's Most Comprehensive Yorùbá Multiplication System • Unlock Infinite Numbers!</p>
     </div>
 
-    <!-- 46-Colour Bar (under header) -->
+    <!-- 47-Colour Bar (under header) -->
     <div class="colour-bar-animated">
       <div style="background:#0891B2" title="Zero — Cerulean"></div>
       <div style="background:#16A34A" title="Units — Vibrant Green"></div>
@@ -599,6 +597,7 @@
       <div style="background:#800000" title="Tens of Duodecillions — Maroon"></div>
       <div style="background:#CD853F" title="Hundreds of Duodecillions — Peru"></div>
       <div style="background:#94AA00" title="Tredecillions — Dark Olive"></div>
+      <div style="background:#6C0AC9" title="Large Numbers — Electric Violet"></div>
       <div style="background:#FF13F0" title='"l" Multiplier — Neon Pink'></div>
       <div style="background:#808080" title="Unassigned — Gray"></div>
     </div>
@@ -616,6 +615,16 @@
           <div style="font-size:1.2rem;">ẹ́rin, éwǎ, ọ́gọ́rǔn...</div>
           <div>Grey (#808080)</div>
           <div style="font-size:0.75rem;opacity:0.9;">Contents (Unassigned State)</div>
+        </div>
+        <div class="color-box" style="background:#6C0AC9; border: 2px solid #6C0AC9;">
+          <div style="font-size:1.1rem; color:#fff; font-weight:700;">10⁴⁵+</div>
+          <div style="color:#fff;">Electric Violet (#6C0AC9)</div>
+          <div style="font-size:0.75rem;color:#fff;">Large Numbers</div>
+        </div>
+        <div class="color-box" style="background: linear-gradient(135deg, #0d1b2a 0%, #0f3460 100%); border: 2px solid #FF13F0;">
+          <div style="font-size:1.15rem; color:#fff; font-weight:700;">(ẹ́gbẹ̀rǔn)<sup style="color:#fff;">n</sup></div>
+          <div style="color:#fff;">Agbára System</div>
+          <div style="font-size:0.75rem;color:#fff;">Chain Count = Exponent</div>
         </div>
       </div>
       
@@ -682,6 +691,24 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
       lẹ́jọ (×8), 
       lẹ́sǎn (×9)
     </li>
+  </ul>
+
+  <h4 style="color:#fff; margin-top:1.5rem;">⚡ Agbára — The Exponential Identity of the "l" Multiplier</h4>
+  <p>
+    The <b>Agbára</b> (Power / Force) System and the <b>Expressive System</b> are two equal, independent sovereign engines of Ònka Yorùbá — the Two-Edged Sword. The <b>Expressive System</b> is the sovereign engine of human speech and society. The <b>Agbára System</b> is the sovereign engine of algorithms and science. Neither contains the other — each stands complete and sovereign in its own right. One Yorùbá language. Two readings. Zero gap between human expression and scientific notation.
+  </p>
+  <ul>
+    <li><b>Agbára Rule:</b> From ×1,000 upward, count the <span style="color:#fff;font-weight:700;">l</span><span style="color:#fff;font-weight:700;">ẹ́gbẹ̀rǔn</span> chains. That count IS the exponent. <b>n chains → (<span style="color:#fff;">ẹ́gbẹ̀rǔn</span>)<sup style="color:#fff;">n</sup> → 10<sup>3n</sup>.</b></li>
+    <li><b>Colour Identity:</b> The base <span style="color:#fff;font-weight:700;">ẹ́gbẹ̀rǔn</span> carries grey — the colour of the child, awaiting its parent. The exponent is driven by the <span style="color:#fff;font-weight:700;">l</span> Multiplier — Neon Pink force alive at every chain link.</li>
+    <li><b>Agbára Examples:</b>
+      <span style="color:#fff;">l</span><span style="color:#fff;">ẹ́gbẹ̀rǔn</span> (1 chain) = (<span style="color:#fff;">ẹ́gbẹ̀rǔn</span>)<sup style="color:#fff;">ení</sup> = 10³ = Thousand
+      &nbsp;·&nbsp;
+      2 chains = (<span style="color:#fff;">ẹ́gbẹ̀rǔn</span>)<sup style="color:#fff;">léjì</sup> = 10⁶ = Million
+      &nbsp;·&nbsp;
+      14 chains = (<span style="color:#fff;">ẹ́gbẹ̀rǔn</span>)<sup style="color:#fff;">léwǎlẹ́rin</sup> = 10⁴² = Tredecillion MAX
+    </li>
+    <li><b>Scope:</b> Agbára activates from ×1,000 upward only. The Pure Expressive System governs ×1 to ×999 — single-chain vocabulary, no exponent pattern.</li>
+    <li><b>Two Edges, One Sword:</b> Speak the word → hear the Expressive System. Count the chains → read the Agbára power. One writing. Two readings. Zero gap between human language and scientific notation.</li>
   </ul>
 </section>
 
@@ -930,7 +957,7 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- MILLIONS MULTIPLIERS ×1,000,000 to ×900,000,000 -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <div class="section-title" style="background: #8B4513;">🟤 ALÀKÀǸPỌ̀ MÍLÍỌ̀NÙ — Millions Multipliers (×1,000,000 to ×900,000,000)</div>
+      <div class="section-title" style="background: #8B4513;">🟤 ALÀKÀǸPỌ̀ MÍLÍỌ̀NÙ — Millions Multipliers (×1,000,000 to ×900,000,000) <span class="agbara-badge" style="--rc:#8B4513">Agbára: (ẹ́gbẹ̀rǔn)<sup><span class="l-mult">l</span>éjì</sup> = 10⁶</span></div>
       
       <!-- ×1,000,000 to ×9,000,000 -->
       <div class="sub-header" style="background: #8B4513;">×1,000,000 to ×9,000,000 (Millions)</div>
@@ -977,7 +1004,7 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- BILLIONS MULTIPLIERS ×1,000,000,000 to ×900,000,000,000 -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <div class="section-title" style="background: #000080;">🔵 ALÀKÀǸPỌ̀ BÍLÍỌ̀NÙ — Billions Multipliers (×1,000,000,000 to ×900,000,000,000)</div>
+      <div class="section-title" style="background: #000080;">🔵 ALÀKÀǸPỌ̀ BÍLÍỌ̀NÙ — Billions Multipliers (×1,000,000,000 to ×900,000,000,000) <span class="agbara-badge" style="--rc:#000080">Agbára: (ẹ́gbẹ̀rǔn)<sup><span class="l-mult">l</span>ẹ́ta</sup> = 10⁹</span></div>
       
       <!-- ×1,000,000,000 to ×9,000,000,000 -->
       <div class="card-grid cards-navy">
@@ -1105,7 +1132,7 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- TRILLION MULTIPLIERS -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <div class="section-title" style="background: #8B008B;">🚀 ALÀKÀǸPỌ̀ TRÍLÍỌ̀NÙ — Trillion Multipliers (×1,000,000,000,000+)</div>
+      <div class="section-title" style="background: #8B008B;">🚀 ALÀKÀǸPỌ̀ TRÍLÍỌ̀NÙ — Trillion Multipliers (×1,000,000,000,000+) <span class="agbara-badge" style="--rc:#8B008B">Agbára: (ẹ́gbẹ̀rǔn)<sup><span class="l-mult">l</span>ẹ́rin</sup> = 10¹²</span></div>
 
       <div class="sub-header" style="background: #8B008B;">×1,000,000,000,000 to ×9,000,000,000,000 (Trillions)</div>
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 15px;">
@@ -1230,7 +1257,7 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- QUADRILLION MULTIPLIERS -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <div class="section-title" style="background: #4682B4;">🌌 ALÀKÀǸPỌ̀ KUWADRÍLÍỌ̀NÙ — Quadrillion Multipliers (×1,000,000,000,000,000+)</div>
+      <div class="section-title" style="background: #4682B4;">🌌 ALÀKÀǸPỌ̀ KUWADRÍLÍỌ̀NÙ — Quadrillion Multipliers (×1,000,000,000,000,000+) <span class="agbara-badge" style="--rc:#4682B4">Agbára: (ẹ́gbẹ̀rǔn)<sup><span class="l-mult">l</span>árǔn</sup> = 10¹⁵</span></div>
 
       <div class="sub-header" style="background: #4682B4;">×1,000,000,000,000,000 to ×9,000,000,000,000,000 (Quadrillions)</div>
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 15px;">
@@ -1355,7 +1382,7 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- QUINTILLION MULTIPLIERS -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <div class="section-title" style="background: #047857;">👑 ALÀKÀǸPỌ̀ KUÍNTÍLÍỌ̀NÙ — Quintillion Multipliers (×1,000,000,000,000,000,000+)</div>
+      <div class="section-title" style="background: #047857;">👑 ALÀKÀǸPỌ̀ KUÍNTÍLÍỌ̀NÙ — Quintillion Multipliers (×1,000,000,000,000,000,000+) <span class="agbara-badge" style="--rc:#047857">Agbára: (ẹ́gbẹ̀rǔn)<sup><span class="l-mult">l</span>ẹ́fà</sup> = 10¹⁸</span></div>
 
       <div class="sub-header" style="background: #047857;">×1,000,000,000,000,000,000 to ×9,000,000,000,000,000,000 (Quintillions)</div>
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 15px;">
@@ -1480,7 +1507,7 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- SEXTILLION MULTIPLIERS -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <div class="section-title" style="background: #1E90FF;">🌲 ALÀKÀǸPỌ̀ SẸKSTÍLÍỌ̀NÙ — Sextillion Multipliers (×1,000,000,000,000,000,000,000+)</div>
+      <div class="section-title" style="background: #1E90FF;">🌲 ALÀKÀǸPỌ̀ SẸKSTÍLÍỌ̀NÙ — Sextillion Multipliers (×1,000,000,000,000,000,000,000+) <span class="agbara-badge" style="--rc:#1E90FF">Agbára: (ẹ́gbẹ̀rǔn)<sup><span class="l-mult">l</span>éje</sup> = 10²¹</span></div>
 
       <div class="sub-header" style="background: #1E90FF;">×1,000,000,000,000,000,000,000 to ×9,000,000,000,000,000,000,000 (Sextillions)</div>
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 15px;">
@@ -1605,7 +1632,7 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- SEPTILLION MULTIPLIERS -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <div class="section-title" style="background: #4B0082;">🔷 ALÀKÀǸPỌ̀ SẸPTÍLÍỌ̀NÙ — Septillion Multipliers (×1,000,000,000,000,000,000,000,000+)</div>
+      <div class="section-title" style="background: #4B0082;">🔷 ALÀKÀǸPỌ̀ SẸPTÍLÍỌ̀NÙ — Septillion Multipliers (×1,000,000,000,000,000,000,000,000+) <span class="agbara-badge" style="--rc:#4B0082">Agbára: (ẹ́gbẹ̀rǔn)<sup><span class="l-mult">l</span>ẹ́jọ</sup> = 10²⁴</span></div>
 
       <div class="sub-header" style="background: #4B0082;">×1,000,000,000,000,000,000,000,000 to ×9,000,000,000,000,000,000,000,000 (Septillions)</div>
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 15px;">
@@ -1730,7 +1757,7 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- OCTILLION MULTIPLIERS -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <div class="section-title" style="background: #DAA520;">🔮 ALÀKÀǸPỌ̀ ỌKTÍLÍỌ̀NÙ — Octillion Multipliers (×1,000,000,000,000,000,000,000,000,000+)</div>
+      <div class="section-title" style="background: #DAA520;">🔮 ALÀKÀǸPỌ̀ ỌKTÍLÍỌ̀NÙ — Octillion Multipliers (×1,000,000,000,000,000,000,000,000,000+) <span class="agbara-badge" style="--rc:#DAA520">Agbára: (ẹ́gbẹ̀rǔn)<sup><span class="l-mult">l</span>ẹ́sǎn</sup> = 10²⁷</span></div>
 
       <div class="sub-header" style="background: #DAA520;">×1,000,000,000,000,000,000,000,000,000 to ×9,000,000,000,000,000,000,000,000,000 (Octillions)</div>
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 15px;">
@@ -1855,7 +1882,7 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- NONILLION MULTIPLIERS -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <div class="section-title" style="background: #B22222;">🩸 ALÀKÀǸPỌ̀ NỌNÍLÍỌ̀NÙ — Nonillion Multipliers (×1,000,000,000,000,000,000,000,000,000,000+)</div>
+      <div class="section-title" style="background: #B22222;">🩸 ALÀKÀǸPỌ̀ NỌNÍLÍỌ̀NÙ — Nonillion Multipliers (×1,000,000,000,000,000,000,000,000,000,000+) <span class="agbara-badge" style="--rc:#B22222">Agbára: (ẹ́gbẹ̀rǔn)<sup><span class="l-mult">l</span>éwǎ</sup> = 10³⁰</span></div>
 
       <div class="sub-header" style="background: #B22222;">×1,000,000,000,000,000,000,000,000,000,000 to ×9,000,000,000,000,000,000,000,000,000,000 (Nonillions)</div>
       <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 12px; margin-bottom: 15px;">
@@ -1980,7 +2007,7 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- DECILLION MULTIPLIERS -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <div class="section-title" style="background: #191970;">🌊 ALÀKÀǸPỌ̀ DẸSÍLÍỌ̀NÙ — Decillion Multipliers (×1,000,000,000,000,000,000,000,000,000,000,000+)</div>
+      <div class="section-title" style="background: #191970;">🌊 ALÀKÀǸPỌ̀ DẸSÍLÍỌ̀NÙ — Decillion Multipliers (×1,000,000,000,000,000,000,000,000,000,000,000+) <span class="agbara-badge" style="--rc:#191970">Agbára: (ẹ́gbẹ̀rǔn)<sup><span class="l-mult">l</span>éwǎení</sup> = 10³³</span></div>
 
       <div class="sub-header" style="background: #191970;">×1,000,000,000,000,000,000,000,000,000,000,000 to ×9,000,000,000,000,000,000,000,000,000,000,000 (Decillions)</div>
       <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 12px; margin-bottom: 15px;">
@@ -2105,7 +2132,7 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- UNDECILLION MULTIPLIERS -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <div class="section-title" style="background: #CD7F32;">🍫 ALÀKÀǸPỌ̀ ỌNDẸSÍLÍỌ̀NÙ — Undecillion Multipliers (×1,000,000,000,000,000,000,000,000,000,000,000,000+)</div>
+      <div class="section-title" style="background: #CD7F32;">🍫 ALÀKÀǸPỌ̀ ỌNDẸSÍLÍỌ̀NÙ — Undecillion Multipliers (×1,000,000,000,000,000,000,000,000,000,000,000,000+) <span class="agbara-badge" style="--rc:#CD7F32">Agbára: (ẹ́gbẹ̀rǔn)<sup><span class="l-mult">l</span>éwǎ<span class="l-mult">l</span>éjì</sup> = 10³⁶</span></div>
 
       <div class="sub-header" style="background: #CD7F32;">×1,000,000,000,000,000,000,000,000,000,000,000,000 to ×9,000,000,000,000,000,000,000,000,000,000,000,000 (Undecillions)</div>
       <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 12px; margin-bottom: 15px;">
@@ -2230,7 +2257,7 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- DUODECILLION MULTIPLIERS -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <div class="section-title" style="background: #483D8B;">🔷 ALÀKÀǸPỌ̀ DÚÓDẸSÍLÍỌ̀NÙ — Duodecillion Multipliers (×1,000,000,000,000,000,000,000,000,000,000,000,000,000+)</div>
+      <div class="section-title" style="background: #483D8B;">🔷 ALÀKÀǸPỌ̀ DÚÓDẸSÍLÍỌ̀NÙ — Duodecillion Multipliers (×1,000,000,000,000,000,000,000,000,000,000,000,000,000+) <span class="agbara-badge" style="--rc:#483D8B">Agbára: (ẹ́gbẹ̀rǔn)<sup><span class="l-mult">l</span>éwǎ<span class="l-mult">l</span>ẹ́ta</sup> = 10³⁹</span></div>
 
       <div class="sub-header" style="background: #483D8B;">×1,000,000,000,000,000,000,000,000,000,000,000,000,000 to ×9,000,000,000,000,000,000,000,000,000,000,000,000,000 (Duodecillions)</div>
       <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 12px; margin-bottom: 15px;">
@@ -2355,7 +2382,7 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- TREDECILLION MULTIPLIERS -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <div class="section-title" style="background: #94AA00;">💗 ALÀKÀǸPỌ̀ TRẸDẸSÍLÍỌ̀NÙ — Tredecillion Multipliers (×1,000,000,000,000,000,000,000,000,000,000,000,000,000,000+)</div>
+      <div class="section-title" style="background: #94AA00;">💗 ALÀKÀǸPỌ̀ TRẸDẸSÍLÍỌ̀NÙ — Tredecillion Multipliers (×1,000,000,000,000,000,000,000,000,000,000,000,000,000,000+) <span class="agbara-badge" style="--rc:#94AA00">Agbára: (ẹ́gbẹ̀rǔn)<sup><span class="l-mult">l</span>éwǎ<span class="l-mult">l</span>ẹ́rin</sup> = 10⁴² ✦ MAX</span></div>
 
       <div class="sub-header" style="background: #94AA00;">×1,000,000,000,000,000,000,000,000,000,000,000,000,000,000 to ×9,000,000,000,000,000,000,000,000,000,000,000,000,000,000 (Tredecillions)</div>
       <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 12px; margin-bottom: 15px;">
@@ -2501,7 +2528,7 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
     </div>
     
     
-    <!-- 46-Colour Bar -->
+    <!-- 47-Colour Bar -->
     <div class="colour-bar-animated">
       <div style="background:#0891B2" title="Zero — Cerulean"></div>
       <div style="background:#16A34A" title="Units — Vibrant Green"></div>
@@ -2547,6 +2574,7 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
       <div style="background:#800000" title="Tens of Duodecillions — Maroon"></div>
       <div style="background:#CD853F" title="Hundreds of Duodecillions — Peru"></div>
       <div style="background:#94AA00" title="Tredecillions — Dark Olive"></div>
+      <div style="background:#6C0AC9" title="Large Numbers — Electric Violet"></div>
       <div style="background:#FF13F0" title='"l" Multiplier — Neon Pink'></div>
       <div style="background:#808080" title="Unassigned — Gray"></div>
     </div>
@@ -2583,19 +2611,6 @@ This framework reveals that the Ònka Yorùbá system’s Sovereign philosophy i
         progressBar.style.width = scrolled + '%';
       }, { passive: true });
 
-      // --- Section Fade-In (Intersection Observer) ---
-      const fadeTargets = document.querySelectorAll(
-        '.section-title, .mult-card, .color-box, ' +
-        '.protocol-box, .highlight-box, .power-box'
-      );
-      const fadeObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in-visible');
-          }
-        });
-      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-      fadeTargets.forEach(el => fadeObserver.observe(el));
 
       // --- Back-to-Top Button ---
       const topBtn = document.getElementById('backToTop');
