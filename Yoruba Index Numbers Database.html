@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="yo">
 <head>
   <meta charset="UTF-8">
@@ -15,6 +15,7 @@
             justify-content: center;
             gap: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            border-bottom: 11px solid #6C6ACD;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -39,6 +40,7 @@
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             padding: 28px 20px;
             margin: 0;
+            border-bottom: 15px solid #6C6ACD;
         }
         .footer-content {
             text-align: center;
@@ -670,7 +672,7 @@
       position: relative;
       background: #fff;
       color: #444;
-      font-size: 1.3rem;
+      font-size: 1rem;
       font-weight: 700;
       padding: 16px 28px;
       border-radius: 5px;
@@ -6156,31 +6158,31 @@
 </style>
 
 <div class="osp-head">
-  <h3>Ètò Ìmọ̀ Ònkà Yorùbá &nbsp;&middot;&nbsp; Scholarly Reference</h3>
+  <h3>Ètò Ìmọ̀ Ònkà Yorùbá &nbsp;·&nbsp; Scholarly Reference</h3>
   <p>Academic standards documentation for the New Ònkà Yorùbá Numeric System</p>
 </div>
 <div class="osp-divider">
-  <span></span><em>&#9670; Ìwé Ìmọ̀ Ònkà &#9670;</em><span></span>
+  <span></span><em>◆ Ìwé Ìmọ̀ Ònkà ◆</em><span></span>
 </div>
 
 <div class="osp-grid">
 
   <!-- ① TABLE CLASSIFICATION KEY -->
   <div class="osp-card">
-    <span class="osp-icon">&#128273;</span>
+    <span class="osp-icon">🔑</span>
     <div class="osp-label">Table Classification Key</div>
     <table class="osp-keytbl" aria-label="Column guide for Ònka Yorùbá tables">
-      <tr>
+      <tbody><tr>
         <td class="osp-ksym">Symbol</td>
-        <td class="osp-kdesc">Scientific exponential representation of the number&rsquo;s magnitude</td>
+        <td class="osp-kdesc">Scientific exponential representation of the number's magnitude</td>
       </tr>
       <tr>
         <td class="osp-ksym">Name</td>
-        <td class="osp-kdesc">Official Ònka Yorùbá index terminology &mdash; the canonical Yoruba Numerical Lexicon form</td>
+        <td class="osp-kdesc">Official Ònka Yorùbá index terminology — the canonical Yoruba Numerical Lexicon form</td>
       </tr>
       <tr>
         <td class="osp-ksym">Scale</td>
-        <td class="osp-kdesc">Power-of-ten magnitude &mdash; e.g., 10&sup3; = Thousands tier, 10&sup6; = Millions tier</td>
+        <td class="osp-kdesc">Power-of-ten magnitude — e.g., 10³ = Thousands tier, 10&sup6; = Millions tier</td>
       </tr>
       <tr>
         <td class="osp-ksym">Tier</td>
@@ -6188,31 +6190,31 @@
       </tr>
       <tr>
         <td class="osp-ksym"><span style="color:#FF13F0;font-weight:700;">l</span> Link</td>
-        <td class="osp-kdesc">The <em>l</em> multiplier connector &mdash; displayed in neon pink (#FF13F0), the engine of infinite magnitude chaining</td>
+        <td class="osp-kdesc">The <em>l</em> multiplier connector — displayed in neon pink (#FF13F0), the engine of infinite magnitude chaining</td>
       </tr>
-    </table>
+    </tbody></table>
   </div>
 
   <!-- ② CITATION STATEMENT -->
   <div class="osp-card">
-    <span class="osp-icon">&#128220;</span>
+    <span class="osp-icon">📜</span>
     <div class="osp-label">Cite This Work</div>
     <div class="osp-cite">
       <strong>Ònka Yorùbá Institute</strong> (2026).
       <em>Yoruba Numerical Index Database, v1.0.</em>
       Godreign Digital Publishing.
-      <em>Ètò Ìmọ̀ Ònkà Yorùbá &mdash; The New Ònkà Yorùbá Numeric System.</em>
+      <em>Ètò Ìmọ̀ Ònkà Yorùbá — The New Ònkà Yorùbá Numeric System.</em>
       <div class="osp-cite-meta">
-        ISSN (pending) &nbsp;&middot;&nbsp;
-        Freely accessible for academic, educational &amp; research use &nbsp;&middot;&nbsp;
-        &copy; 2026 Godreign. Ònka Yorùbá.
+        ISSN (pending) &nbsp;·&nbsp;
+        Freely accessible for academic, educational &amp; research use &nbsp;·&nbsp;
+        © 2026 Godreign. Ònka Yorùbá.
       </div>
     </div>
   </div>
 
   <!-- ③ FUTURE API NOTICE -->
   <div class="osp-card">
-    <span class="osp-icon">&#9889;</span>
+    <span class="osp-icon">⚡</span>
     <div class="osp-label">Developer API Notice</div>
     <span class="osp-badge">Coming Soon</span>
     <p class="osp-api-p">
@@ -6222,12 +6224,13 @@
     </p>
     <div class="osp-endpoint">
       GET /api/v1/onka-yoruba/number/{n}<br>
-      <span class="osp-arrow">&rarr;</span>&nbsp;{ yoruba: &ldquo;&hellip;&rdquo;, tier: &ldquo;&hellip;&rdquo;, colour: &ldquo;&hellip;&rdquo;, power: &ldquo;&hellip;&rdquo; }
+      <span class="osp-arrow">→</span>&nbsp;{ yoruba: "…", tier: "…", colour: "…", power: "…" }
     </div>
   </div>
 
 </div>
 </section>
+
 <footer>
   <div class="footer-content">
     <span class="copyright">© 2026 Godreign. Ònka Yorùbá.</span>
