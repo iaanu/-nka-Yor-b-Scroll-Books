@@ -883,29 +883,13 @@
       max-width: 100%;
       margin: 0 auto;
       border-radius: 0;
-      overflow: visible;
+      overflow: hidden;
       background: linear-gradient(160deg, rgba(26,26,46,0.95), rgba(15,52,96,0.92));
-      border: none;
+      border-top: 2px solid rgba(255,215,0,0.25);
+      border-bottom: 2px solid rgba(255,215,0,0.25);
       box-shadow:
-        0 0 60px rgba(255,215,0,0.08),
-        0 30px 80px rgba(0,0,0,0.5),
-        inset 0 1px 0 rgba(255,215,0,0.15);
-      backdrop-filter: blur(20px);
-      position: relative;
-    }
-    .research-release::before {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      border-radius: 0;
-      background: linear-gradient(135deg, #FFD700, #FFA500, #FFD700, #A855F7, #6C0AC9, #1E90FF, #047857, #FFD700, #FFA500, #FFD700);
-      background-size: 400% 400%;
-      animation: rrBorderGlow 6s ease infinite;
-      z-index: -1;
-    }
-    @keyframes rrBorderGlow {
-      0%,100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+        0 0 40px rgba(255,215,0,0.05),
+        0 20px 60px rgba(0,0,0,0.4);
     }
     .research-release .rr-header {
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
@@ -915,25 +899,7 @@
       overflow: hidden;
       border-radius: 0;
     }
-    .research-release .rr-header::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, transparent, #FFD700 20%, #FFA500 50%, #FFD700 80%, transparent);
-    }
-    .research-release .rr-header::after {
-      content: '\2726';
-      position: absolute;
-      top: 16px; right: 30px;
-      font-size: 1.2rem;
-      color: rgba(255,215,0,0.4);
-      animation: rrTwinkle 3s ease-in-out infinite;
-    }
-    @keyframes rrTwinkle {
-      0%,100% { opacity: 0.3; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.2); }
-    }
+
     .research-release .rr-badge {
       display: inline-block;
       background: linear-gradient(90deg, #FFD700, #FFA500);
@@ -1056,9 +1022,10 @@
   <div class="container">
     <div class="header">
       <h1>ÀWỌN ÒNKÀ YORÙBÁ</h1>
-      <h2>Index Numbers Database — From 0 to 1,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000 (1 Tredecillion+)</h2>
-      <p style="margin-top: 15px; font-size: 1.2rem; color: #FFD700; font-weight: 700;">🚀 OVER A TREDECILLION NUMBERS TO LEARN — ABSOLUTELY FREE! 🚀</p>
-      <p style="font-size: 0.95rem; opacity: 0.9; margin-top: 8px;">The World's Most Complete Yorùbá Number System • From Zero to Infinity!</p>
+      <h2>Index Numbers Database — From 0 to 1,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000 (1 Tredecillion Plus)</h2>
+      <h2 style="margin-top: 15px; font-size: 1.2rem; color: #FFD700; font-weight: 700;">Open Scholarly Database</h2>
+      <p style="font-size: 0.95rem; color: #FFD700; margin-top: 8px; font-weight: 600;">A comprehensive reference of the modern Yoruba numerical index system</p>
+      <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 10px; font-style: italic; max-width: 900px; margin-left: auto; margin-right: auto; line-height: 1.7;">This publication serves as a demonstrative framework showing how indigenous numerical lexicons can be documented, standardized, and integrated into contemporary scientific and computational practice. The Yoruba Numerical Index Database represents the first step in a broader global effort to support linguistic equity and numerical representation for indigenous languages worldwide.</p>
     </div>
 
     <!-- 47-Colour Bar -->
