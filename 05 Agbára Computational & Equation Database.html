@@ -1,0 +1,2142 @@
+﻿<!DOCTYPE html>
+<html lang="yo">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agbára Computational & Equation Database</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+    
+        .menu-bar {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 14px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            border-bottom: 11px solid #6C6ACD;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .menu-bar a {
+            color: #FFD700;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,215,0,0.3);
+            white-space: nowrap;
+        }
+        .menu-bar a:hover {
+            background: rgba(255,215,0,0.2);
+            border-color: #FFD700;
+            box-shadow: 0 4px 15px rgba(255,215,0,0.3);
+        }
+        footer {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 28px 20px;
+            margin: 0;
+            border-bottom: 15px solid #6C6ACD;
+        }
+        .footer-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .footer-content .copyright {
+            display: block;
+            color: #ffeb3b;
+            font-size: 1.1em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .footer-content .yoruba-mission {
+            display: block;
+            color: #81d4fa;
+            font-size: 1.05em;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+        .footer-content .english-mission {
+            color: #e0e0e0;
+            font-size: 0.95em;
+            margin: 0;
+        }
+    * { box-sizing: border-box; }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1E8CB8 0%, #27BCED 100%);
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      color: #1a1a1a;
+    }
+    
+    .container {
+      background: #fff;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #1E8CB8 0%, #27BCED 100%);
+      color: #fff;
+      padding: 20px 40px;
+      text-align: center;
+    }
+    
+    .header h1 { font-size: 2rem; font-weight: 800; margin-bottom: 5px; }
+    .header h2 { font-size: 1.1rem; font-weight: 600; opacity: 0.9; }
+    
+    .content { padding: 40px 0; }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* 47-COLOUR SYSTEM CSS CLASSES                                   */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    /* Background Color Classes */
+    .c-teal { background: #0891B2; color: #fff; }     /* 01 Zero */
+    .c-green { background: #16A34A; color: #fff; }     /* 02 Units */
+    .c-blue { background: #2563EB; color: #fff; }     /* 03 Tens */
+    .c-purple { background: #9333EA; color: #fff; }     /* 04 Hundreds */
+    .c-red { background: #DC2626; color: #fff; }     /* 05 Thousands */
+    .c-coral { background: #DAA520; color: #fff; }     /* 09 Tens of Millions */
+    .c-golden { background: #4EAAE4; color: #333; }       /* 07 Hundreds of Thousands */
+    .c-brown { background: #8B4513; color: #fff; }     /* 08 Millions */
+    .c-sky { background: #B59410; color: #fff; }     /* 06 Tens of Thousands */
+    .c-orange { background: #EF6000; color: #fff; }     /* 10 Hundreds of Millions */
+    .c-navy { background: #000080; color: #fff; }     /* 11 Billions */
+    .c-pink { background: #FC5D8D; color: #fff; }     /* 12 Tens of Billions */
+    .c-olive { background: #808000; color: #fff; }     /* 13 Hundreds of Billions */
+    .c-magenta { background: #8B008B; color: #fff; }     /* 14 Trillions */
+    .c-forest { background: #6A5ACD; color: #fff; }     /* 15 Tens of Trillions */
+    .c-tomato { background: #FF6347; color: #fff; }     /* 16 Hundreds of Trillions */
+    .c-steel { background: #1E90FF; color: #fff; }     /* 17 Quadrillions */
+    .c-amber { background: #F59E0B; color: #333; }     /* 18 Tens of Quadrillions */
+    .c-darkred { background: #8B0000; color: #fff; }     /* 19 Hundreds of Quadrillions */
+    .c-emerald { background: #047857; color: #fff; }     /* 20 Quintillions */
+    .c-violet { background: #A855F7; color: #fff; }     /* 21 Tens of Quintillions */
+    .c-chocolate { background: #D2691E; color: #fff; }     /* 22 Hundreds of Quintillions */
+    .c-dodger { background: #6C0AC9; color: #fff; }     /* 23 Sextillions */
+    .c-crimson { background: #B91C1C; color: #fff; }     /* 24 Tens of Sextillions */
+    .c-lime { background: #65A30D; color: #fff; }     /* 25 Hundreds of Sextillions */
+    .c-indigo { background: #4B0082; color: #fff; }     /* 26 Septillions */
+    .c-salmon { background: #FA8072; color: #333; }     /* 27 Tens of Septillions */
+    .c-darkcyan { background: #008B8B; color: #fff; }     /* 28 Hundreds of Septillions */
+    .c-gold { background: #B8860B; color: #fff; }     /* 29 Octillions */
+    .c-plum { background: #7B2D8E; color: #fff; }     /* 30 Tens of Octillions */
+    .c-turquoise { background: #20B2AA; color: #fff; }     /* 31 Hundreds of Octillions */
+    .c-firebrick { background: #B22222; color: #fff; }     /* 32 Nonillions */
+    .c-mpurple { background: #9370DB; color: #fff; }     /* 33 Tens of Nonillions */
+    .c-sienna { background: #A0522D; color: #fff; }     /* 34 Hundreds of Nonillions */
+    .c-midnight { background: #191970; color: #fff; }     /* 35 Decillions */
+    .c-rose { background: #E11D48; color: #fff; }     /* 36 Tens of Decillions */
+    .c-cadet { background: #5F9EA0; color: #fff; }     /* 37 Hundreds of Decillions */
+    .c-bronze { background: #CD7F32; color: #fff; }     /* 38 Undecillions */
+    .c-orchid { background: #9932CC; color: #fff; }     /* 39 Tens of Undecillions */
+    .c-peru { background: #228B22; color: #fff; }     /* 40 Hundreds of Undecillions */
+    .c-dslateblue { background: #483D8B; color: #fff; }     /* 41 Duodecillions */
+    .c-maroon { background: #800000; color: #fff; }     /* 42 Tens of Duodecillions */
+    .c-slateblue { background: #CD853F; color: #333; }     /* 43 Hundreds of Duodecillions */
+    .c-deeppink { background: #94AA00; color: #fff; }     /* 44 Tredecillions/Tredecillions Plus */
+    .c-medviolet { background: #C71585; color: #fff; }     /* 45 Tens of Tredecillions */
+    .c-seagreen { background: #2E8B57; color: #fff; }     /* 46 Hundreds of Tredecillions */
+    .c-neonpink { background: #FF13F0; color: #fff; }     /* 45 "l" Multiplier */
+    .c-grey { background: #808080; color: #fff; }         /* 46 Unassigned/Contents */
+    .c-largenumber { background: #4682B4; color: #fff; }    /* Large Numbers */
+
+    /* Text Color Classes */
+    .t-teal { color: #0891B2; }
+    .t-green { color: #16A34A; }
+    .t-blue { color: #2563EB; }
+    .t-purple { color: #9333EA; }
+    .t-red { color: #DC2626; }
+    .t-coral { color: #DAA520; }
+    .t-golden { color: #4EAAE4; }
+    .t-brown { color: #8B4513; }
+    .t-sky { color: #B59410; }
+    .t-orange { color: #EF6000; }
+    .t-navy { color: #000080; }
+    .t-pink { color: #FC5D8D; }
+    .t-olive { color: #808000; }
+    .t-magenta { color: #8B008B; }
+    .t-forest { color: #6A5ACD; }
+    .t-tomato { color: #FF6347; }
+    .t-steel { color: #1E90FF; }
+    .t-amber { color: #F59E0B; }
+    .t-darkred { color: #8B0000; }
+    .t-emerald { color: #047857; }
+    .t-violet { color: #A855F7; }
+    .t-chocolate { color: #D2691E; }
+    .t-dodger { color: #6C0AC9; }
+    .t-crimson { color: #B91C1C; }
+    .t-lime { color: #65A30D; }
+    .t-indigo { color: #4B0082; }
+    .t-salmon { color: #FA8072; }
+    .t-darkcyan { color: #008B8B; }
+    .t-gold { color: #B8860B; }
+    .t-plum { color: #7B2D8E; }
+    .t-turquoise { color: #20B2AA; }
+    .t-firebrick { color: #B22222; }
+    .t-mpurple { color: #9370DB; }
+    .t-sienna { color: #A0522D; }
+    .t-midnight { color: #191970; }
+    .t-rose { color: #E11D48; }
+    .t-cadet { color: #5F9EA0; }
+    .t-bronze { color: #CD7F32; }
+    .t-orchid { color: #9932CC; }
+    .t-peru { color: #228B22; }
+    .t-dslateblue { color: #483D8B; }
+    .t-maroon { color: #800000; }
+    .t-slateblue { color: #CD853F; }
+    .t-deeppink { color: #94AA00; }
+    .t-medviolet { color: #C71585; }
+    .t-seagreen { color: #2E8B57; }
+    .t-largenumber { color: #4682B4; }
+
+    /* Tens Decade Colors (9 distinct blue shades) */
+    .t-tens-10 { color: #1E90FF; }
+    .t-tens-20 { color: #4169E1; }
+    .t-tens-30 { color: #0000CD; }
+    .t-tens-40 { color: #0047AB; }
+    .t-tens-50 { color: #4682B4; }
+    .t-tens-60 { color: #6495ED; }
+    .t-tens-70 { color: #00008B; }
+    .t-tens-80 { color: #191970; }
+    .t-tens-90 { color: #483D8B; }
+    
+    .b-tens-10 { border-left: 4px solid #1E90FF; border-right: 4px solid #1E90FF; }
+    .b-tens-20 { border-left: 4px solid #4169E1; border-right: 4px solid #4169E1; }
+    .b-tens-30 { border-left: 4px solid #0000CD; border-right: 4px solid #0000CD; }
+    .b-tens-40 { border-left: 4px solid #0047AB; border-right: 4px solid #0047AB; }
+    .b-tens-50 { border-left: 4px solid #4682B4; border-right: 4px solid #4682B4; }
+    .b-tens-60 { border-left: 4px solid #6495ED; border-right: 4px solid #6495ED; }
+    .b-tens-70 { border-left: 4px solid #00008B; border-right: 4px solid #00008B; }
+    .b-tens-80 { border-left: 4px solid #191970; border-right: 4px solid #191970; }
+    .b-tens-90 { border-left: 4px solid #483D8B; border-right: 4px solid #483D8B; }
+
+    /* "l" Multiplier - Neon Pink */
+    .l-mult { color: #FF13F0; font-weight: 700; }
+
+    /* Border Color Classes */
+    .b-teal { border-left: 4px solid #0891B2; border-right: 4px solid #0891B2; }
+    .b-green { border-left: 4px solid #16A34A; border-right: 4px solid #16A34A; }
+    .b-blue { border-left: 4px solid #2563EB; border-right: 4px solid #2563EB; }
+    .b-purple { border-left: 4px solid #9333EA; border-right: 4px solid #9333EA; }
+    .b-red { border-left: 4px solid #DC2626; border-right: 4px solid #DC2626; }
+    .b-coral { border-left: 4px solid #DAA520; border-right: 4px solid #DAA520; }
+    .b-golden { border-left: 4px solid #4EAAE4; border-right: 4px solid #4EAAE4; }
+    .b-brown { border-left: 4px solid #8B4513; border-right: 4px solid #8B4513; }
+    .b-sky { border-left: 4px solid #B59410; border-right: 4px solid #B59410; }
+    .b-orange { border-left: 4px solid #EF6000; border-right: 4px solid #EF6000; }
+    .b-navy { border-left: 4px solid #000080; border-right: 4px solid #000080; }
+    .b-pink { border-left: 4px solid #FC5D8D; border-right: 4px solid #FC5D8D; }
+    .b-olive { border-left: 4px solid #808000; border-right: 4px solid #808000; }
+    .b-magenta { border-left: 4px solid #8B008B; border-right: 4px solid #8B008B; }
+    .b-forest { border-left: 4px solid #6A5ACD; border-right: 4px solid #6A5ACD; }
+    .b-tomato { border-left: 4px solid #FF6347; border-right: 4px solid #FF6347; }
+    .b-steel { border-left: 4px solid #1E90FF; border-right: 4px solid #1E90FF; }
+    .b-amber { border-left: 4px solid #F59E0B; border-right: 4px solid #F59E0B; }
+    .b-darkred { border-left: 4px solid #8B0000; border-right: 4px solid #8B0000; }
+    .b-emerald { border-left: 4px solid #047857; border-right: 4px solid #047857; }
+    .b-violet { border-left: 4px solid #A855F7; border-right: 4px solid #A855F7; }
+    .b-chocolate { border-left: 4px solid #D2691E; border-right: 4px solid #D2691E; }
+    .b-dodger { border-left: 4px solid #6C0AC9; border-right: 4px solid #6C0AC9; }
+    .b-crimson { border-left: 4px solid #B91C1C; border-right: 4px solid #B91C1C; }
+    .b-lime { border-left: 4px solid #65A30D; border-right: 4px solid #65A30D; }
+    .b-indigo { border-left: 4px solid #4B0082; border-right: 4px solid #4B0082; }
+    .b-salmon { border-left: 4px solid #FA8072; border-right: 4px solid #FA8072; }
+    .b-darkcyan { border-left: 4px solid #008B8B; border-right: 4px solid #008B8B; }
+    .b-gold { border-left: 4px solid #B8860B; border-right: 4px solid #B8860B; }
+    .b-plum { border-left: 4px solid #7B2D8E; border-right: 4px solid #7B2D8E; }
+    .b-turquoise { border-left: 4px solid #20B2AA; border-right: 4px solid #20B2AA; }
+    .b-firebrick { border-left: 4px solid #B22222; border-right: 4px solid #B22222; }
+    .b-mpurple { border-left: 4px solid #9370DB; border-right: 4px solid #9370DB; }
+    .b-sienna { border-left: 4px solid #A0522D; border-right: 4px solid #A0522D; }
+    .b-midnight { border-left: 4px solid #191970; border-right: 4px solid #191970; }
+    .b-rose { border-left: 4px solid #E11D48; border-right: 4px solid #E11D48; }
+    .b-cadet { border-left: 4px solid #5F9EA0; border-right: 4px solid #5F9EA0; }
+    .b-bronze { border-left: 4px solid #CD7F32; border-right: 4px solid #CD7F32; }
+    .b-orchid { border-left: 4px solid #9932CC; border-right: 4px solid #9932CC; }
+    .b-peru { border-left: 4px solid #228B22; border-right: 4px solid #228B22; }
+    .b-dslateblue { border-left: 4px solid #483D8B; border-right: 4px solid #483D8B; }
+    .b-maroon { border-left: 4px solid #800000; border-right: 4px solid #800000; }
+    .b-slateblue { border-left: 4px solid #CD853F; border-right: 4px solid #CD853F; }
+    .b-deeppink { border-left: 4px solid #94AA00; border-right: 4px solid #94AA00; }
+    .b-medviolet { border-left: 4px solid #C71585; border-right: 4px solid #C71585; }
+    .b-seagreen { border-left: 4px solid #2E8B57; border-right: 4px solid #2E8B57; }
+    .b-largenumber { border-left: 4px solid #4682B4; border-right: 4px solid #4682B4; }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* LAYOUT & COMPONENT STYLES                                      */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    /* Color Legend Grid */
+    .color-legend {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 15px;
+    }
+    .color-box {
+      padding: 8px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 0.6rem;
+      font-weight: 600;
+    }
+    .color-box .num { font-size: 0.55rem; opacity: 0.8; }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      padding: 15px 20px;
+      border-radius: 12px;
+      margin: 25px 0 15px 0;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .section-title sup {
+      vertical-align: 0.4em;
+      font-size: 0.6em;
+      line-height: 0;
+    }
+
+    /* Card Grids */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .card-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .card-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .card-grid-1 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    /* Number Card */
+    .num-card {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 15px 20px;
+      text-align: center;
+      box-sizing: border-box;
+      overflow-wrap: break-word;
+      width: 100%;
+    }
+
+
+
+    .num-card .num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #1E8CB8;
+    }
+    .agbara-eq sup { font-size: 75%; }
+    .agbara-eq {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-top: 3px;
+      letter-spacing: 0.3px;
+    }
+    .num-card .word {
+      font-size: 1.05rem;
+      margin-top: 5px;
+      word-break: break-word;
+      font-weight: 600;
+    }
+
+    /* Sub Headers */
+    .sub-header {
+      padding: 8px 15px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* INTRO SECTIONS STYLES                                          */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    .intro-section {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 100%);
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 30px;
+      border-left: 5px solid #1E8CB8;
+    }
+    .intro-header h2 { color: #1E8CB8; font-size: 1.6rem; font-weight: 800; margin-bottom: 20px; }
+    .intro-content p { font-size: 1rem; line-height: 1.8; color: #333; margin-bottom: 15px; }
+    .intro-lead { font-size: 1.15rem !important; color: #1E8CB8 !important; }
+    .highlight-15 {
+      background: linear-gradient(90deg, #FF13F0, #8B008B, #2563EB, #16A34A);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    /* Protocol Section */
+    .protocol-section { background: #fff; border-radius: 15px; padding: 30px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    .protocol-header h2 { color: #1E8CB8; font-size: 1.5rem; font-weight: 800; margin-bottom: 5px; }
+    .yoruba-subtitle { color: #FF13F0; font-style: italic; font-size: 1.1rem; margin-bottom: 15px; }
+    .protocol-intro { color: #555; font-size: 0.95rem; margin-bottom: 25px; line-height: 1.6; }
+
+    /* Protocol Table */
+    .color-protocol-table { overflow-x: auto; }
+    .protocol-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    .protocol-table thead { background: linear-gradient(135deg, #1E8CB8 0%, #27BCED 100%); }
+    .protocol-table th { color: #fff; padding: 10px 8px; text-align: left; font-weight: 700; }
+    .protocol-table td { padding: 8px; border-bottom: 1px solid #e0e0e0; vertical-align: middle; }
+    .protocol-table tbody tr:hover { background: #f5f9fc; }
+    .color-swatch { display: inline-block; width: 18px; height: 18px; border-radius: 4px; margin-right: 6px; vertical-align: middle; border: 1px solid rgba(0,0,0,0.1); }
+    .num-col { font-weight: 700; color: #1E8CB8; }
+    .hex-code { font-family: 'Courier New', monospace; background: #f0f0f0; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; }
+    .example-text { font-weight: 600; }
+
+    /* Analysis Section */
+    .analysis-section { background: linear-gradient(135deg, #fafafa 0%, #f0f7fa 100%); border-radius: 15px; padding: 30px; margin-bottom: 30px; }
+    .analysis-header h2 { color: #1E8CB8; font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .analysis-header p { color: #666; font-size: 0.95rem; margin-bottom: 25px; }
+    .section-subtitle { color: #333; font-size: 1.1rem; font-weight: 700; margin: 20px 0 15px 0; padding-left: 10px; border-left: 4px solid #1E8CB8; }
+    .analysis-table { width: 100%; max-width: 500px; border-collapse: collapse; margin-bottom: 25px; font-size: 0.9rem; }
+    .analysis-table th { background: linear-gradient(135deg, #1E8CB8 0%, #27BCED 100%); color: #fff; padding: 10px 15px; text-align: left; font-weight: 700; }
+    .analysis-table td { padding: 10px 15px; border-bottom: 1px solid #e0e0e0; background: #fff; }
+    .analysis-table tbody tr:hover { background: #f5f9fc; }
+
+    /* Rules Section */
+    .rules-section { background: #fff; border-radius: 15px; padding: 30px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .rules-header h2 { color: #1E8CB8; font-size: 1.4rem; font-weight: 800; margin-bottom: 20px; }
+    .rule-box { background: #f8f9fa; border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #1E8CB8; }
+    .rule-box h3 { color: #1E8CB8; font-size: 1.05rem; font-weight: 700; margin-bottom: 15px; }
+    .rule-box ul { list-style: none; padding: 0; }
+    .rule-box li { margin-bottom: 12px; line-height: 1.7; color: #444; }
+    .rule-box li ul { margin-top: 10px; padding-left: 20px; }
+    .rule-box li ul li { margin-bottom: 8px; font-size: 0.9rem; }
+    .example-box { background: #fff; padding: 12px 15px; border-radius: 8px; margin-top: 10px; font-size: 1rem; border: 1px solid #e0e0e0; }
+
+    /* Database Start Banner */
+    .database-start { background: linear-gradient(135deg, #1E8CB8 0%, #27BCED 100%); border-radius: 15px; padding: 25px 30px; margin-bottom: 25px; text-align: center; }
+    .database-start h2 { color: #fff; font-size: 1.5rem; font-weight: 800; margin-bottom: 10px; }
+    .database-start p { color: rgba(255,255,255,0.9); font-size: 1rem; }
+
+    /* Footer */
+    .footer { background: #27BCED; color: #fff; padding: 25px 40px; text-align: center; font-size: 0.9rem; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .color-legend { grid-template-columns: repeat(4, 1fr); }
+      .card-grid { grid-template-columns: repeat(3, 1fr); }
+      .card-grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .card-grid-2 { grid-template-columns: 1fr; }
+      .card-grid-1 { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .color-legend { grid-template-columns: repeat(3, 1fr); }
+      .card-grid { grid-template-columns: repeat(2, 1fr); }
+      .card-grid-3 { grid-template-columns: 1fr; }
+      .card-grid-2 { grid-template-columns: 1fr; }
+      .card-grid-1 { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* FUTURISTIC ENHANCEMENTS                                        */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    /* --- Scroll Progress Bar --- */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 0%;
+      z-index: 2000;
+      background: linear-gradient(90deg,
+        #0891B2, #16A34A, #2563EB, #9333EA, #DC2626,
+        #B59410, #4EAAE4, #8B4513, #DAA520, #EF6000,
+        #000080, #FC5D8D, #808000, #8B008B, #6A5ACD,
+        #FF6347, #1E90FF, #F59E0B, #8B0000, #047857,
+        #A855F7, #D2691E, #6C0AC9, #B91C1C, #65A30D,
+        #4B0082, #FA8072, #008B8B, #B8860B, #7B2D8E,
+        #20B2AA, #B22222, #9370DB, #A0522D, #191970,
+        #E11D48, #5F9EA0, #CD7F32, #9932CC, #228B22,
+        #483D8B, #800000, #CD853F, #94AA00, #4682B4, #FF13F0, #808080
+      );
+      transition: width 0.1s linear;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* --- Card Hover Glow --- */
+    .num-card {
+      transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: default;
+    }
+    .num-card:hover {
+      box-shadow: 0 8px 25px rgba(30, 140, 184, 0.25);
+    }
+
+    /* --- 47-Colour Bar Shimmer --- */
+    @keyframes barShimmer {
+      0% { filter: brightness(1); }
+      50% { filter: brightness(1.3); }
+      100% { filter: brightness(1); }
+    }
+    /* --- 47-Colour Bar Shimmer --- */
+    .colour-bar-animated {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        height: 7px;
+        margin: 0;
+        border-radius: 0;
+    }
+    .colour-bar-animated > div {
+        flex: 1;
+        transition: transform 0.3s ease, flex 0.3s ease;
+    }
+    .colour-bar-animated:hover > div {
+        filter: brightness(1.15);
+    }
+    .colour-bar-animated > div:hover {
+        flex: 3;
+        transform: scaleY(2.5);
+        z-index: 1;
+        border-radius: 2px;
+        box-shadow: 0 0 12px rgba(0,0,0,0.3);
+    }
+    .colour-bar-animated::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent);
+        animation: shimmerSweep 4s ease-in-out infinite;
+        pointer-events: none;
+    }
+    @keyframes shimmerSweep {
+        0% { left: -50%; }
+        100% { left: 150%; }
+    }
+
+    /* --- Back-to-Top Button --- */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1E8CB8 0%, #27BCED 100%);
+      color: #fff;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(30, 140, 184, 0.4);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top:hover {
+      box-shadow: 0 8px 30px rgba(30, 140, 184, 0.6);
+    }
+
+    /* --- Animated Header Gradient --- */
+    @keyframes headerGlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .header {
+      background: linear-gradient(135deg, #1E8CB8 0%, #27BCED 33%, #1E8CB8 66%, #27BCED 100%);
+      background-size: 300% 300%;
+      animation: headerGlow 8s ease-in-out infinite;
+    }
+
+    /* --- Protocol Table Row Hover Enhancement --- */
+    .protocol-table tbody tr {
+      transition: background 0.2s ease;
+    }
+    .protocol-table tbody tr:hover {
+      background: #eef6fb;
+    }
+
+    /* --- Colour Legend Box Hover --- */
+    .color-box {
+      transition: box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .color-box:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* AGBÁRA SYSTEM STYLES                                           */
+    /* ═══════════════════════════════════════════════════════════════ */
+    .agbara-section {
+      background: #1E8CB8;
+      border-radius: 15px;
+      padding: 25px;
+      margin: 25px 0;
+    }
+    .agbara-section h2 {
+      color: #fff;
+      font-size: 1.3rem;
+      text-align: center;
+      margin: 0 0 14px 0;
+    }
+    .agbara-section .agbara-subtitle {
+      color: #fff;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+    .agbara-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .agbara-table th {
+      background: linear-gradient(135deg, #1E8CB8 0%, #27BCED 100%);
+      color: #fff;
+      padding: 9px 10px;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-bottom: 2px solid #1E8CB8;
+    }
+    .agbara-table td {
+      padding: 8px 10px;
+      text-align: center;
+      border-bottom: 1px solid #e0e0e0;
+      background: #fff;
+      color: #444;
+      font-size: 0.82rem;
+      vertical-align: middle;
+    }
+    .agbara-table tr:nth-child(even) td {
+      background: #f8f9fa;
+    }
+    .agbara-table .name-col {
+      color: #fff !important;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+    .agbara-table .chain-col {
+      color: #444;
+      font-weight: 700;
+    }
+    .agbara-table .expressive-col {
+      color: #444;
+      font-weight: 600;
+      font-size: 0.78rem;
+      word-break: break-all;
+    }
+    .agbara-table .agbara-form {
+      color: #444;
+      font-weight: 700;
+    }
+    .agbara-table .power-col {
+      color: #444;
+      font-weight: 700;
+    }
+    .agbara-badge {
+      display: inline-block;
+      position: relative;
+      background: #fff;
+      color: #444;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 16px 28px;
+      border-radius: 5px;
+      margin-left: auto;
+      vertical-align: middle;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .agbara-badge::before,
+    .agbara-badge::after {
+      content: '';
+      position: absolute;
+      top: 1%;
+      height: 98%;
+      width: 3px;
+      border-radius: 2px;
+      background: var(--rc, #808080);
+    }
+    .agbara-badge::before { left: 3px; }
+    .agbara-badge::after  { right: 3px; }
+
+    /* Print Styles */
+    @media print {
+      body { background: #fff; padding: 10px; }
+      .container { box-shadow: none; border-radius: 0; }
+      .section-title { break-after: avoid; }
+      .scroll-progress, .back-to-top { display: none !important; }
+      .section-title,
+      .num-card,
+      .color-box,
+      .rule-box,
+      .intro-section,
+      .protocol-section,
+      .analysis-section,
+      .rules-section,
+      .database-start {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  
+    /* ─── Rich Large Number Cards ────────────────────────────────── */
+    .rich-card { text-align: left !important; padding: 14px 16px; }
+    .rich-card .card-value {
+      text-align: center; font-size: 1.1rem; font-weight: 700;
+      color: #4682B4; margin-bottom: 3px; word-break: break-all;
+    }
+    .rich-card .word { text-align: center; }
+    .rich-card .card-english {
+      text-align: center; font-size: 0.65rem; color: #888;
+      font-weight: 600; margin-bottom: 4px;
+    }
+    .rich-card .card-hr { border: none; border-top: 1px solid #b8d4f0; margin: 7px 0; }
+    .rich-card .card-zeros {
+      font-size: 0.67rem; color: #4682B4; margin: 2px 0;
+      font-weight: 600;
+    }
+    .rich-card .card-concept {
+      font-size: 0.67rem; color: #1E8CB8; margin: 2px 0;
+      font-weight: 600;
+    }
+    .rich-card .card-desc {
+      font-size: 0.67rem; color: #444; line-height: 1.5; margin-top: 3px;
+    }
+    .cat-badge {
+      display: inline-block; font-size: 0.58rem; padding: 2px 9px;
+      border-radius: 10px; font-weight: 700; color: #fff; margin: 4px 0;
+    }
+    .card-grid-2-rich {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 700px) {
+      .card-grid-2-rich { grid-template-columns: 1fr; }
+    }
+
+    /* ── Poster-00 tables: large-number colour theme ── */
+    .p00-tables table,
+    .p00-text-sections table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        margin: 0 0 18px 0 !important;
+        table-layout: auto;
+    }
+    /* First column: wide enough for names, but content-driven */
+    .p00-tables table tr td:first-child,
+    .p00-text-sections table tr td:first-child {
+        min-width: 160px;
+        white-space: normal;
+    }
+    .p00-tables table th,
+    .p00-tables table td,
+    .p00-text-sections table th,
+    .p00-text-sections table td {
+        padding: 6px 10px !important;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        border: 1px solid #4682B4 !important;
+        vertical-align: top;
+    }
+
+    /* ── Header row: Steel Blue background, white text ── */
+    .p00-tables table thead td,
+    .p00-tables table thead th,
+    .p00-text-sections table thead td,
+    .p00-text-sections table thead th {
+        background: #4682B4 !important;
+        color: #fff !important;
+        font-weight: bold !important;
+        font-family: 'Poppins', 'Segoe UI', sans-serif !important;
+    }
+    /* spans inside header cells (Word export wraps text in span) */
+    .p00-tables table thead td span,
+    .p00-tables table thead th span,
+    .p00-text-sections table thead td span,
+    .p00-text-sections table thead th span {
+        color: #fff !important;
+        background: transparent !important;
+        font-family: 'Poppins', 'Segoe UI', sans-serif !important;
+    }
+
+    /* ── First column (all data rows including first): Steel Blue, white text ── */
+    .p00-tables table tbody td:first-child,
+    .p00-text-sections table tbody td:first-child {
+        background: #4682B4 !important;
+        color: #fff !important;
+        font-weight: 600 !important;
+        font-family: 'Poppins', 'Segoe UI', sans-serif !important;
+    }
+    /* spans inside first-column cells */
+    .p00-tables table tbody td:first-child span,
+    .p00-text-sections table tbody td:first-child span {
+        color: #fff !important;
+        background: transparent !important;
+        font-family: 'Poppins', 'Segoe UI', sans-serif !important;
+    }
+
+    /* ── Alternating row shading (data rows, non-first-column) ── */
+    .p00-tables table tr:nth-child(odd):not(:first-child) td:not(:first-child),
+    .p00-text-sections table tr:nth-child(odd):not(:first-child) td:not(:first-child) {
+        background: #e8f2fd !important;
+        color: #002244 !important;
+    }
+    .p00-tables table tr:nth-child(even) td:not(:first-child),
+    .p00-text-sections table tr:nth-child(even) td:not(:first-child) {
+        background: #d4e8fa !important;
+        color: #002244 !important;
+    }
+    /* spans inside alternating data cells */
+    .p00-tables table tr:not(:first-child) td:not(:first-child) span,
+    .p00-text-sections table tr:not(:first-child) td:not(:first-child) span {
+        color: #002244 !important;
+        background: transparent !important;
+        font-family: 'Poppins', 'Segoe UI', sans-serif !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* ── h2 headings ── */
+    .p00-tables h2,
+    .p00-text-sections h2 {
+        color: #4682B4 !important;
+        font-family: 'Poppins', 'Segoe UI', sans-serif !important;
+        margin-top: 28px !important;
+        margin-bottom: 8px !important;
+        font-size: 1.15rem !important;
+    }
+    .p00-tables h2 span,
+    .p00-text-sections h2 span {
+        color: #4682B4 !important;
+        font-family: 'Poppins', 'Segoe UI', sans-serif !important;
+    }
+
+    /* ── Paragraphs ── */
+    .p00-tables p,
+    .p00-text-sections p {
+        font-family: 'Poppins', 'Segoe UI', sans-serif !important;
+        font-size: 0.92rem !important;
+        color: #222 !important;
+        line-height: 1.6 !important;
+        margin-bottom: 6px !important;
+    }
+    .p00-tables p span,
+    .p00-text-sections p span {
+        font-family: 'Poppins', 'Segoe UI', sans-serif !important;
+        font-size: 0.92rem !important;
+        color: #222 !important;
+    }
+    /* Extended Scale: tighten the Yorùbá Name first column */
+    .extended-scale-tbl td:first-child,
+    .extended-scale-tbl th:first-child {
+        width: 130px !important;
+        max-width: 130px !important;
+        min-width: 0 !important;
+    }
+
+    /* ── Research Release Banner (Royal Gold) ── */
+    .research-release {
+      max-width: 100%;
+      margin: 0 auto;
+      border-radius: 0;
+      overflow: hidden;
+      background: linear-gradient(160deg, #0a1a33 0%, #0b1e3a 100%);
+      border-top: 2px solid rgba(255,215,0,0.25);
+      border-bottom: 2px solid rgba(255,215,0,0.25);
+      box-shadow:
+        0 0 40px rgba(255,215,0,0.05),
+        0 20px 60px rgba(0,0,0,0.4);
+    }
+    .research-release .rr-header {
+      background: linear-gradient(135deg, #0a1a33 0%, #0b1e3a 40%, #0d2240 100%);
+      padding: 50px 60px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-radius: 0;
+    }
+    .research-release .rr-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, #FFD700, #FFA500);
+      color: #1a1a2e;
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 6px 22px;
+      border-radius: 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(255,215,0,0.3);
+    }
+    .research-release .rr-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFD700 0%, #FFF8DC 40%, #FFD700 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .research-release .rr-subtitle {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+    }
+    .research-release .rr-body {
+      padding: 24px 60px 45px;
+    }
+    .research-release .rr-body p {
+      font-size: 0.92rem;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 18px;
+    }
+    .research-release .rr-body strong {
+      color: #FFD700;
+      font-weight: 700;
+    }
+    .research-release .rr-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
+      margin: 30px 0;
+    }
+    .research-release .rr-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 30px;
+      margin: 20px 0 30px;
+      padding-left: 5px;
+    }
+    .research-release .rr-list-item {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.82);
+      padding: 8px 0 8px 22px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .research-release .rr-list-item::before {
+      content: '\25C6';
+      position: absolute;
+      left: 0;
+      color: #FFD700;
+      font-size: 0.55rem;
+      top: 12px;
+    }
+    .research-release .rr-section-head {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #FFD700;
+      margin-bottom: 14px;
+      letter-spacing: 0.03em;
+    }
+    .research-release .rr-citation {
+      background: rgba(255,215,0,0.06);
+      border-left: 3px solid #FFD700;
+      padding: 18px 24px;
+      border-radius: 0 12px 12px 0;
+      margin-top: 10px;
+    }
+    .research-release .rr-citation p {
+      margin-bottom: 4px;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.8);
+    }
+    .research-release .rr-citation strong {
+      color: #FFD700;
+    }
+    @media (max-width: 700px) {
+      .research-release .rr-header,
+      .research-release .rr-body { padding-left: 28px; padding-right: 28px; }
+      .research-release .rr-title { font-size: 1.3rem; }
+      .research-release .rr-list { grid-template-columns: 1fr; }
+    }
+
+    
+    /* Page-specific styles */
+    .header-section { background: linear-gradient(135deg, #1E8CB8 0%, #27BCED 100%); padding: 30px 28px; color: #fff; }
+    .intro-text { background: #fff; color: #1a1a2e; padding: 22px 28px; font-size: 1.05rem; line-height: 1.75; }
+</style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+        <div class="menu-bar">
+        <a href="01 Godreign.html">Godreign</a>
+        <a href="02 Ònka Yorùbá Sanctuary.html">Ònka Yorùbá</a>
+        <a href="03 Numerical Index Framework.html">Numerical Index Framework</a>
+        <a href="04 Multiplicative Scaling Framework.html">l Multiplier</a>
+        <a href="05 Agbára Computational & Equation Database.html">Agbára Database</a>
+        <a href="06 Applied Numerical Systems & Modelling.html">Applied Systems</a>
+        <a href="07 Yorùbá Number Generator.html">Number Generator</a>
+        <a href="08 Yorùbá Numerical Calculator.html">Calculator</a>
+        <a href="09 Yorùbá Number Conversion Tool.html">Number Converter</a>
+        <a href="10 Yorùbá Age Calculator.html">Age Calculator</a>
+        <a href="11 Yorùbá Kàlẹ́ndà.html">Kàlẹ́ndà</a>
+        <a href="12 Yorùbá Talking Drum Simulator.html">Talking Drum</a>
+        <a href="13 16-String Acoustic Guitar Explorer.html">Acoustic Guitar</a>
+        <a href="14 About Us.html">About Us</a>
+    </div>
+
+  <div class="container">
+    <div class="header">
+      <h1>AGBÁRA COMPUTATIONAL &amp; EQUATION DATABASE</h1>
+      <h2>The Exponential Power Engine of Ònka Yorùbá</h2>
+      <h2 style="margin-top: 15px; font-size: 1.2rem; color: #FFD700; font-weight: 700;">Open Scholarly Database</h2>
+      <p style="font-size: 0.95rem; color: #FFD700; margin-top: 8px; font-weight: 600;">A comprehensive reference of the modern Yoruba numerical index system</p>
+      <p style="font-size: 0.82rem; color: rgba(255,255,255,0.7); margin-top: 10px;">Published by the Ònka Yorùbá Sanctuary Research Initiative<br><strong style="color: rgba(255,215,0,0.85);">Version 1.0 · 2026 Public Release</strong></p>
+      <p style="font-size: 0.82rem; color: rgba(255,255,255,0.65); margin-top: 8px;">Designed for researchers, educators, software developers, and digital humanities scholars.</p>
+    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 10px; font-style: italic; text-align: justify; line-height: 1.7;">This publication presents a framework for documenting, standardizing, and computationally integrating indigenous numerical lexicons within contemporary scientific and linguistic research. The Yoruba Numerical Index Database represents the first step in a broader international effort to support linguistic equity and numerical representation for indigenous languages worldwide. This work contributes to the emerging field of open scholarly infrastructure for indigenous knowledge systems.</p>
+    </div>
+
+    <!-- 47-Colour Bar -->
+    <div class="colour-bar-animated">
+      <div style="background:#0891B2" title="Zero — Cerulean"></div>
+      <div style="background:#16A34A" title="Units — Vibrant Green"></div>
+      <div style="background:#2563EB" title="Tens — Royal Blue"></div>
+      <div style="background:#9333EA" title="Hundreds — Purple"></div>
+      <div style="background:#DC2626" title="Thousands — Red"></div>
+      <div style="background:#B59410" title="Tens of Thousands — Dark Goldenrod"></div>
+      <div style="background:#4EAAE4" title="Hundreds of Thousands — Sky Blue"></div>
+      <div style="background:#8B4513" title="Millions — Saddle Brown"></div>
+      <div style="background:#DAA520" title="Tens of Millions — Goldenrod"></div>
+      <div style="background:#EF6000" title="Hundreds of Millions — Dark Orange"></div>
+      <div style="background:#000080" title="Billions — Navy Blue"></div>
+      <div style="background:#FC5D8D" title="Tens of Billions — Hot Pink"></div>
+      <div style="background:#808000" title="Hundreds of Billions — Olive"></div>
+      <div style="background:#8B008B" title="Trillions — Dark Magenta"></div>
+      <div style="background:#6A5ACD" title="Tens of Trillions — Slate Blue"></div>
+      <div style="background:#FF6347" title="Hundreds of Trillions — Tomato"></div>
+      <div style="background:#1E90FF" title="Quadrillions — Dodger Blue"></div>
+      <div style="background:#F59E0B" title="Tens of Quadrillions — Amber"></div>
+      <div style="background:#8B0000" title="Hundreds of Quadrillions — Dark Red"></div>
+      <div style="background:#047857" title="Quintillions — Emerald"></div>
+      <div style="background:#A855F7" title="Tens of Quintillions — Bright Violet"></div>
+      <div style="background:#D2691E" title="Hundreds of Quintillions — Chocolate"></div>
+      <div style="background:#6C0AC9" title="Sextillions — Electric Violet"></div>
+      <div style="background:#B91C1C" title="Tens of Sextillions — Crimson"></div>
+      <div style="background:#65A30D" title="Hundreds of Sextillions — Lime Green"></div>
+      <div style="background:#4B0082" title="Septillions — Indigo"></div>
+      <div style="background:#FA8072" title="Tens of Septillions — Salmon"></div>
+      <div style="background:#008B8B" title="Hundreds of Septillions — Dark Teal"></div>
+      <div style="background:#B8860B" title="Octillions — Dark Goldenrod"></div>
+      <div style="background:#7B2D8E" title="Tens of Octillions — Deep Violet"></div>
+      <div style="background:#20B2AA" title="Hundreds of Octillions — Light Sea Green"></div>
+      <div style="background:#B22222" title="Nonillions — Firebrick"></div>
+      <div style="background:#9370DB" title="Tens of Nonillions — Medium Purple"></div>
+      <div style="background:#A0522D" title="Hundreds of Nonillions — Sienna"></div>
+      <div style="background:#191970" title="Decillions — Midnight Blue"></div>
+      <div style="background:#E11D48" title="Tens of Decillions — Rose"></div>
+      <div style="background:#5F9EA0" title="Hundreds of Decillions — Cadet Blue"></div>
+      <div style="background:#CD7F32" title="Undecillions — Bronze"></div>
+      <div style="background:#9932CC" title="Tens of Undecillions — Dark Orchid"></div>
+      <div style="background:#228B22" title="Hundreds of Undecillions — Forest Green"></div>
+      <div style="background:#483D8B" title="Duodecillions — Dark Slate Blue"></div>
+      <div style="background:#800000" title="Tens of Duodecillions — Maroon"></div>
+      <div style="background:#CD853F" title="Hundreds of Duodecillions — Peru"></div>
+      <div style="background:#94AA00" title="Tredecillions — Dark Olive"></div>
+      <div style="background:#C71585" title="Tens of Tredecillions — Medium Violet Red"></div>
+      <div style="background:#2E8B57" title="Hundreds of Tredecillions — Sea Green"></div>
+      <div style="background:#4682B4" title="Large Numbers — Steel Blue"></div>
+      <div style="background:#FF13F0" title="&quot;l&quot; Multiplier — Neon Pink"></div>
+      <div style="background:#808080" title="Unassigned — Gray"></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+
+    <div class="content">
+
+      <div class="p00-tables">
+        <h2 style="text-align:center; margin-bottom:20px;">The Unified Agbára System & Quantum Engine Equation Database</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="padding:10px 8px;">Name</th>
+              <th style="padding:10px 8px;">Power Formula</th>
+              <th style="padding:10px 8px;">Value Example</th>
+              <th style="padding:10px 8px;">Agbára Values (Yorùbá Numeric)</th>
+              <th style="padding:10px 8px;">Agbára Values (Qualitative)</th>
+              <th style="padding:10px 8px;">Advantages</th>
+              <th style="padding:10px 8px;">Implementation</th>
+              <th style="padding:10px 8px;">Adaptation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Foundational Equations -->
+            <tr>
+              <td>Pythagoras's Theorem</td>
+              <td>a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></td>
+              <td>3<sup>2</sup> + 4<sup>2</sup> = 5<sup>2</sup></td>
+              <td>Ẹ́ta<sup>Éjì</sup> + Ẹ́rin<sup>Éjì</sup> = Árǔn<sup>Éjì</sup></td>
+              <td>Geometric</td>
+              <td>Foundation of geometry, navigation</td>
+              <td>Mathematics, Engineering</td>
+              <td>GPS, Surveying</td>
+            </tr>
+            <tr>
+              <td>Logarithms</td>
+              <td>log<sub>a</sub>(xy) = log<sub>a</sub>x + log<sub>a</sub>y</td>
+              <td>log<sub>10</sub>(100) = 2</td>
+              <td>log<sub>Ẹ́wǎ</sub>(Ọgọ́rǔn) = Éjì</td>
+              <td>Transformative</td>
+              <td>Simplifies multiplication/division</td>
+              <td>Mathematics, Science</td>
+              <td>pH, Decibels, Earthquakes</td>
+            </tr>
+            <tr>
+              <td>Square Root of Minus One</td>
+              <td>i = √-1</td>
+              <td>i<sup>2</sup> = -1</td>
+              <td>i<sup>Éjì</sup> = -Ení</td>
+              <td>Complex</td>
+              <td>Enables complex numbers</td>
+              <td>Engineering, Physics</td>
+              <td>Signal processing, Quantum mechanics</td>
+            </tr>
+            <tr>
+              <td>Fundamental Theorem of Algebra</td>
+              <td>Every non-constant polynomial has at least one complex root</td>
+              <td>x<sup>2</sup> + 1 = 0 ⇒ x = ±i</td>
+              <td>x<sup>Éjì</sup> + Ení = Ódo ⇒ x = ±i</td>
+              <td>Universal</td>
+              <td>Guarantees solutions to polynomials</td>
+              <td>Mathematics</td>
+              <td>Algebra, Analysis</td>
+            </tr>
+            <tr>
+              <td>Euler's Polyhedra Formula</td>
+              <td>V - E + F = 2</td>
+              <td>Cube: 8 - 12 + 6 = 2</td>
+              <td>Cube: Ẹ́jọ - Ẹ́wǎÉjì + Ẹ́fà = Éjì</td>
+              <td>Topological</td>
+              <td>Foundation of topology</td>
+              <td>Mathematics, Computer Science</td>
+              <td>Networks, DNA structure</td>
+            </tr>
+            <tr>
+              <td>Normal Distribution</td>
+              <td>f(x) = <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">1</span><span style="display:block;">√(2πσ<sup>2</sup>)</span></span> e<sup>-<span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">(x-μ)<sup>2</sup></span><span style="display:block;">2σ<sup>2</sup></span></span></sup></td>
+              <td>μ = 0, σ = 1</td>
+              <td>μ = Ódo, σ = Ení</td>
+              <td>Statistical</td>
+              <td>Describes data clustering</td>
+              <td>Statistics, Science</td>
+              <td>Clinical trials, Social science</td>
+            </tr>
+            <tr>
+              <td>Law of Large Numbers</td>
+              <td>lim<sub>n→∞</sub> <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">S<sub>n</sub></span><span style="display:block;">n</span></span> = μ</td>
+              <td>Average of coin tosses approaches 0.5</td>
+              <td>Average of coin tosses approaches Ódo.Árǔn</td>
+              <td>Probabilistic</td>
+              <td>Foundation of statistics</td>
+              <td>Mathematics, Economics</td>
+              <td>Insurance, Gambling</td>
+            </tr>
+            <tr>
+              <td>Bayes' Theorem</td>
+              <td>P(A|B) = <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">P(B|A)P(A)</span><span style="display:block;">P(B)</span></span></td>
+              <td>P(Disease|Test+) = ...</td>
+              <td>P(Disease|Test+) = ...</td>
+              <td>Inferential</td>
+              <td>Updates probabilities with evidence</td>
+              <td>Statistics, AI</td>
+              <td>Machine learning, Medicine</td>
+            </tr>
+            <tr>
+              <td>Calculus (Derivative)</td>
+              <td><span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">dy</span><span style="display:block;">dx</span></span> = lim<sub>h→0</sub> <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">f(x+h) - f(x)</span><span style="display:block;">h</span></span></td>
+              <td><span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">d</span><span style="display:block;">dx</span></span> x<sup>2</sup> = 2x</td>
+              <td><span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">d</span><span style="display:block;">dx</span></span> x<sup>Éjì</sup> = Éjìx</td>
+              <td>Analytical</td>
+              <td>Measures change</td>
+              <td>Science, Engineering</td>
+              <td>Physics, Economics</td>
+            </tr>
+            <tr>
+              <td>Wave Equation</td>
+              <td><span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">∂<sup>2</sup>u</span><span style="display:block;">∂t<sup>2</sup></span></span> = c<sup>2</sup><span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">∂<sup>2</sup>u</span><span style="display:block;">∂x<sup>2</sup></span></span></td>
+              <td>Describes sound, light, seismic waves</td>
+              <td>Describes sound, light, seismic waves</td>
+              <td>Dynamic</td>
+              <td>Describes wave motion</td>
+              <td>Physics, Engineering</td>
+              <td>Acoustics, Seismology</td>
+            </tr>
+            <tr>
+              <td>Fourier Transform</td>
+              <td>F(ω) = ∫<sub>-∞</sub><sup>∞</sup> f(t)e<sup>-iωt</sup>dt</td>
+              <td>Decomposes signals into frequencies</td>
+              <td>Decomposes signals into frequencies</td>
+              <td>Analytical</td>
+              <td>Signal decomposition</td>
+              <td>Engineering, Data Science</td>
+              <td>JPEG, MRI, Audio</td>
+            </tr>
+            <tr>
+              <td>Cauchy-Riemann Equations</td>
+              <td><div><span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">∂u</span><span style="display:block;">∂x</span></span> = <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">∂v</span><span style="display:block;">∂y</span></span></div><div><span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">∂u</span><span style="display:block;">∂y</span></span> = -<span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">∂v</span><span style="display:block;">∂x</span></span></div></td>
+              <td>u(x, y) + iv(x, y) analytic if C-R hold</td>
+              <td>u(x, y) + iv(x, y) analytic if C-R hold</td>
+              <td>Complex</td>
+              <td>Foundation of complex analysis</td>
+              <td>Mathematics, Physics</td>
+              <td>Fluid flow, Electromagnetism</td>
+            </tr>
+            <tr>
+              <td>Navier-Stokes Equations</td>
+              <td>ρ(<span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">∂u</span><span style="display:block;">∂t</span></span> + u·∇u) = -∇p + μ∇<sup>2</sup>u + f</td>
+              <td>Describes fluid flow</td>
+              <td>Describes fluid flow</td>
+              <td>Fluid</td>
+              <td>Models fluids</td>
+              <td>Engineering, Meteorology</td>
+              <td>Weather, Aerodynamics</td>
+            </tr>
+            <tr>
+              <td>Maxwell's Equations</td>
+              <td>
+                <div>∇·E = <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">ρ</span><span style="display:block;">ε₀</span></span></div>
+                <div>∇·B = 0</div>
+                <div>∇×E = -<span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">∂B</span><span style="display:block;">∂t</span></span></div>
+                <div>∇×B = μ₀J + μ₀ε₀<span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">∂E</span><span style="display:block;">∂t</span></span></div>
+              </td>
+              <td>Describes electromagnetism</td>
+              <td>Describes electromagnetism</td>
+              <td>Electromagnetic</td>
+              <td>Unifies electricity & magnetism</td>
+              <td>Physics, Engineering</td>
+              <td>Radio, Wi-Fi, Radar</td>
+            </tr>
+            <tr>
+              <td>Heat Equation</td>
+              <td><span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">∂u</span><span style="display:block;">∂t</span></span> = α∇<sup>2</sup>u</td>
+              <td>Describes heat diffusion</td>
+              <td>Describes heat diffusion</td>
+              <td>Thermal</td>
+              <td>Models heat flow</td>
+              <td>Physics, Engineering</td>
+              <td>Thermodynamics, Materials</td>
+            </tr>
+            <tr>
+              <td>Second Law of Thermodynamics</td>
+              <td>ΔS ≥ 0</td>
+              <td>Entropy increases in closed systems</td>
+              <td>Entropy increases in closed systems</td>
+              <td>Irreversible</td>
+              <td>Defines arrow of time</td>
+              <td>Physics, Chemistry</td>
+              <td>Engines, Heat transfer</td>
+            </tr>
+            <tr>
+              <td>Relativity (E=mc²)</td>
+              <td>E = mc<sup>2</sup></td>
+              <td>1g = 9×10<sup>13</sup> J</td>
+              <td>Eníg = Ẹ́sǎn×Ẹ́wǎ<sup>Ẹ́wǎẸ́ta</sup> J</td>
+              <td>Relativistic</td>
+              <td>Links mass and energy</td>
+              <td>Physics, Astronomy</td>
+              <td>Nuclear energy, GPS</td>
+            </tr>
+            <tr>
+              <td>General Theory of Relativity</td>
+              <td>G<sub>μν</sub> + Λg<sub>μν</sub> = <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">8πG</span><span style="display:block;">c<sup>4</sup></span></span>T<sub>μν</sub></td>
+              <td>Describes gravity as spacetime curvature</td>
+              <td>Describes gravity as spacetime curvature</td>
+              <td>Gravitational</td>
+              <td>Explains gravity</td>
+              <td>Physics, Astronomy</td>
+              <td>Black holes, Cosmology</td>
+            </tr>
+            <tr>
+              <td>Schrödinger's Equation</td>
+              <td>iħ<span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">∂Ψ</span><span style="display:block;">∂t</span></span> = ĤΨ</td>
+              <td>Quantum state evolution</td>
+              <td>Quantum state evolution</td>
+              <td>Quantum</td>
+              <td>Describes quantum systems</td>
+              <td>Physics, Chemistry</td>
+              <td>Semiconductors, Lasers</td>
+            </tr>
+            <tr>
+              <td>Dirac Equation</td>
+              <td>(iγ<sup>μ</sup>∂<sub>μ</sub> - m)ψ = 0</td>
+              <td>Electron spin, antimatter</td>
+              <td>Electron spin, antimatter</td>
+              <td>Relativistic Quantum</td>
+              <td>Predicts antimatter</td>
+              <td>Physics</td>
+              <td>Quantum field theory</td>
+            </tr>
+            <tr>
+              <td>Information Theory (Shannon)</td>
+              <td>H = -Σp(x)log p(x)</td>
+              <td>H = 1 bit for fair coin</td>
+              <td>H = Ení bit for fair coin</td>
+              <td>Informational</td>
+              <td>Limits of data compression</td>
+              <td>Computer Science, Communications</td>
+              <td>Internet, Coding theory</td>
+            </tr>
+            <tr>
+              <td>Chaos Theory (Logistic Map)</td>
+              <td>x<sub>n+1</sub> = rx<sub>n</sub>(1 - x<sub>n</sub>)</td>
+              <td>r = 3.7, x<sub>0</sub> = 0.5</td>
+              <td>r = Ẹ́ta.Éje, x<sub>Ódo</sub> = Ódo.Árǔn</td>
+              <td>Nonlinear</td>
+              <td>Explains unpredictability</td>
+              <td>Mathematics, Ecology</td>
+              <td>Weather, Population</td>
+            </tr>
+            <tr>
+              <td>Black-Scholes Equation</td>
+              <td>
+                <div><span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">∂V</span><span style="display:block;">∂t</span></span> + <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">1</span><span style="display:block;">2</span></span>σ<sup>2</sup>S<sup>2</sup><span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">∂<sup>2</sup>V</span><span style="display:block;">∂S<sup>2</sup></span></span> + rS<span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">∂V</span><span style="display:block;">∂S</span></span> - rV = 0</div>
+              </td>
+              <td>Option pricing</td>
+              <td>Option pricing</td>
+              <td>Financial</td>
+              <td>Models derivatives</td>
+              <td>Finance, Economics</td>
+              <td>Stock markets</td>
+            </tr>
+            <tr>
+              <td>Turing Machine</td>
+              <td>Abstract computational model</td>
+              <td>Reads/writes symbols on tape</td>
+              <td>Reads/writes symbols on tape</td>
+              <td>Computational</td>
+              <td>Foundation of computer science</td>
+              <td>Mathematics, CS</td>
+              <td>Algorithms, Computability</td>
+            </tr>
+            <tr>
+              <td>Newton's 2nd Law</td>
+              <td>F = ma</td>
+              <td>1,000kg car × 5m<span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">m</span><span style="display:block;">s²</span></span> = 5,000 N</td>
+              <td>Ẹgbẹ̀rǔn kg car × Árǔn m<span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">m</span><span style="display:block;">s<sup>léjì</sup></span></span> = Ẹgbẹ̀rǔnlárǔn N</td>
+              <td>Direct / Kinetic</td>
+              <td>Predictable physics</td>
+              <td>Safety, Robotics</td>
+              <td>Navier-Stokes fluids</td>
+            </tr>
+            <tr>
+              <td>Gravitation</td>
+              <td>F = <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">G(m₁m₂)</span><span style="display:block;">r²</span></span></td>
+              <td>Earth & 70kg person = 686 N</td>
+              <td>Earth & Àádọ́rin kg person = Ọgọ́rǔnlẹ́fàỌgọ́rinẸ́fà N</td>
+              <td>Universal / Pulling</td>
+              <td>Explains orbits</td>
+              <td>Satellites, GPS</td>
+              <td>Relativity (γ<sub>μν</sub>)</td>
+            </tr>
+            <tr>
+              <td>Earth Mass</td>
+              <td>M<sub>⊕</sub> = 5.97 ×10<sup>24</sup></td>
+              <td>5.97×10<sup>24</sup> kg</td>
+              <td>Árǔn.Ẹ́sǎnÉje × (Ẹ́wǎ)<sup>lógúnẹ́rin</sup> kg</td>
+              <td>Colossal</td>
+              <td>Universal mass unit</td>
+              <td>Astronomy, Orbits</td>
+              <td>M-theory</td>
+            </tr>
+            <tr>
+              <td>Speed of Light</td>
+              <td>c = 299,792,458</td>
+              <td>c ≈ 3 ×10<sup>8</sup> <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">m</span><span style="display:block;">s</span></span></td>
+              <td>c ≈ Ẹ́ta × (Ẹ́wǎ)<sup>lẹ́jọ</sup> <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">m</span><span style="display:block;">s</span></span></td>
+              <td>Absolute</td>
+              <td>Universal limit</td>
+              <td>Fiber optics, GPS</td>
+              <td>Lorentz factor γ = 1/√(1 - (v²/c²))</td>
+            </tr>
+            <tr>
+              <td>Age of Universe</td>
+              <td>t₀ ≈ 13.8×10<sup>9</sup></td>
+              <td>13.8×10<sup>9</sup> years</td>
+              <td>Ẹ́wǎẸ́ta.Ẹ́jọ × (Ẹ́wǎ)<sup>lẹ́sǎn</sup> years</td>
+              <td>Chronological</td>
+              <td>Defines universal timeline</td>
+              <td>Cosmology, Dating</td>
+              <td>Hubble Constant (H₀)</td>
+            </tr>
+            <tr>
+              <td>Avogadro's No.</td>
+              <td>N<sub>A</sub> = 6.022×10<sup>23</sup></td>
+              <td>6.022×10<sup>23</sup> {mol}<sup>-1</sup></td>
+              <td>Ẹ́fà.ÓdoÉjìÉjì × (Ẹ́wǎ)<sup>lógúnẸ́ta</sup> {mol}<sup>-Ení</sup></td>
+              <td>Molecular</td>
+              <td>Bridges atoms to matter</td>
+              <td>Chemistry, Medicine</td>
+              <td>Boltzmann (k<sub>B</sub>)</td>
+            </tr>
+            <tr>
+              <td>Fine-Structure</td>
+              <td>α ≈ <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">1</span><span style="display:block;">137</span></span></td>
+              <td>α ≈ 0.007297</td>
+              <td>α ≈ Ódo.ÓdoÓdoÉjeÉjìẸ́sǎnÉje</td>
+              <td>Dimensionless</td>
+              <td>Strength of EM force</td>
+              <td>Quantum physics</td>
+              <td>Coupling (g)</td>
+            </tr>
+            <tr>
+              <td>Boltzmann Const.</td>
+              <td>k<sub>B</sub> = 1.381×10<sup>-23</sup></td>
+              <td>1.381×10<sup>-23</sup> <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">J</span><span style="display:block;">K</span></span></td>
+              <td>Ení.Ẹ́taẸ́jọEní × (Ẹ́wǎ)<sup>-lógúnẸ́ta</sup> <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">J</span><span style="display:block;">K</span></span></td>
+              <td>Thermal</td>
+              <td>Links heat to energy</td>
+              <td>Thermometers</td>
+              <td>Stefan σ</td>
+            </tr>
+            <tr>
+              <td>Planck Constant</td>
+              <td>h = 6.626×10<sup>-34</sup></td>
+              <td>6.626×10<sup>-34</sup> J·s</td>
+              <td>Ẹ́fà.Ẹ́fàÉjìẸ́fà × (Ẹ́wǎ)<sup>-lọ́gbọ̀nẸ́rin</sup> J·s</td>
+              <td>Quantized</td>
+              <td>Smallest unit of action</td>
+              <td>LEDs, Quantum computing</td>
+              <td>Reduced (ℏ)</td>
+            </tr>
+            <tr>
+              <td>Atomic Count</td>
+              <td>N ≈ 10<sup>80</sup></td>
+              <td>10<sup>80</sup> Units</td>
+              <td>(Ẹ́wǎ)<sup>lọ́gọ́rin</sup> Units</td>
+              <td>Absolute Limit</td>
+              <td>Ultimate scale</td>
+              <td>Particle physics</td>
+              <td>Entropy S = k ln Ω</td>
+            </tr>
+            <tr>
+              <td>Schrödinger Equation</td>
+              <td><span style="white-space:nowrap;">iħ <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">∂Ψ</span><span style="display:block;">∂t</span></span> = ĤΨ</span></td>
+              <td>Describes the evolution of quantum states</td>
+              <td>Describes the evolution of quantum states</td>
+              <td>Fundamental</td>
+              <td>Predicts quantum behavior</td>
+              <td>Quantum mechanics, Chemistry</td>
+              <td>Quantum computing, Spectroscopy</td>
+            </tr>
+            <tr>
+              <td>Heisenberg Uncertainty Principle</td>
+              <td><span style="white-space:nowrap;">Δx Δp ≥ <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">ħ</span><span style="display:block;">2</span></span></span></td>
+              <td>Δx = 1 nm, Δp ≥ 5.27 × 10<sup>-25</sup> kg·<span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">m</span><span style="display:block;">s</span></span></td>
+              <td>Δx = Ení nm, Δp ≥ Árǔn.ÉjìÉje × (Ẹ́wǎ)<sup>-lógúnárǔn</sup> kg·<span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">m</span><span style="display:block;">s</span></span></td>
+              <td>Limiting</td>
+              <td>Sets quantum limits</td>
+              <td>Quantum optics, Measurement</td>
+              <td>Electron microscopy</td>
+            </tr>
+            <tr>
+              <td>Dirac Equation</td>
+              <td><span style="white-space:nowrap;">(iγ<sup>μ</sup>∂<sub>μ</sub> - m)ψ = 0</span></td>
+              <td>Describes electron spin and antimatter</td>
+              <td>Describes electron spin and antimatter</td>
+              <td>Relativistic</td>
+              <td>Predicts antimatter</td>
+              <td>Particle physics</td>
+              <td>Quantum field theory</td>
+            </tr>
+            <tr>
+              <td>Planck-Einstein Relation</td>
+              <td>E = hν</td>
+              <td>E = 6.626 × 10<sup>-34</sup> × 5 × 10<sup>14</sup> = 3.31 × 10<sup>-19</sup> J</td>
+              <td>E = Ẹ́fà.Ẹ́fàÉjìẸ́fà × (Ẹ́wǎ)<sup>-lọgbọ̀nẹ́rin</sup> × Árǔn × (Ẹ́wǎ)<sup>léwǎẹ́rin</sup> = Ẹ́ta.Ẹ́taEní × (Ẹ́wǎ)<sup>-léwǎẹ́sǎn</sup> J</td>
+              <td>Quantized</td>
+              <td>Links energy and frequency</td>
+              <td>Photonics, Lasers</td>
+              <td>Solar cells</td>
+            </tr>
+            <tr>
+              <td>Pauli Exclusion Principle</td>
+              <td>No two fermions can occupy the same quantum state</td>
+              <td>Electron configuration in atoms</td>
+              <td>Electron configuration in atoms</td>
+              <td>Restrictive</td>
+              <td>Explains atomic structure</td>
+              <td>Chemistry, Solid-state physics</td>
+              <td>Semiconductor design</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════════════ -->
+      <!-- QUANTUM ENGINE TABLE — Yorùbá Conceptual Framework            -->
+      <!-- ═══════════════════════════════════════════════════════════════ -->
+
+      <div class="p00-tables">
+        <h2 style="text-align:center; margin-bottom:20px;">Quantum Engine — Agbára Mímì-Ayé (Vibration/Frequency) Framework</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="padding:10px 8px;">Name</th>
+              <th style="padding:10px 8px;">Power Formula</th>
+              <th style="padding:10px 8px;">Agbára Values (Yorùbá Numeric)</th>
+              <th style="padding:10px 8px;">Mímì-Ayé (Vibration/Frequency)</th>
+              <th style="padding:10px 8px;">Advantages</th>
+              <th style="padding:10px 8px;">Implementation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ẹwà Pípé (Euler's Identity)</td>
+              <td>e<sup>iπ</sup> + 1 = 0</td>
+              <td>e<sup>iπ</sup> + Ení = Ódo</td>
+              <td>Ìṣọ̀kan (Unity)</td>
+              <td>Connects all math constants</td>
+              <td>The "God Equation" of symmetry</td>
+            </tr>
+            <tr>
+              <td>Ìjẹ́mọ́-púpọ̀ (Qubit State)</td>
+              <td>|ψ⟩ = α|0⟩ + β|1⟩</td>
+              <td>|ψ⟩ = α|Ódo⟩ + β|Ení⟩</td>
+              <td>Ìsopọ̀-Ìpò (Superposition)</td>
+              <td>Simultaneous computation</td>
+              <td>α² + β² = Ení</td>
+            </tr>
+            <tr>
+              <td>Ìsopọ̀-Àìléèrí (Entanglement)</td>
+              <td>P(a,b) = -a · b</td>
+              <td>Ìsop-Ìyanu</td>
+              <td>Ìbáṣepọ̀ (Non-local)</td>
+              <td>Instant communication</td>
+              <td>Quantum Teleportation</td>
+            </tr>
+            <tr>
+              <td>Ìlànà Ìkéré-Ìṣe (Least Action)</td>
+              <td>δS = 0</td>
+              <td>Ìṣe-Kékeré = Ódo</td>
+              <td>Ìṣẹ́rọ̀ (Efficiency)</td>
+              <td>Path of least resistance</td>
+              <td>All Physics & Mechanics</td>
+            </tr>
+            <tr>
+              <td>Schrödinger's Equation</td>
+              <td>iħ <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">∂Ψ</span><span style="display:block;">∂t</span></span> = ĤΨ</td>
+              <td>Ìyípadà-Ìpò-Quantum</td>
+              <td>Ìgbì-Ayé (Wave)</td>
+              <td>Predicts quantum behavior</td>
+              <td>Semiconductors, Lasers</td>
+            </tr>
+            <tr>
+              <td>Relativity (E=mc²)</td>
+              <td>E = mc<sup>2</sup></td>
+              <td>Eníg = Ẹ́sǎn × (Ẹ́wǎ)<sup>Ẹ́wǎẸ́ta</sup> J</td>
+              <td>Ìyípadà (Transform)</td>
+              <td>Links mass and energy</td>
+              <td>Nuclear Energy, GPS</td>
+            </tr>
+            <tr>
+              <td>Pythagoras's Theorem</td>
+              <td>a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></td>
+              <td>3<sup>2</sup> + 4<sup>2</sup> = 5<sup>2</sup></td>
+              <td>Ìdúró (Static)</td>
+              <td>Geometric foundation</td>
+              <td>Navigation, Surveying</td>
+            </tr>
+            <tr>
+              <td>Maxwell's Equations</td>
+              <td>∇·E = <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">ρ</span><span style="display:block;">ε₀</span></span> …</td>
+              <td>Ìkan-Iná-Inú</td>
+              <td>Onígbi (EM Wave)</td>
+              <td>Unifies Light/Electricity</td>
+              <td>Radio, Wi-Fi, Radar</td>
+            </tr>
+            <tr>
+              <td>Heisenberg Uncertainty</td>
+              <td>Δx Δp ≥ <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">ħ</span><span style="display:block;">2</span></span></td>
+              <td>Δx Δp ≥ Ààbọ̀-ħ</td>
+              <td>Àìdánilójú (Blurred)</td>
+              <td>Sets physical limits</td>
+              <td>Nanotechnology</td>
+            </tr>
+            <tr>
+              <td>Dirac Equation</td>
+              <td>(iγ<sup>μ</sup>∂<sub>μ</sub> - m)ψ = 0</td>
+              <td>mí-idà-kejì</td>
+              <td>Ìyára (High-Freq)</td>
+              <td>Predicts Antimatter</td>
+              <td>Particle Physics</td>
+            </tr>
+            <tr>
+              <td>Fourier Transform</td>
+              <td>F(ω) = ∫f(t)e<sup>-iωt</sup>dt</td>
+              <td>Ìtúpal-Ohùn</td>
+              <td>Àtúnyẹ̀wò (Spectral)</td>
+              <td>Decomposes signals</td>
+              <td>JPEG, MRI, Audio</td>
+            </tr>
+            <tr>
+              <td>Information Theory</td>
+              <td>H = -Σp(x)log p(x)</td>
+              <td>H = Ení bit</td>
+              <td>Ìfiránṣẹ́ (Digital)</td>
+              <td>Limits of data transfer</td>
+              <td>Internet, Coding</td>
+            </tr>
+            <tr>
+              <td>Law of Large Numbers</td>
+              <td>lim<sub>n→∞</sub> <span style="display:inline-block; vertical-align:middle; text-align:center;"><span style="border-bottom:1px solid; display:block;">S<sub>n</sub></span><span style="display:block;">n</span></span> = μ</td>
+              <td>Ìpíndọ̀gba</td>
+              <td>Ìdúróṣinṣin (Steady)</td>
+              <td>Predicts randomness</td>
+              <td>Insurance, Statistics</td>
+            </tr>
+            <tr>
+              <td>Newton's 2nd Law</td>
+              <td>F = ma</td>
+              <td>Agbára = Ìwọ̀n × Ìyára</td>
+              <td>Ìṣípòpò (Kinetic)</td>
+              <td>Predictable physics</td>
+              <td>Robotics, Safety</td>
+            </tr>
+            <tr>
+              <td>Speed of Light (c)</td>
+              <td>c ≈ 3 × 10<sup>8</sup></td>
+              <td>Ẹ́ta × (Ẹ́wǎ)<sup>Ẹ́jọ</sup> m/s</td>
+              <td>Gíga-Jù (Absolute)</td>
+              <td>Universal speed limit</td>
+              <td>Fiber Optics</td>
+            </tr>
+            <tr>
+              <td>Planck Constant (h)</td>
+              <td>h ≈ 6.626 × 10<sup>-34</sup></td>
+              <td>Kékeré-Pátá</td>
+              <td>Pátá-Pátá (Quantized)</td>
+              <td>Smallest unit of action</td>
+              <td>Quantum Computing</td>
+            </tr>
+            <tr>
+              <td>Boltzmann Constant</td>
+              <td>k<sub>B</sub> ≈ 1.38 × 10<sup>-23</sup></td>
+              <td>Agbára-Ooru</td>
+              <td>Ìgbóná (Thermal)</td>
+              <td>Links heat to energy</td>
+              <td>Thermometers</td>
+            </tr>
+            <tr>
+              <td>Chaos Theory</td>
+              <td>x<sub>n+1</sub> = rx<sub>n</sub>(1 - x<sub>n</sub>)</td>
+              <td>Ìyípadà-Àìròtẹ́lẹ̀</td>
+              <td>Rúkerúdò (Nonlinear)</td>
+              <td>Explains unpredictability</td>
+              <td>Weather, Population</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ═══════ TABLE 3 — Agbára Command Formula Quick-Reference ═══════ -->
+      <h2 style="text-align:center; color:#4682B4; margin:24px 0 12px 0; font-size:1.55rem;">Agbára Command Formula — Quick-Reference</h2>
+      <div class="p00-tables">
+        <table>
+          <thead>
+            <tr>
+              <th>Law / Concept</th>
+              <th>Agbára Command Formula</th>
+              <th>Mímì-Ayé (Vibration)</th>
+              <th>Strategic Advantage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ẹwà Pípé (Euler's Identity)</td>
+              <td>e<sup>iπ</sup> + Ení = Ódo</td>
+              <td>Ìṣọ̀kan (Unity)</td>
+              <td>Connects all math constants.</td>
+            </tr>
+            <tr>
+              <td>Ìjẹ́mọ́-púpọ̀ (Qubit State)</td>
+              <td>α<sup>Éjì</sup> + β<sup>Éjì</sup> = Ení</td>
+              <td>Ríru (Superposition)</td>
+              <td>The speed of Quantum Computing.</td>
+            </tr>
+            <tr>
+              <td>Relativity (E=mc²)</td>
+              <td>E = mc²</td>
+              <td>Ìyípadà (Transform)</td>
+              <td>Links mass and energy.</td>
+            </tr>
+            <tr>
+              <td>Speed of Light (c)</td>
+              <td>Ẹ́ta × 10<sup>Ẹjọ́</sup></td>
+              <td>Gíga-Jù (Absolute)</td>
+              <td>Universal speed limit.</td>
+            </tr>
+            <tr>
+              <td>Ìlànà Ìkéré-Ìṣe</td>
+              <td>δS = 0</td>
+              <td>Ìṣẹ́rọ̀ (Efficiency)</td>
+              <td>The path of least resistance.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ═══════ TABLE 4 — Large Cardinal Summit & The Kunen Wall ═══════ -->
+      <h2 style="text-align:center; color:#4682B4; margin:48px 0 18px 0; font-size:1.55rem;">Large Cardinal Summit &amp; The Kunen Wall</h2>
+      <div class="p00-tables">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Power Formula</th>
+              <th>Value Example</th>
+              <th>Agbára Values (Yorùbá Numeric)</th>
+              <th>Agbára Values (Qualitative)</th>
+              <th>Advantages</th>
+              <th>Implementation</th>
+              <th>Adaptation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Vopěnka's Principle</td>
+              <td>∀ C ∃ A, B ∈ C : A ≺ B</td>
+              <td>Infinite Graph Class</td>
+              <td>Agbára Olókè-Iṣẹ́</td>
+              <td>Structural Symmetry</td>
+              <td>Guarantees relationships between large structures</td>
+              <td>Category Theory</td>
+              <td>Homotopy Type Theory</td>
+            </tr>
+            <tr>
+              <td>Huge Cardinal</td>
+              <td>j: V → M, M<sup>j(κ)</sup> ⊂ M</td>
+              <td>κ &lt; j(κ) &lt; j<sup>2</sup>(κ)</td>
+              <td>Agbára Olókè-mẹ́rin</td>
+              <td>High-Closure</td>
+              <td>Strongest jump before rank-into-rank</td>
+              <td>Set Theory (ZFC)</td>
+              <td>Saturated Ideals</td>
+            </tr>
+            <tr>
+              <td>Wholeness Axiom (WA)</td>
+              <td>j: V → V (Limited Language)</td>
+              <td>κ = crit(j)</td>
+              <td>Agbára Àìlópin-Olókè</td>
+              <td>Near-Forbidden</td>
+              <td>Allows V-to-V embedding via restricted logic</td>
+              <td>Amenable Embeddings</td>
+              <td>Vedic Logic/Metamathematics</td>
+            </tr>
+            <tr>
+              <td>I0 Axiom</td>
+              <td>j: L(V<sub>λ+1</sub>) ≺ L(V<sub>λ+1</sub>)</td>
+              <td>λ = sup j<sup>n</sup>(κ)</td>
+              <td>Agbára Tí Ó Ga Jù</td>
+              <td>The ZFC Summit</td>
+              <td>Strongest consistent ZFC axiom</td>
+              <td>Rank-into-Rank</td>
+              <td>Axiom of Determinacy</td>
+            </tr>
+            <tr>
+              <td>Reinhardt Cardinal</td>
+              <td>j: V ≺ V (Full Choice)</td>
+              <td>V = M</td>
+              <td>Agbára Ọba Àìrí</td>
+              <td>The Kunen Wall</td>
+              <td>Total mathematical symmetry</td>
+              <td>Forbidden in ZFC</td>
+              <td>Choiceless Universes (ZF)</td>
+            </tr>
+            <tr>
+              <td>Berkeley Cardinal</td>
+              <td>∀M ∋ κ, ∃j: M ≺ M</td>
+              <td>Beyond λ</td>
+              <td>Agbára Àìmọye-Olókè</td>
+              <td>Trans-Consistency</td>
+              <td>Exists beyond the Kunen Wall</td>
+              <td>Non-Choice Set Theory</td>
+              <td>Structural Reflection</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ═══════ Key Improvements ═══════ -->
+      <h2 style="text-align:center; color:#4682B4; margin:48px 0 18px 0; font-size:1.55rem;">Key Improvements to Structure</h2>
+      <div style="max-width:1100px; margin:0 auto; padding:0 20px; font-size:1.08rem; line-height:1.7; color:#000000;">
+        <ul style="list-style:disc; padding-left:24px;">
+          <li><strong style="color:#4682B4;">Agbára Values (Yorùbá Numeric):</strong> Applied the terms <em>Olókè</em> for summit and <em>Àìrí</em> for invisible/forbidden to match the existing style.</li>
+          <li><strong style="color:#4682B4;">Consistency vs. Size:</strong> Note that while <strong>Huge</strong> cardinals have more "Power," their least instance is actually smaller than some "weaker" cardinals (the "Double Helix" phenomenon).</li>
+          <li><strong style="color:#4682B4;">The Inconsistency Point:</strong> The <strong>Kunen Inconsistency</strong> is the logical filter that separates the <strong>I0</strong> row from the <strong>Reinhardt</strong> row.</li>
+        </ul>
+      </div>
+
+      <!-- ═══════ Closing Statement ═══════ -->
+      <div style="max-width:1000px; margin:36px auto 0 auto; padding:18px 24px 16px 24px; background:rgba(70,130,180,0.12); border-radius:10px; box-shadow:0 2px 8px rgba(70,130,180,0.10); font-size:1.13rem; color:#000000; text-align:center;">
+        <strong>The Agbára System</strong>, with its robust base-10 logic and deep cultural roots, offers a universal, future-ready framework for scientific, technological, and educational advancement. It empowers every Indigenous language to express modern mathematics and quantum science natively—bridging tradition and innovation for a truly global digital era.
+      </div>
+
+    </div>
+
+    <!-- 47-Colour Bar -->
+    <div class="colour-bar-animated">
+      <div style="background:#0891B2" title="Zero — Cerulean"></div>
+      <div style="background:#16A34A" title="Units — Vibrant Green"></div>
+      <div style="background:#2563EB" title="Tens — Royal Blue"></div>
+      <div style="background:#9333EA" title="Hundreds — Purple"></div>
+      <div style="background:#DC2626" title="Thousands — Red"></div>
+      <div style="background:#B59410" title="Tens of Thousands — Dark Goldenrod"></div>
+      <div style="background:#4EAAE4" title="Hundreds of Thousands — Sky Blue"></div>
+      <div style="background:#8B4513" title="Millions — Saddle Brown"></div>
+      <div style="background:#DAA520" title="Tens of Millions — Goldenrod"></div>
+      <div style="background:#EF6000" title="Hundreds of Millions — Dark Orange"></div>
+      <div style="background:#000080" title="Billions — Navy Blue"></div>
+      <div style="background:#FC5D8D" title="Tens of Billions — Hot Pink"></div>
+      <div style="background:#808000" title="Hundreds of Billions — Olive"></div>
+      <div style="background:#8B008B" title="Trillions — Dark Magenta"></div>
+      <div style="background:#6A5ACD" title="Tens of Trillions — Slate Blue"></div>
+      <div style="background:#FF6347" title="Hundreds of Trillions — Tomato"></div>
+      <div style="background:#1E90FF" title="Quadrillions — Dodger Blue"></div>
+      <div style="background:#F59E0B" title="Tens of Quadrillions — Amber"></div>
+      <div style="background:#8B0000" title="Hundreds of Quadrillions — Dark Red"></div>
+      <div style="background:#047857" title="Quintillions — Emerald"></div>
+      <div style="background:#A855F7" title="Tens of Quintillions — Bright Violet"></div>
+      <div style="background:#D2691E" title="Hundreds of Quintillions — Chocolate"></div>
+      <div style="background:#6C0AC9" title="Sextillions — Electric Violet"></div>
+      <div style="background:#B91C1C" title="Tens of Sextillions — Crimson"></div>
+      <div style="background:#65A30D" title="Hundreds of Sextillions — Lime Green"></div>
+      <div style="background:#4B0082" title="Septillions — Indigo"></div>
+      <div style="background:#FA8072" title="Tens of Septillions — Salmon"></div>
+      <div style="background:#008B8B" title="Hundreds of Septillions — Dark Teal"></div>
+      <div style="background:#B8860B" title="Octillions — Dark Goldenrod"></div>
+      <div style="background:#7B2D8E" title="Tens of Octillions — Deep Violet"></div>
+      <div style="background:#20B2AA" title="Hundreds of Octillions — Light Sea Green"></div>
+      <div style="background:#B22222" title="Nonillions — Firebrick"></div>
+      <div style="background:#9370DB" title="Tens of Nonillions — Medium Purple"></div>
+      <div style="background:#A0522D" title="Hundreds of Nonillions — Sienna"></div>
+      <div style="background:#191970" title="Decillions — Midnight Blue"></div>
+      <div style="background:#E11D48" title="Tens of Decillions — Rose"></div>
+      <div style="background:#5F9EA0" title="Hundreds of Decillions — Cadet Blue"></div>
+      <div style="background:#CD7F32" title="Undecillions — Bronze"></div>
+      <div style="background:#9932CC" title="Tens of Undecillions — Dark Orchid"></div>
+      <div style="background:#228B22" title="Hundreds of Undecillions — Forest Green"></div>
+      <div style="background:#483D8B" title="Duodecillions — Dark Slate Blue"></div>
+      <div style="background:#800000" title="Tens of Duodecillions — Maroon"></div>
+      <div style="background:#CD853F" title="Hundreds of Duodecillions — Peru"></div>
+      <div style="background:#94AA00" title="Tredecillions — Dark Olive"></div>
+      <div style="background:#C71585" title="Tens of Tredecillions — Medium Violet Red"></div>
+      <div style="background:#2E8B57" title="Hundreds of Tredecillions — Sea Green"></div>
+      <div style="background:#4682B4" title="Large Numbers — Steel Blue"></div>
+      <div style="background:#FF13F0" title='"l" Multiplier — Neon Pink'></div>
+      <div style="background:#808080" title="Unassigned — Gray"></div>
+    </div>
+
+<section class="osp-wrap" aria-label="Ònka Yorùbá Scholarly Reference Panels">
+<style>
+/* ══════════════════════════════════════════════════════════════
+   GLASSMORPHISM NEON — Scholarly Reference Section
+   Deep-space background, frosted glass cards, neon accents
+══════════════════════════════════════════════════════════════ */
+.osp-wrap{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(160deg,#141c32 0%,#111830 50%,#0e1a38 100%);
+  padding:72px 28px 64px;
+  font-family:'Poppins','Segoe UI',sans-serif;
+}
+/* Floating particle dots */
+.osp-wrap::before{
+  content:'';
+  position:absolute;inset:0;
+  background-image:
+    radial-gradient(2px 2px at 15% 25%,rgba(255,215,0,0.3),transparent),
+    radial-gradient(2px 2px at 45% 70%,rgba(255,19,240,0.25),transparent),
+    radial-gradient(1px 1px at 75% 15%,rgba(37,99,235,0.4),transparent),
+    radial-gradient(1px 1px at 85% 85%,rgba(255,215,0,0.2),transparent),
+    radial-gradient(2px 2px at 55% 45%,rgba(147,51,234,0.2),transparent);
+  animation:driftParticles 20s linear infinite;
+  pointer-events:none;
+}
+@keyframes driftParticles{
+  0%  {transform:translateY(0);}
+  100%{transform:translateY(-30px);}
+}
+/* Neon glow line at top */
+.osp-wrap::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:10%;right:10%;height:2px;
+  background:linear-gradient(90deg,transparent,#FFD700,#FF13F0,#2563EB,transparent);
+  border-radius:2px;
+  box-shadow:0 0 20px rgba(255,215,0,0.4),0 0 40px rgba(255,19,240,0.2);
+}
+.osp-head{text-align:center;margin-bottom:42px;position:relative;z-index:1;}
+.osp-head h3{
+  color:#FFD700;font-size:.72rem;font-weight:800;
+  letter-spacing:.22em;text-transform:uppercase;margin:0 0 8px;
+  text-shadow:0 0 12px rgba(255,215,0,0.4);
+}
+.osp-head p{color:rgba(255,255,255,.75);font-size:.78rem;margin:0;font-weight:400;}
+/* Diamond divider */
+.osp-divider{
+  display:flex;align-items:center;gap:14px;max-width:440px;
+  margin:0 auto 38px;position:relative;z-index:1;
+}
+.osp-divider span{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,215,0,0.5),transparent);}
+.osp-divider em{
+  color:rgba(255,255,255,.85);font-size:.62rem;
+  font-style:normal;white-space:nowrap;letter-spacing:.08em;
+}
+/* Card grid */
+.osp-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(310px,1fr));
+  gap:26px;max-width:1220px;margin:0 auto;position:relative;z-index:1;
+}
+/* Glassmorphism cards */
+.osp-card{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:20px;padding:32px 28px;
+  position:relative;overflow:hidden;
+  transition:all .4s cubic-bezier(.4,0,.2,1);
+}
+.osp-card:hover{
+  border-color:rgba(255,215,0,0.5);
+  box-shadow:0 8px 40px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,215,0,0.15);
+  transform:translateY(-3px);
+}
+/* Neon accent stripe at card top */
+.osp-card::before{
+  content:'';position:absolute;
+  top:0;left:24px;right:24px;height:2px;
+  background:var(--card-accent,linear-gradient(90deg,#FFD700,#FF13F0));
+  border-radius:0 0 4px 4px;opacity:.7;transition:opacity .3s;
+}
+.osp-card:hover::before{opacity:1;}
+.osp-card:nth-child(1){--card-accent:linear-gradient(90deg,#FF13F0,#9333EA);}
+.osp-card:nth-child(2){--card-accent:linear-gradient(90deg,#FFD700,#EF6000);}
+.osp-card:nth-child(3){--card-accent:linear-gradient(90deg,#2563EB,#0891B2);}
+.osp-icon{
+  font-size:1.8rem;display:inline-flex;align-items:center;justify-content:center;
+  width:48px;height:48px;border-radius:14px;
+  background:rgba(255,255,255,0.07);margin-bottom:14px;
+}
+.osp-label{
+  color:#FFD700;font-size:.66rem;font-weight:800;
+  letter-spacing:.18em;text-transform:uppercase;
+  border-bottom:1px solid rgba(255,255,255,0.12);
+  padding-bottom:12px;margin-bottom:18px;
+}
+/* ── Card ①: Classification Key ── */
+.osp-keytbl{width:100%;border-collapse:collapse;}
+.osp-keytbl tr+tr td{border-top:1px solid rgba(255,255,255,0.08);}
+.osp-keytbl td{padding:9px 0;font-size:.79rem;vertical-align:top;}
+.osp-ksym{
+  color:#FF13F0;font-weight:700;
+  padding-right:16px;min-width:72px;white-space:nowrap;font-size:.78rem;
+}
+.osp-kdesc{color:rgba(255,255,255,.88);line-height:1.6;}
+/* ── Card ②: Cite This Work ── */
+.osp-cite{
+  background:rgba(255,215,0,0.04);
+  border-left:3px solid #FFD700;
+  border-radius:0 12px 12px 0;
+  padding:16px 18px;font-size:.82rem;
+  color:rgba(255,255,255,.92);line-height:1.75;font-style:italic;
+}
+.osp-cite strong{color:#FFD700;font-style:normal;}
+.osp-cite-meta{
+  margin-top:12px;font-size:.7rem;
+  color:rgba(255,255,255,.6);font-style:normal;
+  padding-top:10px;border-top:1px solid rgba(255,255,255,0.08);
+}
+/* ── Card ③: API Notice ── */
+.osp-badge{
+  display:inline-block;
+  background:linear-gradient(90deg,#A855F7,#2563EB);
+  color:#fff;font-size:.6rem;font-weight:800;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:4px 14px;border-radius:20px;margin-bottom:14px;
+  box-shadow:0 2px 12px rgba(168,85,247,0.3);
+}
+.osp-api-p{color:rgba(255,255,255,.88);font-size:.82rem;line-height:1.72;}
+.osp-api-p strong{color:#fff3b0;}
+.osp-endpoint{
+  margin-top:14px;
+  background:rgba(0,0,0,0.35);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:10px;padding:12px 16px;
+  font-family:'Courier New',monospace;
+  font-size:.74rem;color:#7FDBCA;
+  letter-spacing:.03em;line-height:1.7;
+}
+.osp-arrow{color:#FF13F0;}
+</style>
+
+<div class="osp-head">
+  <h3>Ètò Ìmọ̀ Ònkà Yorùbá &nbsp;·&nbsp; Scholarly Reference</h3>
+  <p>Academic standards documentation for the New Ònkà Yorùbá Numeric System</p>
+</div>
+<div class="osp-divider">
+  <span></span><em>◆ Ìwé Ìmọ̀ Ònkà ◆</em><span></span>
+</div>
+
+<div class="osp-grid">
+
+  <!-- ① TABLE CLASSIFICATION KEY -->
+  <div class="osp-card">
+    <span class="osp-icon">🔑</span>
+    <div class="osp-label">Table Classification Key</div>
+    <table class="osp-keytbl" aria-label="Column guide for Ònka Yorùbá tables">
+      <tbody><tr>
+        <td class="osp-ksym">Symbol</td>
+        <td class="osp-kdesc">Scientific exponential representation of the number's magnitude</td>
+      </tr>
+      <tr>
+        <td class="osp-ksym">Name</td>
+        <td class="osp-kdesc">Official Ònka Yorùbá index terminology — the canonical Yoruba Numerical Lexicon form</td>
+      </tr>
+      <tr>
+        <td class="osp-ksym">Scale</td>
+        <td class="osp-kdesc">Power-of-ten magnitude — e.g., 10³ = Thousands tier, 10&sup6; = Millions tier</td>
+      </tr>
+      <tr>
+        <td class="osp-ksym">Tier</td>
+        <td class="osp-kdesc">Hierarchical classification level within the 47-Colour Visual Protocol</td>
+      </tr>
+      <tr>
+        <td class="osp-ksym"><span style="color:#FF13F0;font-weight:700;">l</span> Link</td>
+        <td class="osp-kdesc">The <em>l</em> multiplier connector — displayed in neon pink (#FF13F0), the engine of infinite magnitude chaining</td>
+      </tr>
+    </tbody></table>
+  </div>
+
+  <!-- ② CITATION STATEMENT -->
+  <div class="osp-card">
+    <span class="osp-icon">📜</span>
+    <div class="osp-label">Cite This Work</div>
+    <div class="osp-cite">
+      <strong>Ònka Yorùbá Institute</strong> (2026).
+      <em>Yoruba Numerical Index Database, v1.0.</em>
+      Godreign Digital Publishing.
+      <em>Ètò Ìmọ̀ Ònkà Yorùbá — The New Ònkà Yorùbá Numeric System.</em>
+      <div class="osp-cite-meta">
+        ISBN (979-8-90148-351-0) &nbsp;·&nbsp;
+        Freely accessible for academic, educational &amp; research use &nbsp;·&nbsp;
+        © 2026 Godreign. Ònka Yorùbá.
+      </div>
+    </div>
+  </div>
+
+  <!-- ③ FUTURE API NOTICE -->
+  <div class="osp-card">
+    <span class="osp-icon">⚡</span>
+    <div class="osp-label">Developer API Notice</div>
+    <span class="osp-badge">Coming Soon</span>
+    <p class="osp-api-p">
+      Public API access to the <strong>Yoruba Numerical Index Database</strong> is planned for a future
+      release, enabling developers, researchers, and digital platforms worldwide to programmatically
+      query over a <strong>tredecillion</strong> Yorùbá number entries in real time.
+    </p>
+    <div class="osp-endpoint">
+      GET /api/v1/onka-yoruba/number/{n}<br>
+      <span class="osp-arrow">→</span>&nbsp;{ yoruba: "…", tier: "…", colour: "…", power: "…" }
+    </div>
+  </div>
+
+</div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <span class="copyright">© 2026 Godreign. Ònka Yorùbá.</span>
+    
+    <span class="yoruba-mission">
+      Fún ìdàgbàsókè sáyẹ́nsì àti ìmọ̀ ẹ̀ro kárí aiyé.
+  </span>
+    
+    <p class="english-mission">
+      Exploring and utilizing our digital numerical legacy to achieve global digital competency.
+    </p>
+  </div>
+</footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top visible" id="backToTop" title="Back to Top" aria-label="Scroll to top">▲</button>
+
+    <!-- ═══════════════════ FUTURISTIC JS ═══════════════════ -->
+    <script>
+      // --- Scroll Progress Bar ---
+      const progressBar = document.getElementById('scrollProgress');
+      window.addEventListener('scroll', () => {
+        const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+        progressBar.style.width = scrolled + '%';
+      }, { passive: true });
+
+      // --- Back-to-Top Button ---
+      const topBtn = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 600) {
+          topBtn.classList.add('visible');
+        } else {
+          topBtn.classList.remove('visible');
+        }
+      }, { passive: true });
+      topBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
+
+</div></body></html>
