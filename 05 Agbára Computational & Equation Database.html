@@ -826,19 +826,19 @@
     }
 
     /* ── Alternating row shading (data rows, non-first-column) ── */
-    .p00-tables table tr:nth-child(odd):not(:first-child) td:not(:first-child),
-    .p00-text-sections table tr:nth-child(odd):not(:first-child) td:not(:first-child) {
+    .p00-tables table tbody tr:nth-child(odd) td:not(:first-child),
+    .p00-text-sections table tbody tr:nth-child(odd) td:not(:first-child) {
         background: #e8f2fd !important;
         color: #002244 !important;
     }
-    .p00-tables table tr:nth-child(even) td:not(:first-child),
-    .p00-text-sections table tr:nth-child(even) td:not(:first-child) {
+    .p00-tables table tbody tr:nth-child(even) td:not(:first-child),
+    .p00-text-sections table tbody tr:nth-child(even) td:not(:first-child) {
         background: #d4e8fa !important;
         color: #002244 !important;
     }
     /* spans inside alternating data cells */
-    .p00-tables table tr:not(:first-child) td:not(:first-child) span,
-    .p00-text-sections table tr:not(:first-child) td:not(:first-child) span {
+    .p00-tables table tbody tr td:not(:first-child) span,
+    .p00-text-sections table tbody tr td:not(:first-child) span {
         color: #002244 !important;
         background: transparent !important;
         font-family: 'Poppins', 'Segoe UI', sans-serif !important;
@@ -1524,7 +1524,7 @@
         <table>
           <thead>
             <tr>
-              <th style="padding:10px 8px;">Name</th>
+              <th style="padding:10px 8px; width:220px;">Name</th>
               <th style="padding:10px 8px;">Power Formula</th>
               <th style="padding:10px 8px;">Agbára Values (Yorùbá Numeric)</th>
               <th style="padding:10px 8px;">Mímì-Ayé (Vibration/Frequency)</th>
@@ -1687,7 +1687,7 @@
         <table>
           <thead>
             <tr>
-              <th>Law / Concept</th>
+              <th style="width:220px;">Law / Concept</th>
               <th>Agbára Command Formula</th>
               <th>Mímì-Ayé (Vibration)</th>
               <th>Strategic Advantage</th>
