@@ -83,6 +83,12 @@
     /* Region cards */
     .region-block { margin-bottom: 34px; }
     .region-title { color: #1a1a2e; font-size: 1.15rem; font-weight: 700; margin: 0 0 12px; padding: 8px 14px; border-left: 6px solid #FFD700; background: linear-gradient(90deg, rgba(255,215,0,0.12), transparent); border-radius: 4px; }
+    /* Region banners colour-matched to the circle on each card */
+    .region-block.r-africa   .region-title { color: #fff; border-left-color: #5B2E0E; background: linear-gradient(90deg, #8B4513 0%, rgba(139,69,19,0.15) 100%); }
+    .region-block.r-americas .region-title { color: #fff; border-left-color: #9A3412; background: linear-gradient(90deg, #F97316 0%, rgba(249,115,22,0.15) 100%); }
+    .region-block.r-asia     .region-title { color: #fff; border-left-color: #7F1D1D; background: linear-gradient(90deg, #DC2626 0%, rgba(220,38,38,0.15) 100%); }
+    .region-block.r-europe   .region-title { color: #fff; border-left-color: #1E3A8A; background: linear-gradient(90deg, #2563EB 0%, rgba(37,99,235,0.15) 100%); }
+    .region-block.r-pacific  .region-title { color: #fff; border-left-color: #6B21A8; background: linear-gradient(90deg, #A855F7 0%, rgba(168,85,247,0.15) 100%); }
     .lang-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
     .lang-card { background: #fff; border: 2px solid #e0eaf4; border-radius: 12px; padding: 14px 14px; transition: all 0.25s ease; position: relative; }
     .lang-card:hover { border-color: #1E8CB8; box-shadow: 0 6px 18px rgba(30,140,184,0.18); transform: translateY(-2px); }
@@ -105,13 +111,21 @@
     .search-wrap label { display: block; font-size: 0.85rem; font-weight: 600; color: #FFD700; margin-bottom: 8px; letter-spacing: 0.05em; text-transform: uppercase; }
     .search-wrap input[type="text"] { width: 100%; padding: 12px 16px; font-size: 1rem; border: 2px solid rgba(255,255,255,0.3); border-radius: 10px; background: rgba(255,255,255,0.95); color: #1a1a2e; font-family: inherit; }
     .search-wrap input[type="text"]:focus { outline: none; border-color: #FFD700; box-shadow: 0 0 0 3px rgba(255,215,0,0.3); }
+    .search-wrap input[type="text"]:disabled { background: rgba(255,255,255,0.55); cursor: not-allowed; }
+    .search-wrap select { width: 100%; padding: 12px 16px; font-size: 1rem; border: 2px solid rgba(255,255,255,0.3); border-radius: 10px; background: rgba(255,255,255,0.95); color: #1a1a2e; font-family: inherit; font-weight: 600; cursor: pointer; }
+    .search-wrap select:focus { outline: none; border-color: #FFD700; box-shadow: 0 0 0 3px rgba(255,215,0,0.3); }
     .search-stats { margin-top: 10px; font-size: 0.85rem; color: rgba(255,255,255,0.85); }
     .search-stats strong { color: #FFD700; }
+    .lang-row { display: grid; grid-template-columns: 1fr 2fr; gap: 14px; margin-bottom: 14px; }
+    @media (max-width: 700px) { .lang-row { grid-template-columns: 1fr; } }
+    .soon-notice { display: none; margin-top: 14px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); color: #1a1a2e; padding: 14px 18px; border-radius: 10px; border-left: 4px solid #FFD700; font-size: 0.92rem; line-height: 1.55; }
+    .soon-notice.show { display: block; }
+    .soon-notice strong { color: #0f3460; }
 
     /* Table */
     .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid #d6e0ea; }
     table.master { border-collapse: collapse; width: 100%; font-size: 0.88rem; background: #fff; }
-    table.master thead th { background: #0f3460; color: #fff; padding: 10px 12px; text-align: left; position: sticky; top: 88px; z-index: 5; font-weight: 700; font-size: 0.85rem; border-right: 1px solid rgba(255,255,255,0.15); }
+    table.master thead th { background: #0f3460; color: #fff; padding: 10px 12px; text-align: left; font-weight: 700; font-size: 0.85rem; border-right: 1px solid rgba(255,255,255,0.15); }
     table.master tbody td { padding: 7px 12px; border: 1px solid #e3ebf3; vertical-align: top; }
     table.master tbody tr:nth-child(even) td { background: #f5f9fc; }
     table.master tbody tr:hover td { background: #fff4ce; }
@@ -276,7 +290,7 @@
       </div>
 
       <!-- AFRICA -->
-      <div class="region-block">
+      <div class="region-block r-africa">
         <h3 class="region-title">🌍 Africa</h3>
         <div class="lang-grid">
           <a href="#yoruba-master" class="lang-card live"><span class="badge badge-live">LIVE</span><div class="flag">🟢</div><div class="name">Yor&ugrave;b&aacute;</div><div class="region">Nigeria &middot; 833 entries</div></a>
@@ -289,7 +303,7 @@
       </div>
 
       <!-- AMERICAS -->
-      <div class="region-block">
+      <div class="region-block r-americas">
         <h3 class="region-title">🌎 The Americas</h3>
         <div class="lang-grid">
           <div class="lang-card"><span class="badge badge-soon">SOON</span><div class="flag">🟠</div><div class="name">Quechua</div><div class="region">Andes &middot; Peru, Bolivia, Ecuador</div></div>
@@ -306,7 +320,7 @@
       </div>
 
       <!-- ASIA -->
-      <div class="region-block">
+      <div class="region-block r-asia">
         <h3 class="region-title">🌏 Asia</h3>
         <div class="lang-grid">
           <div class="lang-card"><span class="badge badge-soon">SOON</span><div class="flag">🔴</div><div class="name">Classical Chinese numerals</div><div class="region">East Asia</div></div>
@@ -325,7 +339,7 @@
       </div>
 
       <!-- EUROPE -->
-      <div class="region-block">
+      <div class="region-block r-europe">
         <h3 class="region-title">🌍 Europe</h3>
         <div class="lang-grid">
           <div class="lang-card"><span class="badge badge-soon">SOON</span><div class="flag">🔵</div><div class="name">Basque (Euskara)</div><div class="region">Basque Country</div></div>
@@ -340,7 +354,7 @@
       </div>
 
       <!-- PACIFIC -->
-      <div class="region-block">
+      <div class="region-block r-pacific">
         <h3 class="region-title">🌊 The Pacific &amp; Oceania</h3>
         <div class="lang-grid">
           <div class="lang-card"><span class="badge badge-soon">SOON</span><div class="flag">🟣</div><div class="name">M&#257;ori</div><div class="region">Aotearoa / New Zealand</div></div>
@@ -363,9 +377,65 @@
       </div>
 
       <div class="search-wrap">
-        <label for="searchBox">🔍 Search the Atlas</label>
-        <input type="text" id="searchBox" placeholder="Search by Yor&ugrave;b&aacute; name, English name, root, or row number&hellip;" autocomplete="off">
+        <div class="lang-row">
+          <div>
+            <label for="langSelect">🌍 Select a Language</label>
+            <select id="langSelect" aria-label="Select a language to search its numbers">
+              <optgroup label="🟢 Live Now">
+                <option value="yo" selected>Yorùbá — 833 entries (Africa / Nigeria)</option>
+              </optgroup>
+              <optgroup label="🌍 Africa — Coming Soon">
+                <option value="ha">Hausa (Nigeria / Niger / Ghana / Cameroon)</option>
+                <option value="sw">Swahili (East Africa)</option>
+                <option value="am">Amharic (Ethiopia)</option>
+                <option value="zu">Zulu / isiZulu (South Africa)</option>
+                <option value="crs">Seychellois Creole / Kreol Seselwa (Seychelles)</option>
+              </optgroup>
+              <optgroup label="🌎 The Americas — Coming Soon">
+                <option value="qu">Quechua (Andes)</option>
+                <option value="nv">Navajo / Diné Bizaad (Southwest USA)</option>
+                <option value="chr">Cherokee / ᏣᎳᎩ (USA)</option>
+                <option value="iu">Inuktitut (Arctic Canada / Greenland)</option>
+                <option value="ay">Aymara (Bolivia / Peru)</option>
+                <option value="gn">Guaraní (Paraguay / Brazil)</option>
+                <option value="nah">Nahuatl (Mexico)</option>
+                <option value="hai">Haitian Creole / Kreyòl (Haiti)</option>
+              </optgroup>
+              <optgroup label="🌏 Asia — Coming Soon">
+                <option value="bo">Tibetan (Tibet / Himalayas)</option>
+                <option value="my">Burmese (Myanmar)</option>
+                <option value="th">Thai (Thailand)</option>
+                <option value="km">Khmer (Cambodia)</option>
+                <option value="mn">Mongolian (Mongolia)</option>
+                <option value="dv">Dhivehi (Maldives)</option>
+                <option value="sa">Sanskrit (Indian subcontinent)</option>
+                <option value="ta">Tamil (South India / Sri Lanka)</option>
+              </optgroup>
+              <optgroup label="🏔️ Europe — Coming Soon">
+                <option value="eu">Basque / Euskara (Spain / France)</option>
+                <option value="cy">Welsh / Cymraeg (Wales)</option>
+                <option value="ga">Irish / Gaeilge (Ireland)</option>
+                <option value="gd">Scottish Gaelic / Gàidhlig (Scotland)</option>
+                <option value="se">Northern Sámi (Lapland)</option>
+                <option value="fi">Finnish / Suomi (Finland)</option>
+              </optgroup>
+              <optgroup label="🌊 Pacific & Oceania — Coming Soon">
+                <option value="mi">Māori (Aotearoa / New Zealand)</option>
+                <option value="haw">Hawaiian / ʻŌlelo Hawaiʻi (Hawaiʻi)</option>
+                <option value="sm">Samoan (Samoa)</option>
+                <option value="to">Tongan (Tonga)</option>
+                <option value="fj">Fijian (Fiji)</option>
+                <option value="ty">Tahitian (French Polynesia)</option>
+              </optgroup>
+            </select>
+          </div>
+          <div>
+            <label for="searchBox">🔍 Search the Atlas</label>
+            <input type="text" id="searchBox" placeholder="Search by Yor&ugrave;b&aacute; name, English name, root, or row number&hellip;" autocomplete="off">
+          </div>
+        </div>
         <div class="search-stats" id="searchStats"><strong>833</strong> entries shown &middot; Type to filter in real time.</div>
+        <div class="soon-notice" id="soonNotice" role="status" aria-live="polite"></div>
       </div>
 
       <div class="table-wrap">
@@ -1460,9 +1530,12 @@
     // Live table search
     const searchBox = document.getElementById('searchBox');
     const stats = document.getElementById('searchStats');
+    const langSelect = document.getElementById('langSelect');
+    const soonNotice = document.getElementById('soonNotice');
     const rows = Array.from(document.querySelectorAll('#masterBody tr'));
     const TOTAL = rows.length;
-    searchBox.addEventListener('input', () => {
+
+    function applyFilter() {
       const q = searchBox.value.trim().toLowerCase();
       let shown = 0;
       for (const r of rows) {
@@ -1471,6 +1544,31 @@
         if (match) shown++;
       }
       stats.innerHTML = '<strong>' + shown + '</strong> of ' + TOTAL + ' entries shown' + (q ? ' &middot; filter: <em>' + q.replace(/[<>&]/g,'') + '</em>' : ' &middot; Type to filter in real time.');
+    }
+
+    searchBox.addEventListener('input', applyFilter);
+
+    // Language selector — Yorùbá is live; others show a friendly "coming soon" notice.
+    langSelect.addEventListener('change', () => {
+      const opt = langSelect.options[langSelect.selectedIndex];
+      const code = langSelect.value;
+      const label = opt.textContent.replace(/\s*—.*$/, '').trim();
+      if (code === 'yo') {
+        soonNotice.classList.remove('show');
+        soonNotice.innerHTML = '';
+        searchBox.disabled = false;
+        searchBox.placeholder = 'Search by Yorùbá name, English name, root, or row number…';
+        applyFilter();
+      } else {
+        // Show coming-soon banner; keep Yorùbá table visible underneath.
+        soonNotice.innerHTML = '🌐 <strong>' + label + '</strong> is joining the atlas soon. ' +
+          'Until then, the <strong>Yorùbá Master Index (833 entries)</strong> is shown below as the live reference. ' +
+          'Want to help build the <em>' + label + '</em> dataset? ' +
+          '<a href="mailto:godreigninlove@outlook.com?subject=Contribute%20' + encodeURIComponent(label) + '%20Numerals" style="color:#0f3460; font-weight:700;">Contribute here →</a>';
+        soonNotice.classList.add('show');
+        searchBox.disabled = false;
+        searchBox.placeholder = 'Search the Yorùbá reference table while ' + label + ' is being prepared…';
+      }
     });
   </script>
 </body>
