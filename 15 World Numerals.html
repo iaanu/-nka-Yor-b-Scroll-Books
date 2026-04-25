@@ -85,10 +85,10 @@
     .region-title { color: #1a1a2e; font-size: 1.15rem; font-weight: 700; margin: 0 0 12px; padding: 8px 14px; border-left: 6px solid #FFD700; background: linear-gradient(90deg, rgba(255,215,0,0.12), transparent); border-radius: 4px; }
     /* Region banners colour-matched to the circle on each card */
     .region-block.r-africa   .region-title { color: #fff; border-left-color: #5B2E0E; background: linear-gradient(90deg, #8B4513 0%, rgba(139,69,19,0.15) 100%); }
-    .region-block.r-americas .region-title { color: #fff; border-left-color: #9A3412; background: linear-gradient(90deg, #F97316 0%, rgba(249,115,22,0.15) 100%); }
+    .region-block.r-americas .region-title { color: #fff; border-left-color: #6B21A8; background: linear-gradient(90deg, #A855F7 0%, rgba(168,85,247,0.15) 100%); }
     .region-block.r-asia     .region-title { color: #fff; border-left-color: #7F1D1D; background: linear-gradient(90deg, #DC2626 0%, rgba(220,38,38,0.15) 100%); }
     .region-block.r-europe   .region-title { color: #fff; border-left-color: #1E3A8A; background: linear-gradient(90deg, #2563EB 0%, rgba(37,99,235,0.15) 100%); }
-    .region-block.r-pacific  .region-title { color: #fff; border-left-color: #6B21A8; background: linear-gradient(90deg, #A855F7 0%, rgba(168,85,247,0.15) 100%); }
+    .region-block.r-pacific  .region-title { color: #fff; border-left-color: #9A3412; background: linear-gradient(90deg, #F97316 0%, rgba(249,115,22,0.15) 100%); }
     .lang-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
     .lang-card { background: #fff; border: 2px solid #e0eaf4; border-radius: 12px; padding: 14px 14px; transition: all 0.25s ease; position: relative; }
     .lang-card:hover { border-color: #1E8CB8; box-shadow: 0 6px 18px rgba(30,140,184,0.18); transform: translateY(-2px); }
@@ -130,56 +130,120 @@
     table.master tbody tr:nth-child(even) td { background: #f5f9fc; }
     table.master tbody tr:hover td { background: #fff4ce; }
     table.master td:first-child { text-align: center; font-weight: 700; width: 60px; }
-    /* Five-region rainbow ribbon descending the table — mirrors the region banners above
-       (Africa brown · Americas orange · Asia red · Europe blue · Pacific purple · Yorùbá green).
-       Each 7-row group inherits a region colour via the --grp custom property,
-       which then tints the row number AND the equation brackets in unison. */
-    table.master tbody tr:nth-child(42n+1),
-    table.master tbody tr:nth-child(42n+2),
-    table.master tbody tr:nth-child(42n+3),
-    table.master tbody tr:nth-child(42n+4),
-    table.master tbody tr:nth-child(42n+5),
-    table.master tbody tr:nth-child(42n+6),
-    table.master tbody tr:nth-child(42n+7)  { --grp: #8B4513; }   /* Africa · brown */
-    table.master tbody tr:nth-child(42n+8),
-    table.master tbody tr:nth-child(42n+9),
-    table.master tbody tr:nth-child(42n+10),
-    table.master tbody tr:nth-child(42n+11),
-    table.master tbody tr:nth-child(42n+12),
-    table.master tbody tr:nth-child(42n+13),
-    table.master tbody tr:nth-child(42n+14) { --grp: #F97316; }   /* Americas · orange */
-    table.master tbody tr:nth-child(42n+15),
-    table.master tbody tr:nth-child(42n+16),
-    table.master tbody tr:nth-child(42n+17),
-    table.master tbody tr:nth-child(42n+18),
-    table.master tbody tr:nth-child(42n+19),
-    table.master tbody tr:nth-child(42n+20),
-    table.master tbody tr:nth-child(42n+21) { --grp: #DC2626; }   /* Asia · red */
-    table.master tbody tr:nth-child(42n+22),
-    table.master tbody tr:nth-child(42n+23),
-    table.master tbody tr:nth-child(42n+24),
-    table.master tbody tr:nth-child(42n+25),
-    table.master tbody tr:nth-child(42n+26),
-    table.master tbody tr:nth-child(42n+27),
-    table.master tbody tr:nth-child(42n+28) { --grp: #2563EB; }   /* Europe · blue */
-    table.master tbody tr:nth-child(42n+29),
-    table.master tbody tr:nth-child(42n+30),
-    table.master tbody tr:nth-child(42n+31),
-    table.master tbody tr:nth-child(42n+32),
-    table.master tbody tr:nth-child(42n+33),
-    table.master tbody tr:nth-child(42n+34),
-    table.master tbody tr:nth-child(42n+35) { --grp: #A855F7; }   /* Pacific · purple */
-    table.master tbody tr:nth-child(42n+36),
-    table.master tbody tr:nth-child(42n+37),
-    table.master tbody tr:nth-child(42n+38),
-    table.master tbody tr:nth-child(42n+39),
-    table.master tbody tr:nth-child(42n+40),
-    table.master tbody tr:nth-child(42n+41),
-    table.master tbody tr:nth-child(42n+42) { --grp: #16A34A; }   /* Yorùbá · green */
-    /* Apply group colour: row number column + equation brackets */
+
+    /* ============================================================
+       CHROMATIC CHORD ENGINE — A Replicable Prototype
+       ------------------------------------------------------------
+       Two interchangeable colour themes overlay the same data table.
+       A single CSS variable --grp drives THREE visual cues in unison:
+         (a) the row-number column   (b) the equation brackets   (c) the underline ribbon every 7th row.
+       To adapt this for ANY indigenous language:
+         1. Choose a phonemic axis native to the language (vowels, tones, syllabic classes…).
+         2. Map each phonemic group to a colour. Keep the cycle length = (groups × rows-per-group).
+         3. Replace the selectors below — the rest of the system (number, brackets, ribbon) follows automatically.
+       ============================================================ */
+
+    /* --- THEME 1: REGION (default) — 6 colours × 7 rows = 42-row geographic cycle --- */
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+1),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+2),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+3),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+4),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+5),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+6),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+7)  { --grp: #8B4513; }   /* Africa · brown */
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+8),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+9),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+10),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+11),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+12),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+13),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+14) { --grp: #A855F7; }   /* Americas · purple */
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+15),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+16),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+17),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+18),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+19),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+20),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+21) { --grp: #DC2626; }   /* Asia · red */
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+22),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+23),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+24),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+25),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+26),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+27),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+28) { --grp: #2563EB; }   /* Europe · blue */
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+29),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+30),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+31),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+32),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+33),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+34),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+35) { --grp: #F97316; }   /* Pacific · orange */
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+36),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+37),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+38),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+39),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+40),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+41),
+    body:not(.theme-vowel) table.master tbody tr:nth-child(42n+42) { --grp: #16A34A; }   /* Yorùbá · green */
+
+    /* --- THEME 2: YORÙBÁ VOWEL — 7 colours × 7 rows = 49-row phonemic cycle ---
+       Mapping:  A → Red   E → Orange   Ẹ → Gold   I → Green   O → Blue   Ọ → Indigo   U → Violet
+       (Rainbow order = sonority/openness gradient. Rows 1, 8, 15, 22, 29, 36, 43 of every 49-row block
+        natively begin with the seven vowels in this exact order in the Yorùbá master index.) */
+    body.theme-vowel table.master tbody tr:nth-child(49n+1),
+    body.theme-vowel table.master tbody tr:nth-child(49n+2),
+    body.theme-vowel table.master tbody tr:nth-child(49n+3),
+    body.theme-vowel table.master tbody tr:nth-child(49n+4),
+    body.theme-vowel table.master tbody tr:nth-child(49n+5),
+    body.theme-vowel table.master tbody tr:nth-child(49n+6),
+    body.theme-vowel table.master tbody tr:nth-child(49n+7)  { --grp: #DC2626; }   /* A · Red */
+    body.theme-vowel table.master tbody tr:nth-child(49n+8),
+    body.theme-vowel table.master tbody tr:nth-child(49n+9),
+    body.theme-vowel table.master tbody tr:nth-child(49n+10),
+    body.theme-vowel table.master tbody tr:nth-child(49n+11),
+    body.theme-vowel table.master tbody tr:nth-child(49n+12),
+    body.theme-vowel table.master tbody tr:nth-child(49n+13),
+    body.theme-vowel table.master tbody tr:nth-child(49n+14) { --grp: #F97316; }   /* E · Orange */
+    body.theme-vowel table.master tbody tr:nth-child(49n+15),
+    body.theme-vowel table.master tbody tr:nth-child(49n+16),
+    body.theme-vowel table.master tbody tr:nth-child(49n+17),
+    body.theme-vowel table.master tbody tr:nth-child(49n+18),
+    body.theme-vowel table.master tbody tr:nth-child(49n+19),
+    body.theme-vowel table.master tbody tr:nth-child(49n+20),
+    body.theme-vowel table.master tbody tr:nth-child(49n+21) { --grp: #16A34A; }   /* Ẹ · Green */
+    body.theme-vowel table.master tbody tr:nth-child(49n+22),
+    body.theme-vowel table.master tbody tr:nth-child(49n+23),
+    body.theme-vowel table.master tbody tr:nth-child(49n+24),
+    body.theme-vowel table.master tbody tr:nth-child(49n+25),
+    body.theme-vowel table.master tbody tr:nth-child(49n+26),
+    body.theme-vowel table.master tbody tr:nth-child(49n+27),
+    body.theme-vowel table.master tbody tr:nth-child(49n+28) { --grp: #4F46E5; }   /* I · Indigo */
+    body.theme-vowel table.master tbody tr:nth-child(49n+29),
+    body.theme-vowel table.master tbody tr:nth-child(49n+30),
+    body.theme-vowel table.master tbody tr:nth-child(49n+31),
+    body.theme-vowel table.master tbody tr:nth-child(49n+32),
+    body.theme-vowel table.master tbody tr:nth-child(49n+33),
+    body.theme-vowel table.master tbody tr:nth-child(49n+34),
+    body.theme-vowel table.master tbody tr:nth-child(49n+35) { --grp: #2563EB; }   /* O · Blue */
+    body.theme-vowel table.master tbody tr:nth-child(49n+36),
+    body.theme-vowel table.master tbody tr:nth-child(49n+37),
+    body.theme-vowel table.master tbody tr:nth-child(49n+38),
+    body.theme-vowel table.master tbody tr:nth-child(49n+39),
+    body.theme-vowel table.master tbody tr:nth-child(49n+40),
+    body.theme-vowel table.master tbody tr:nth-child(49n+41),
+    body.theme-vowel table.master tbody tr:nth-child(49n+42) { --grp: #F59E0B; }   /* Ọ · Gold */
+    body.theme-vowel table.master tbody tr:nth-child(49n+43),
+    body.theme-vowel table.master tbody tr:nth-child(49n+44),
+    body.theme-vowel table.master tbody tr:nth-child(49n+45),
+    body.theme-vowel table.master tbody tr:nth-child(49n+46),
+    body.theme-vowel table.master tbody tr:nth-child(49n+47),
+    body.theme-vowel table.master tbody tr:nth-child(49n+48),
+    body.theme-vowel table.master tbody tr:nth-child(49n+49) { --grp: #A855F7; }   /* U · Violet */
+
+    /* Apply the group colour from --grp: row number, equation brackets, divider stripe */
     table.master tbody td:first-child { color: var(--grp); }
     table.master tbody .bk { color: var(--grp); font-weight: 600; }
-    /* Bottom divider stripe at row 7, 14, 21 … using the same group colour */
     table.master tbody tr:nth-child(7n) td { border-bottom: 3px solid var(--grp); }
     table.master sup { font-size: 0.72em; color: #6C0AC9; }
     table.master tr.hidden { display: none; }
@@ -189,6 +253,28 @@
     .method-card { background: #fff; border-top: 4px solid #1E8CB8; border-radius: 10px; padding: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
     .method-card h4 { margin: 0 0 6px; color: #0f3460; font-size: 0.95rem; }
     .method-card p { margin: 0; font-size: 0.82rem; color: #444; line-height: 1.55; }
+
+    /* Master-table intro — chromatic chord lede */
+    .master-intro { margin: 18px 0 22px; padding: 26px 28px; background: linear-gradient(135deg, #fff 0%, #f5f9fc 100%); border-radius: 14px; border-left: 6px solid #FFD700; box-shadow: 0 2px 14px rgba(15,52,96,0.06); }
+    .master-intro .lede { margin: 0 0 12px; font-size: 1.25rem; font-weight: 800; color: #0f3460; text-align: center; letter-spacing: 0.01em; }
+    .master-intro p { margin: 0 0 10px; font-size: 0.96rem; line-height: 1.7; color: #1a1a2e; }
+    .master-intro p.callout { margin: 14px 0 0; text-align: center; font-weight: 700; color: #6C0AC9; font-size: 1.02rem; }
+    .master-intro b { color: #0f3460; }
+    .master-intro i { color: #6C0AC9; font-style: italic; }
+    .chord-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 18px 0 4px; }
+    .chord-legend span { display: inline-block; padding: 6px 14px; color: #fff; font-weight: 700; font-size: 0.82rem; border-radius: 999px; letter-spacing: 0.02em; box-shadow: 0 1px 4px rgba(0,0,0,0.15); }
+    .chord-legend.vowel-legend span small { display: block; font-weight: 500; font-size: 0.72rem; opacity: 0.92; margin-top: 1px; }
+    .chord-legend[data-theme="region"] { display: flex; }
+    .chord-legend[data-theme="vowel"]  { display: none; }
+    body.theme-vowel .chord-legend[data-theme="region"] { display: none; }
+    body.theme-vowel .chord-legend[data-theme="vowel"]  { display: flex; }
+
+    /* Theme toggle */
+    .theme-toggle { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; margin: 18px 0 6px; padding: 12px 16px; background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%); border-radius: 10px; }
+    .theme-toggle .t-label { color: #FFD700; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .theme-toggle .t-btn { padding: 8px 16px; font-size: 0.88rem; font-weight: 700; border: 2px solid rgba(255,215,0,0.4); border-radius: 999px; background: rgba(255,255,255,0.06); color: #fff; cursor: pointer; font-family: inherit; transition: all 0.18s ease; }
+    .theme-toggle .t-btn:hover { background: rgba(255,215,0,0.15); border-color: #FFD700; }
+    .theme-toggle .t-btn.active { background: #FFD700; color: #0f3460; border-color: #FFD700; box-shadow: 0 2px 8px rgba(255,215,0,0.35); }
 
     /* Cite card */
     .cite-card { margin: 40px -36px -40px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-top: 2px solid #FFD700; border-bottom: 2px solid #FFD700; border-radius: 0; padding: 24px 36px; }
@@ -231,7 +317,7 @@
     <a href="01 Godreign.html">Godreign</a>
     <a href="index.html">Numeric Engine</a>
     <a href="03 Numerical Index Framework.html">Numerical Index Framework</a>
-    <a href="04 Multiplicative Scaling Framework.html">l Multiplier</a>
+    <a href="04 Multiplicative Scaling Framework.html">l Drive Multiplier</a>
     <a href="05 Agbára Computational & Equation Database.html">Agbára Database</a>
     <a href="06 Applied Numerical Systems & Modelling.html">Applied Systems</a>
     <a href="15 World Numerals.html">World Numerals</a>
@@ -421,6 +507,43 @@
       <div id="yoruba-master" class="sec-head">
         <h2>Yor&ugrave;b&aacute; Master Numerical Index &mdash; 833 Entries</h2>
         <p>The complete tier index from <strong>Million</strong> to <strong>Tretrigintoctingentillion</strong>, built on the <em>Universal Hyperdimensional Numeric Engine</em>.</p>
+      </div>
+
+      <div class="master-intro">
+        <p class="lede">Numbers were never meant to be cold.</p>
+        <p>For centuries, the language of mathematics has spoken in monochrome. We forgot that counting began as song &mdash; that every culture once braided number and meaning, sky and soil, into a single living grammar.</p>
+        <p><b>&Ograve;nk&agrave; Yor&ugrave;b&aacute;</b> is the rediscovery of that grammar: a complete, base&#8209;10 numeric system encoded in the Yor&ugrave;b&aacute; tongue, scaling fluently from one to numbers larger than the atoms in a galaxy. Each name carries its own arithmetic &mdash; a root vowel, a tonal multiplier, a place&#8209;value spine. Read aloud, the system <i>computes</i>.</p>
+        <p>The table below is a <b>chromatic chord engine</b>: every seven rows, the row number, the equation brackets, and the underline ribbon all sing in one voice. Toggle between two themes &mdash; both drive the same data, the same code, the same prototype.</p>
+
+        <div class="theme-toggle" role="group" aria-label="Colour theme switcher">
+          <span class="t-label">🎨 Colour Theme</span>
+          <button type="button" class="t-btn active" data-theme="region" aria-pressed="true">🌍 Region · 6 colours</button>
+          <button type="button" class="t-btn" data-theme="vowel" aria-pressed="false">🔤 Yor&ugrave;b&aacute; Vowel · 7 colours</button>
+        </div>
+
+        <div class="chord-legend" data-theme="region" aria-label="Region colour legend">
+          <span style="background:#8B4513;">Africa</span>
+          <span style="background:#A855F7;">The&nbsp;Americas</span>
+          <span style="background:#DC2626;">Asia</span>
+          <span style="background:#2563EB;">Europe</span>
+          <span style="background:#F97316;">Pacific&nbsp;&amp;&nbsp;Oceania</span>
+          <span style="background:#16A34A;">Yor&ugrave;b&aacute;</span>
+        </div>
+        <div class="chord-legend vowel-legend" data-theme="vowel" aria-label="Yorùbá vowel colour legend">
+          <span style="background:#DC2626;">A<small>open central</small></span>
+          <span style="background:#F97316;">E<small>mid&#8209;close front</small></span>
+          <span style="background:#16A34A;">&#7864;<small>mid&#8209;open front</small></span>
+          <span style="background:#4F46E5;">I<small>high front</small></span>
+          <span style="background:#2563EB;">O<small>mid&#8209;close back</small></span>
+          <span style="background:#F59E0B;">&#7884;<small>mid&#8209;open back</small></span>
+          <span style="background:#A855F7;">U<small>high back</small></span>
+        </div>
+
+        <p style="margin-top:14px; font-size:0.92rem; color:#444;">
+          <b style="color:#0f3460;">A replicable prototype.</b> The vowel theme is not decoration &mdash; it is a <i>portable design pattern</i> any indigenous language can adopt. Choose your language&rsquo;s phonemic axis (vowels, tones, syllabic classes), bind one colour to each phoneme, and the engine&rsquo;s number column, brackets, and ribbon rebind in unison. The Yor&ugrave;b&aacute; edition uses the seven vowels <b>A&nbsp;E&nbsp;&#7864;&nbsp;I&nbsp;O&nbsp;&#7884;&nbsp;U</b> in rainbow order &mdash; a sonority gradient running from the openest vowel (red) to the highest (violet).
+        </p>
+
+        <p class="callout">If you ever felt that mathematics was not for you &mdash; scroll on. This time, the numbers are speaking your colour.</p>
       </div>
 
       <div class="search-wrap">
@@ -1546,14 +1669,10 @@
 
   <footer>
     <div class="footer-content">
-      <span class="copyright">&copy; 2026 Godreign. &Ograve;nka Yor&ugrave;b&aacute;.</span>
+      <span class="copyright">&copy; 2026 Godreign. The Universal Hyperdimensional Numeric Engine.</span>
 
-      <span class="yoruba-mission">
-        F&uacute;n &igrave;d&agrave;gb&agrave;s&oacute;k&egrave; s&aacute;y&#7865;&#769;ns&igrave; &agrave;ti &igrave;m&#7885;&#768; &#7865;&#768;ro k&aacute;r&iacute; aiy&eacute;.
-      </span>
-
-      <p class="english-mission">
-        Exploring and utilizing our digital numerical legacy to achieve global digital competency.
+    <p class="english-mission">
+        Honouring every people's numerical heritage &mdash; building an open, language-independent path to global computational equity.
       </p>
     </div>
   </footer>
@@ -1616,6 +1735,19 @@
         searchBox.disabled = false;
         searchBox.placeholder = 'Search the Yorùbá reference table while ' + label + ' is being prepared…';
       }
+    });
+
+    // Chromatic Chord theme switcher (Region ⇄ Yorùbá Vowel)
+    document.querySelectorAll('.theme-toggle .t-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.dataset.theme;
+        document.body.classList.toggle('theme-vowel', theme === 'vowel');
+        document.querySelectorAll('.theme-toggle .t-btn').forEach(b => {
+          const active = (b === btn);
+          b.classList.toggle('active', active);
+          b.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+      });
     });
   </script>
 </body>
