@@ -261,6 +261,54 @@
     .master-intro p.callout { margin: 14px 0 0; text-align: center; font-weight: 700; color: #6C0AC9; font-size: 1.02rem; }
     .master-intro b { color: #0f3460; }
     .master-intro i { color: #6C0AC9; font-style: italic; }
+
+    /* Scholarly registry strip */
+    .registry-strip { margin: 14px auto 6px; padding: 10px 18px; background: #0f3460; color: #fff; border-radius: 8px; font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif; font-size: 0.86rem; letter-spacing: 0.02em; text-align: center; box-shadow: 0 1px 6px rgba(15,52,96,0.18); }
+    .registry-strip .pill { display: inline-block; padding: 2px 9px; margin: 0 4px; background: rgba(255,215,0,0.18); border: 1px solid rgba(255,215,0,0.55); border-radius: 999px; color: #FFD700; font-weight: 600; }
+    .registry-strip .sep { color: #FFD700; margin: 0 8px; opacity: 0.7; }
+
+    /* "Philosophy of" eyebrow above lede */
+    .master-intro .eyebrow { margin: 0 0 6px; text-align: center; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em; color: #6C0AC9; text-transform: uppercase; }
+
+    /* Dataset Status note (formerly "replicable prototype") */
+    .dataset-status { margin: 16px 0 0; padding: 14px 18px; background: #f7fafe; border: 1px solid #cfd8e7; border-left: 5px solid #2563EB; border-radius: 8px; font-size: 0.92rem; color: #1a2940; }
+    .dataset-status .label { display: inline-block; padding: 2px 10px; margin-right: 8px; background: #2563EB; color: #fff; border-radius: 4px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; vertical-align: 2px; }
+
+    /* Fields-included metadata block above the table */
+    .fields-meta { margin: 22px 0 14px; padding: 18px 18px 16px; background: linear-gradient(135deg, #fffdf5 0%, #fff7e6 100%); border: 1px solid #e6d27a; border-radius: 12px; box-shadow: 0 2px 10px rgba(15,52,96,0.06); }
+    .fields-meta .fhead { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 14px; }
+    .fields-meta .fhead .ftitle { font-weight: 800; color: #0f3460; letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.82rem; }
+    .fields-meta .fhead .fbar { flex: 0 0 60px; height: 3px; border-radius: 2px; background: linear-gradient(90deg, #E63946, #F4A300, #FFD700, #2A9D8F, #2563EB, #6C0AC9, #B5179E); }
+    .fields-meta ul.fgrid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+    .fields-meta ul.fgrid li { position: relative; padding: 12px 14px 12px 46px; background: #fff; border: 1px solid #e6d27a; border-radius: 10px; font-size: 0.88rem; color: #1a1a2e; line-height: 1.35; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: transform 0.15s ease, box-shadow 0.15s ease; }
+    .fields-meta ul.fgrid li:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(15,52,96,0.12); }
+    .fields-meta ul.fgrid li .ficon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.95rem; font-weight: 700; box-shadow: 0 1px 3px rgba(0,0,0,0.15); }
+    .fields-meta ul.fgrid li .flabel { display: block; font-weight: 700; color: #0f3460; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2px; }
+    .fields-meta ul.fgrid li .fval { display: block; color: #2a2a3e; }
+    .fields-meta ul.fgrid li.f1 { border-left: 4px solid #E63946; } .fields-meta ul.fgrid li.f1 .ficon { background: #E63946; }
+    .fields-meta ul.fgrid li.f2 { border-left: 4px solid #F4A300; } .fields-meta ul.fgrid li.f2 .ficon { background: #F4A300; }
+    .fields-meta ul.fgrid li.f3 { border-left: 4px solid #2A9D8F; } .fields-meta ul.fgrid li.f3 .ficon { background: #2A9D8F; }
+    .fields-meta ul.fgrid li.f4 { border-left: 4px solid #2563EB; } .fields-meta ul.fgrid li.f4 .ficon { background: #2563EB; }
+    .fields-meta ul.fgrid li.f5 { border-left: 4px solid #6C0AC9; } .fields-meta ul.fgrid li.f5 .ficon { background: #6C0AC9; }
+
+    /* Vocalic Pulse — heartbeat panel */
+    .v-pulse { position: relative; margin: 18px 0 4px; padding: 18px 20px 16px; background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 55%, #6C0AC9 100%); color: #fff; border-radius: 12px; box-shadow: 0 4px 18px rgba(108,10,201,0.18); overflow: hidden; }
+    .v-pulse::before { content:""; position:absolute; inset:0; background: radial-gradient(circle at 18% 30%, rgba(255,215,0,0.18), transparent 45%), radial-gradient(circle at 82% 70%, rgba(255,255,255,0.12), transparent 50%); pointer-events:none; }
+    .v-pulse .vp-head { position: relative; display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 12px; }
+    .v-pulse .vp-eyebrow { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.22em; color: #FFD700; text-transform: uppercase; }
+    .v-pulse .vp-title { font-size: 1.08rem; font-weight: 800; color: #fff; letter-spacing: 0.04em; }
+    .v-pulse .vp-beat { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #E63946; box-shadow: 0 0 0 0 rgba(230,57,70,0.7); animation: vpulse 1.6s ease-out infinite; }
+    @keyframes vpulse { 0% { box-shadow: 0 0 0 0 rgba(230,57,70,0.7);} 70% { box-shadow: 0 0 0 12px rgba(230,57,70,0);} 100% { box-shadow: 0 0 0 0 rgba(230,57,70,0);} }
+    .v-pulse .vp-lede { position: relative; text-align: center; font-size: 0.96rem; color: #f5e9ff; margin: 0 0 14px; line-height: 1.55; }
+    .v-pulse .vp-lede b { color: #FFD700; }
+    .v-pulse .vp-grid { position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
+    .v-pulse .vp-grid .stage { padding: 12px 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,215,0,0.35); border-radius: 10px; backdrop-filter: blur(2px); }
+    .v-pulse .vp-grid .stage .sname { display:block; font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: #FFD700; font-weight: 700; margin-bottom: 4px; }
+    .v-pulse .vp-grid .stage .sdesc { display:block; font-size: 0.88rem; color: #ffffff; line-height: 1.4; }
+    .v-pulse .vp-grid .stage.s1 { border-left: 4px solid #E63946; }
+    .v-pulse .vp-grid .stage.s2 { border-left: 4px solid #F4A300; }
+    .v-pulse .vp-grid .stage.s3 { border-left: 4px solid #B5179E; }
+    .v-pulse .vp-coda { position: relative; margin: 12px 0 0; text-align: center; font-size: 0.86rem; color: #FFD700; font-style: italic; letter-spacing: 0.04em; }
     .chord-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 18px 0 4px; }
     .chord-legend span { display: inline-block; padding: 6px 14px; color: #fff; font-weight: 700; font-size: 0.82rem; border-radius: 999px; letter-spacing: 0.02em; box-shadow: 0 1px 4px rgba(0,0,0,0.15); }
     .chord-legend.vowel-legend span small { display: block; font-weight: 500; font-size: 0.72rem; opacity: 0.92; margin-top: 1px; }
@@ -507,9 +555,17 @@
       <div id="yoruba-master" class="sec-head">
         <h2>Yor&ugrave;b&aacute; Master Numerical Index &mdash; 1,127 Entries</h2>
         <p>The complete tier index from <strong>Million</strong> to <strong>Septenvigintcentimillinillion</strong>, built on the <em>Universal Hyperdimensional Numeric Engine</em>.</p>
+        <div class="registry-strip" role="note" aria-label="Dataset metadata">
+          <span class="pill">Dataset&nbsp;v1.127</span><span class="sep">&middot;</span>
+          Pure Decimal Additive Structure<span class="sep">&middot;</span>
+          Machine&#8209;Readable<span class="sep">&middot;</span>
+          Open Public License (CC&nbsp;BY&nbsp;4.0)<span class="sep">&middot;</span>
+          Active Release
+        </div>
       </div>
 
       <div class="master-intro">
+        <p class="eyebrow">Philosophy of the Yor&ugrave;b&aacute; Numerical Index</p>
         <p class="lede">Numbers were never meant to be cold.</p>
         <p>For centuries, the language of mathematics has spoken in monochrome. We forgot that counting began as song &mdash; that every culture once braided number and meaning, sky and soil, into a single living grammar.</p>
         <p><b>&Ograve;nk&agrave; Yor&ugrave;b&aacute;</b> is the rediscovery of that grammar: a complete, base&#8209;10 numeric system encoded in the Yor&ugrave;b&aacute; tongue, scaling fluently from one to numbers larger than the atoms in a galaxy. Each name carries its own arithmetic &mdash; a root vowel, a tonal multiplier, a place&#8209;value spine. Read aloud, the system <i>computes</i>.</p>
@@ -518,6 +574,22 @@
           <b>&egrave;ẹ́ &middot; &ograve;ẹ́ &middot; &ograve;ọ́ &middot; &egrave;&eacute; &middot; ẹ̀ẹ̀ &middot; ẹ́ẹ́ &middot; &eacute;ẹ̀</b> &hellip; <i>r&#x01D4;n!</i> 🥁
           Sing it under <b>&Aacute;</b>, then change the first letter to <b>&Eacute;, Ẹ́, &Iacute;, &Oacute;, Ọ́, &Uacute;</b> &mdash; and on through <b>B, D, F &hellip; Z</b>. Seven middles, one alphabet, <b>1,127 magnitudes</b> reaching to 10<sup>135</sup>. A nursery rhyme that scales to the stars.
         </p>
+
+        <div class="v-pulse" role="note" aria-label="The Vocalic Pulse">
+          <div class="vp-head">
+            <span class="vp-beat" aria-hidden="true"></span>
+            <span class="vp-eyebrow">The Vocalic Pulse</span>
+            <span class="vp-title">&middot; Heartbeat of the Engine</span>
+            <span class="vp-beat" aria-hidden="true"></span>
+          </div>
+          <p class="vp-lede">If the <b>G&#8209;Pulse</b> is the engine&rsquo;s spark and the <b>Z&#8209;Pulse</b> is its calibration, the <b>V&#8209;Pulse</b> is its living breath. Seven primordial vowels &mdash; <b>A&nbsp;E&nbsp;&#7864;&nbsp;I&nbsp;O&nbsp;&#7884;&nbsp;U</b> &mdash; carry the rhythm that turns numeric sequence into a <b>Linguistic Superconductor</b>, ending zero&#8209;fatigue and letting the mind <i>breathe</i> with magnitude.</p>
+          <div class="vp-grid">
+            <div class="stage s1"><span class="sname">Low Thrum</span><span class="sdesc">At the base units, the pulse is a grounded, resonant anchor.</span></div>
+            <div class="stage s2"><span class="sname">High Shimmer</span><span class="sdesc">Climbing into the vigintillions, the pulse accelerates into vocalic light.</span></div>
+            <div class="stage s3"><span class="sname">Infinite Glow</span><span class="sdesc">At the transfinite peak, it becomes a steady, luminous state of being.</span></div>
+          </div>
+          <p class="vp-coda">Every language can dock into the V&#8209;Pulse to find its own heartbeat of magnitude.</p>
+        </div>
         <p>The table below is a <b>chromatic chord engine</b>: every seven rows, the row number, the equation brackets, and the underline ribbon all sing in one voice. Toggle between two themes &mdash; both drive the same data, the same code, the same prototype.</p>
 
         <div class="theme-toggle" role="group" aria-label="Colour theme switcher">
@@ -544,9 +616,10 @@
           <span style="background:#A855F7;">U<small>high back</small></span>
         </div>
 
-        <p style="margin-top:14px; font-size:0.92rem; color:#444;">
-          <b style="color:#0f3460;">A replicable prototype.</b> The vowel theme is not decoration &mdash; it is a <i>portable design pattern</i> any indigenous language can adopt. Choose your language&rsquo;s phonemic axis (vowels, tones, syllabic classes), bind one colour to each phoneme, and the engine&rsquo;s number column, brackets, and ribbon rebind in unison. The Yor&ugrave;b&aacute; edition uses the seven vowels <b>A&nbsp;E&nbsp;&#7864;&nbsp;I&nbsp;O&nbsp;&#7884;&nbsp;U</b> in rainbow order &mdash; a sonority gradient running from the openest vowel (red) to the highest (violet).
-        </p>
+        <div class="dataset-status" role="note">
+          <span class="label">Dataset Status</span>
+          This index is a <b>standardized prototype</b> and a <b>replicable design pattern</b>. The vowel theme is portable: any indigenous language may bind its phonemic axis (vowels, tones, syllabic classes) to one colour each, and the engine&rsquo;s number column, brackets, and underline ribbon will rebind in unison. The Yor&ugrave;b&aacute; edition uses the seven vowels <b>A&nbsp;E&nbsp;&#7864;&nbsp;I&nbsp;O&nbsp;&#7884;&nbsp;U</b> in rainbow order &mdash; a sonority gradient from the openest vowel (red) to the highest (violet). The dataset is versioned and will expand continuously.
+        </div>
 
         <p class="callout">If you ever felt that mathematics was not for you &mdash; scroll on. This time, the numbers are speaking your colour.</p>
       </div>
@@ -556,8 +629,8 @@
           <div>
             <label for="langSelect">🌍 Select a Language</label>
             <select id="langSelect" aria-label="Select a language to search its numbers">
-              <optgroup label="🟢 Live Now">
-                <option value="yo" selected>Yorùbá — 1,127 entries (Africa / Nigeria)</option>
+              <optgroup label="🟢 Active Release">
+                <option value="yo" selected>Yorùbá — Dataset v1.127 (Active Release · Africa / Nigeria)</option>
               </optgroup>
               <optgroup label="🌍 Africa — Coming Soon">
                 <option value="ha">Hausa (Nigeria / Niger / Ghana / Cameroon)</option>
@@ -609,8 +682,23 @@
             <input type="text" id="searchBox" placeholder="Search by Yor&ugrave;b&aacute; name, English name, root, or row number&hellip;" autocomplete="off">
           </div>
         </div>
-        <div class="search-stats" id="searchStats"><strong>1,127</strong> entries shown &middot; Type to filter in real time.</div>
+        <div class="search-stats" id="searchStats">Showing <strong>1&ndash;1,127</strong> of <strong>1,127</strong> entries &middot; Type to filter in real time.</div>
         <div class="soon-notice" id="soonNotice" role="status" aria-live="polite"></div>
+      </div>
+
+      <div class="fields-meta" role="note" aria-label="Dataset fields">
+        <div class="fhead">
+          <span class="fbar" aria-hidden="true"></span>
+          <span class="ftitle">Fields Included</span>
+          <span class="fbar" aria-hidden="true"></span>
+        </div>
+        <ul class="fgrid">
+          <li class="f1"><span class="ficon" aria-hidden="true">Á</span><span class="flabel">Field 1</span><span class="fval">Standardized Yor&ugrave;b&aacute; Orthography</span></li>
+          <li class="f2"><span class="ficon" aria-hidden="true">EN</span><span class="flabel">Field 2</span><span class="fval">English Reference Equivalent</span></li>
+          <li class="f3"><span class="ficon" aria-hidden="true">10ⁿ</span><span class="flabel">Field 3</span><span class="fval">Scientific Short Form (10<sup>n</sup>)</span></li>
+          <li class="f4"><span class="ficon" aria-hidden="true">́̀</span><span class="flabel">Field 4</span><span class="fval">Tonal Marking System</span></li>
+          <li class="f5"><span class="ficon" aria-hidden="true">⚜</span><span class="flabel">Field 5</span><span class="fval">Morphological Breakdown (Root / Tens&#8209;of / Hundreds&#8209;of)</span></li>
+        </ul>
       </div>
 
       <div class="table-wrap">
@@ -2008,7 +2096,7 @@
         r.classList.toggle('hidden', !match);
         if (match) shown++;
       }
-      stats.innerHTML = '<strong>' + shown + '</strong> of ' + TOTAL + ' entries shown' + (q ? ' &middot; filter: <em>' + q.replace(/[<>&]/g,'') + '</em>' : ' &middot; Type to filter in real time.');
+      stats.innerHTML = (q ? 'Showing <strong>' + shown + '</strong> of <strong>' + TOTAL + '</strong> entries &middot; filter: <em>' + q.replace(/[<>&]/g,'') + '</em>' : 'Showing <strong>1&ndash;' + TOTAL + '</strong> of <strong>' + TOTAL + '</strong> entries &middot; Type to filter in real time.');
     }
 
     searchBox.addEventListener('input', applyFilter);
