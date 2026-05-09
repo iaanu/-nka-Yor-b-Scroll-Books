@@ -108,7 +108,7 @@
 
     /* Search bar */
     .search-wrap { background: linear-gradient(135deg, #0f3460 0%, #1E8CB8 100%); padding: 22px 24px; border-radius: 14px; margin: 10px 0 20px; color: #fff; }
-    .search-wrap label { display: block; font-size: 0.85rem; font-weight: 600; color: #FFD700; margin-bottom: 8px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .search-wrap label { display: block; font-size: 0.92rem; font-weight: 800; color: #FFE873; margin-bottom: 8px; letter-spacing: 0.07em; text-transform: uppercase; text-shadow: 0 1px 2px rgba(0,0,0,0.35); }
     .search-wrap input[type="text"] { width: 100%; padding: 12px 16px; font-size: 1rem; border: 2px solid rgba(255,255,255,0.3); border-radius: 10px; background: rgba(255,255,255,0.95); color: #1a1a2e; font-family: inherit; }
     .search-wrap input[type="text"]:focus { outline: none; border-color: #FFD700; box-shadow: 0 0 0 3px rgba(255,215,0,0.3); }
     .search-wrap input[type="text"]:disabled { background: rgba(255,255,255,0.55); cursor: not-allowed; }
@@ -309,6 +309,17 @@
     .v-pulse .vp-grid .stage.s2 { border-left: 4px solid #F4A300; }
     .v-pulse .vp-grid .stage.s3 { border-left: 4px solid #B5179E; }
     .v-pulse .vp-coda { position: relative; margin: 12px 0 0; text-align: center; font-size: 0.86rem; color: #FFD700; font-style: italic; letter-spacing: 0.04em; }
+
+    /* Dataset metrics strip */
+    .metrics-strip { margin: 14px 0 0; padding: 12px 16px; background: #ffffff; border: 1px solid #cfd8e7; border-radius: 10px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; box-shadow: 0 1px 4px rgba(15,52,96,0.05); }
+    .metrics-strip .mtitle { font-weight: 800; color: #0f3460; letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.74rem; padding-right: 10px; border-right: 1px solid #cfd8e7; }
+    .metrics-strip .metric { display: inline-flex; align-items: baseline; gap: 6px; font-size: 0.88rem; color: #1a2940; }
+    .metrics-strip .metric b { font-size: 1.0rem; color: #0f3460; font-weight: 800; }
+    .metrics-strip .dot { width: 4px; height: 4px; border-radius: 50%; background: #cfd8e7; display: inline-block; }
+
+    /* Open Public Dataset micro-badge */
+    .open-badge { display: inline-flex; align-items: center; gap: 6px; margin-left: 10px; padding: 3px 10px; background: #16A34A; color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 999px; box-shadow: 0 1px 3px rgba(22,163,74,0.35); vertical-align: 4px; }
+    .open-badge::before { content:"●"; color: #BBF7D0; font-size: 0.7rem; }
     .chord-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 18px 0 4px; }
     .chord-legend span { display: inline-block; padding: 6px 14px; color: #fff; font-weight: 700; font-size: 0.82rem; border-radius: 999px; letter-spacing: 0.02em; box-shadow: 0 1px 4px rgba(0,0,0,0.15); }
     .chord-legend.vowel-legend span small { display: block; font-weight: 500; font-size: 0.72rem; opacity: 0.92; margin-top: 1px; }
@@ -553,7 +564,7 @@
 
       <!-- YORUBA MASTER INDEX -->
       <div id="yoruba-master" class="sec-head">
-        <h2>Yor&ugrave;b&aacute; Master Numerical Index &mdash; 1,127 Entries</h2>
+        <h2>Yor&ugrave;b&aacute; Master Numerical Index &mdash; 1,127 Entries <span class="open-badge" title="Open Public Dataset">Open Public Dataset</span></h2>
         <p>The complete tier index from <strong>Million</strong> to <strong>Septenvigintcentimillinillion</strong>, built on the <em>Universal Hyperdimensional Numeric Engine</em>.</p>
         <div class="registry-strip" role="note" aria-label="Dataset metadata">
           <span class="pill">Dataset&nbsp;v1.127</span><span class="sep">&middot;</span>
@@ -561,6 +572,14 @@
           Machine&#8209;Readable<span class="sep">&middot;</span>
           Open Public License (CC&nbsp;BY&nbsp;4.0)<span class="sep">&middot;</span>
           Active Release
+        </div>
+        <div class="metrics-strip" role="note" aria-label="Dataset metrics">
+          <span class="mtitle">Dataset Metrics</span>
+          <span class="metric"><b>1,127</b> Entries</span><span class="dot"></span>
+          <span class="metric"><b>5</b> Data Fields</span><span class="dot"></span>
+          <span class="metric">Fully Tonal Marking</span><span class="dot"></span>
+          <span class="metric">Additive Decimal Structure</span><span class="dot"></span>
+          <span class="metric">Reaches 10<sup>135</sup></span>
         </div>
       </div>
 
@@ -627,7 +646,7 @@
       <div class="search-wrap">
         <div class="lang-row">
           <div>
-            <label for="langSelect">🌍 Select a Language</label>
+            <label for="langSelect">🌍 Active Dataset Release</label>
             <select id="langSelect" aria-label="Select a language to search its numbers">
               <optgroup label="🟢 Active Release">
                 <option value="yo" selected>Yorùbá — Dataset v1.127 (Active Release · Africa / Nigeria)</option>
